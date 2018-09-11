@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.yj.domain.CloudOrderPdd;
 
 /**
- * 拼多多数据库2
+ * 拼多多数据库2222
  * 
  * @author Administrator
  *
