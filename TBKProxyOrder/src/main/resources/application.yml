@@ -1,0 +1,76 @@
+spring:
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+        # 连接超时时间 单位 ms（毫秒）
+      timeout: 60000
+      jedis:
+        pool:
+          # 连接池中的最大空闲连接，默认值也是8
+          max-idle: 200
+            #连接池中的最小空闲连接，默认值也是0。
+          min-idle: 200
+            # 如果赋值为-1，则表示不限制；pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
+          max-active: 2000
+          # 等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时
+          max-wait: 60000
+    banner:
+         location: banner.txt 
+    #热部署相关配置通过触发器去控制啥时候进行热部署
+    devtools:
+         restart:
+             trigger-file: trigger.txt
+    datasource:
+        name: mysql_test
+        type: com.alibaba.druid.pool.DruidDataSource
+        #druid相关配置
+        druid:
+          #监控统计拦截的filters
+         filters: stat
+         driver-class-name: com.mysql.jdbc.Driver
+          #基本属性
+         url: jdbc:mysql://118.89.185.51:3306/mytbkproxy?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+         username: root
+         password: TBK@shenzhen
+          #配置初始化大小/最小/最大
+         initial-size: 1
+         min-idle: 10
+         max-active: 40
+          #获取连接等待超时时间
+         max-wait: 60000
+          #间隔多久进行一次检测，检测需要关闭的空闲连接
+         time-between-eviction-runs-millis: 60000
+          #一个连接在池中最小生存的时间
+         min-evictable-idle-time-millis: 300000
+         validation-query: SELECT 'x'
+         test-while-idle: true
+         test-on-borrow: false
+         test-on-return: false
+          #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+         pool-prepared-statements: false
+         max-pool-prepared-statement-per-connection-size: 20
+
+## 该配置节点为独立的节点，有很多同学容易将这个配置放在spring的节点下，导致配置无法被识别
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.yj.domain  # 注意：对应实体类的路径
+
+#pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+    returnPageInfo: check
+    
+server:
+    port: 8088
+
+apache:
+     rocketmq:
+        consumer:
+            PushConsumer: orderConsumer
+        producer:
+            producerGroup: orderProducer
+        namesrvAddr: 123.206.176.248:9876

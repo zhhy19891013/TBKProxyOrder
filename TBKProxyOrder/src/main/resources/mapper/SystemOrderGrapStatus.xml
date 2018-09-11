@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.SystemOrderGrapStatusDao">
+
+	<resultMap id="SystemOrderGrapStatusMap" type="SystemOrderGrapStatus">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="updateTime" column="update_time" />
+		<result property="orderType" column="order_type" />
+		<result property="orderStatus" column="order_status" />
+		<result property="lastUpdateTime" column="last_update_time" />
+	</resultMap>
+
+	<update id="updateSystemOrderGrapStatus" parameterType="SystemOrderGrapStatus">
+		update
+		system_order_grap_status set
+		order_status=#{orderStatus},update_time=#{updateTime},last_update_time=#{lastUpdateTime}
+		where
+		order_type=#{orderType}
+	</update>
+
+	<insert id="addSystemOrderGrapStatus" parameterType="SystemOrderGrapStatus">
+		insert into
+		system_order_grap_status
+		(update_time,order_type,order_status,last_update_time)
+		values
+		(#{updateTime},#{orderType},#{orderStatus},#{lastUpdateTime})
+	</insert>
+
+	<select id="searchSystemOrderGrapStatusByType" parameterType="java.lang.String"
+		resultMap="SystemOrderGrapStatusMap">
+		select * from
+		system_order_grap_status where
+		order_type=#{orderType} limit 1
+	</select>
+
+	<select id="searchAllSystemOrderGrapStatus" resultMap="SystemOrderGrapStatusMap">
+		select *
+		from system_order_grap_status
+	</select>
+
+</mapper>

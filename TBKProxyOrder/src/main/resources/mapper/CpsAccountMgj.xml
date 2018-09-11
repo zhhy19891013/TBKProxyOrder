@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.CpsAccountMgjDao">
+	<resultMap type="CpsAccountMgj" id="CpsAccountMgjMap">
+		<result property="databaseID" column="database_id" />
+		<result property="uid" column="uid" />
+		<result property="userName" column="user_name" />
+		<result property="type" column="type" />
+	</resultMap>
+	<!-- 根据类型查询蘑菇街账号 -->
+	<select id="searchAccountMgjByType" resultMap="CpsAccountMgjMap"
+		parameterType="java.lang.String">
+		select * from
+		cps_acccount_mgj where type=#{type} limit 1
+	</select>
+
+
+
+</mapper>

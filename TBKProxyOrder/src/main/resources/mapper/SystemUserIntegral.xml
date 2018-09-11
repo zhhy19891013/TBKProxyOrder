@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.SystemUserIntegralDao">
+	<resultMap id="SystemUserIntegralMap" type="SystemUserIntegral">
+		<result property="databaseID" column="database_id" />
+		<result property="order_number" column="order_number" />
+		<result property="create_time" column="create_time" />
+		<result property="create_date" column="create_date" />
+		<result property="user_name" column="user_name" />
+		<result property="realIntegral" column="real_integral" />
+		<result property="orderDate" column="order_date" />
+		<result property="orderStatus" column="integral_status" />
+		<result property="integralOrign" column="integral_orign" />
+		<result property="integralPrividor" column="integral_prividor" />
+		<result property="integralNote" column="integral_note" />
+		<result property="totalAlipayFeeString" column="total_alipay_fee_string" />
+		<result property="integralRate" column="integral_rate" />
+		<result property="groupName" column="group_name" />
+		<result property="auctionId" column="auction_id" />
+		<result property="auctionTitle" column="auction_title" />
+		<result property="auctionUrl" column="auction_url" />
+		<result property="tbName" column="tb_name" />
+		<result property="realPay" column="real_pay" />
+		<result property="aliIntegral" column="ali_integral" />
+		<result property="integral" column="integral" />
+		<result property="finalDiscountToString" column="final_discount_to_string" />
+	</resultMap>
+
+	<delete id="deleteRepeat" parameterType="java.util.List"
+		flushCache="true">
+		delete from system_user_integral where order_number in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<update id="updateAliIntegral" flushCache="true">
+		 <![CDATA[  
+		 update system_user_integral
+		 set ali_integral = real_integral 
+		 where integral_status = '订单有效' 
+		 and ali_integral is NULL
+		 and order_date < DATE_ADD(curdate(),interval -day(curdate())+1 day)  
+		 ]]>
+	</update>
+
+
+	<update id="updtateRepeat" parameterType="java.util.List">
+		update system_user_integral set
+		integral_status='订单无效',integral_note='重复订单' where order_number in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+		and  <![CDATA[order_date <='2018-08-25' ]]>
+	</update>
+
+	<!-- 批量新增积分 -->
+	<insert id="addSystemUserIntegralBatch" parameterType="java.util.List"
+		flushCache="true">
+		insert
+		into
+		system_user_integral(order_number,integral,create_time,user_name,real_integral,order_date,integral_status,integral_orign,integral_prividor,integral_note,create_date,integral_rate,total_alipay_fee_string,group_name,auction_id,auction_title,auction_url,real_pay,tb_name,final_discount_to_string)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+         (#{item.order_number},#{item.integral},#{item.create_time},#{item.user_name},#{item.realIntegral},#{item.orderDate},#{item.orderStatus},#{item.integralOrign},#{item.integralPrividor},#{item.integralNote},#{item.create_date},#{item.integralRate},#{item.totalAlipayFeeString},#{item.groupName},#{item.auctionId},#{item.auctionTitle},#{item.auctionUrl},#{item.realPay},#{item.tbName},#{item.finalDiscountToString} )
+     		   ]]>
+		</foreach>
+	</insert>
+	<!-- 查询不是代理提交的订单 -->
+	<select id="searchNotCommitIntegral" parameterType="java.lang.String"
+		resultMap="SystemUserIntegralMap">
+		select * from system_user_integral
+		where integral_status
+		!='订单提交'
+		and order_number =#{order_number} limit 1
+	</select>
+	<!-- 根据订单编号删除积分 -->
+	<delete id="deleteSystemUserIntegralByOrderNumbers"
+		parameterType="java.util.List">
+		delete from system_user_integral where order_number in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.order_number}
+		</foreach>
+		and integral_status='订单提交'
+	</delete>
+	<!-- 查询所有提交的订单 -->
+	<select id="searchAllCommitSystemUserIntegral" resultMap="SystemUserIntegralMap">
+		select
+		* from system_user_integral where integral_status='订单提交'
+	</select>
+	<!-- 删除退款单子 -->
+	<delete id="deleteBackOrder" parameterType="SystemUserIntegral"
+		flushCache="true">
+		delete from system_user_integral where integral_status='订单退款' and
+		<![CDATA[order_date <=#{orderDate} ]]>
+	</delete>
+	<!-- 预估变有效 -->
+	<!-- 超过15天预估积分转换为有效积分 京东和拼多多的积分不按这个规则 -->
+	<update id="updateSystemUserIntegralRealIntegral" flushCache="true">
+		update system_user_integral set real_integral=integral where
+		DATEDIFF(now(),order_date)> (select config_value from
+		system_common_conifg where config_name ='cal_day') and tb_name!='京东订单'
+		and tb_name!='拼多多订单'
+	</update>
+	<!--淘宝退款的转换为订单退款 -->
+	<update id="updateSystemUserIntegralExpireIntegral" flushCache="true">
+		update system_user_integral set
+		integral_status='订单退款',integral_note='订单退款',real_integral=0,create_time=now()
+		where order_number in
+		(select
+		taobao_trade_parent_id from payment_record
+		where payStatus
+		=13) and integral_status!='订单退款'
+	</update>
+	<!--拼多多签到违规订单转换为订单退款 -->
+	<update id="updateSystemUserIntegralBckByPdd" flushCache="true">
+		update
+		system_user_integral set
+		integral_status='订单退款',integral_note='订单退款',real_integral=0,create_time=now()
+		where order_number in
+		(select
+		order_sn from cloud_order_pdd
+		where
+		order_status
+		='4' ) and integral_status!='订单退款'
+	</update>
+	<!-- 更新拼多多有效积分 -->
+	<update id="updateSystemUserIntegralPddRealIntegral" flushCache="true">
+		update system_user_integral p,cloud_order_pdd pp set
+		p.real_integral
+		=p.integral
+		where p.order_number =pp.order_sn
+		and
+		pp.order_status='3' and
+		p.tb_name='拼多多订单'
+	</update>
+	<!-- 更新京东订单退款的用户积分 -->
+	<update id="updateSystemUserIntegralJdExpireIntegral"
+		flushCache="true">
+		update system_user_integral set
+		integral_status='订单退款',integral_note='订单退款',real_integral=0,integral=0,create_time=now()
+		where database_id in
+		(SELECT o2.database_id from (select o.database_id
+		from system_user_integral o
+		LEFT JOIN jd_order_details o1
+		on
+		o.order_number =o1.orderid and o.auction_id =o1.item_id
+		where
+		o1.`status`='X' or o1.`status`='R' ) o2 )
+		and integral_status!='订单退款'
+	</update>
+	<!-- 更新京东订单有效积分 -->
+	<update id="updateSystemUserIntegralJdRealIntegral" flushCache="true">
+		update system_user_integral set
+		real_integral=integral
+		where database_id
+		in
+		(SELECT o2.database_id from (select o.database_id from
+		system_user_integral o
+		LEFT JOIN jd_order_details o1
+		on o.order_number
+		=o1.orderid and o.auction_id =o1.item_id
+		where o1.`status`='S') o2 )
+		and real_integral is null and tb_name='京东订单'
+	</update>
+</mapper>

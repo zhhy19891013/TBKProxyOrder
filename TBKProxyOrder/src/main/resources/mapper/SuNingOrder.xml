@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.SuNingOrderDao">
+	<resultMap type="SuNingOrder" id="SuningOrderMap">
+		<result property="databaseID" column="database_id" />
+		<result property="orderCode" column="order_code" />
+		<result property="userName" column="user_name" />
+		<result property="payTime" column="pay_time" />
+		<result property="orderSubmitTime" column="order_submit_time" />
+		<result property="orderLineNumber" column="order_line_number" />
+		<result property="orderLineStatusDesc" column="order_line_status_desc" />
+		<result property="orderLineStatusChangeTime" column="order_line_status_change_time" />
+		<result property="orderLineOrigin" column="order_line_origin" />
+		<result property="productName" column="product_name" />
+		<result property="saleNum" column="sale_num" />
+		<result property="payAmount" column="pay_amount" />
+		<result property="orderLineFlag" column="order_line_flag" />
+		<result property="childAccountId" column="child_account_id" />
+		<result property="sellerName" column="seller_name" />
+		<result property="sellerCode" column="seller_code" />
+		<result property="goodsNum" column="goods_num" />
+		<result property="commissionRatio" column="commission_ratio" />
+		<result property="prePayCommission" column="pre_pay_commission" />
+		<result property="productFirstCatalog" column="product_first_catalog" />
+		<result property="productSecondCatalog" column="product_second_catalog" />
+		<result property="productThirdCatalog" column="product_third_catalog" />
+		<result property="orderType" column="order_type" />
+		<result property="positionId" column="position_id" />
+		<result property="goodsGroupCatalog" column="goods_group_catalog" />
+	</resultMap>
+
+	<!--根据订单号批量删除 -->
+	<delete id="deleteSnOrders" parameterType="java.util.List">
+		delete from cloud_order_suning
+		where order_line_number in
+		<foreach collection="list" item="item" index="index" open="("
+			separator="," close=")">
+			#{item.orderLineNumber}
+		</foreach>
+	</delete>
+
+	<!-- 批量新增苏宁订单 -->
+	<insert id="addSuningOrdersBatch" parameterType="java.util.List">
+		insert into
+		cloud_order_suning
+		(user_name ,order_line_number
+		,order_code,pay_time,order_submit_time,order_line_status_desc,order_line_status_change_time,
+		order_line_origin,product_name,sale_num,pay_amount,order_line_flag,child_account_id,seller_name,seller_code,goods_num,commission_ratio
+		,pre_pay_commission,product_first_catalog,product_second_catalog,product_third_catalog,order_type,position_id,goods_group_catalog)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<![CDATA[  
+		  (#{item.userName},#{item.orderLineNumber}, #{item.orderCode},#{item.payTime},#{item.orderSubmitTime},#{item.orderLineStatusDesc},#{item.orderLineStatusChangeTime},
+		  #{item.orderLineOrigin},#{item.productName},#{item.saleNum},#{item.payAmount},#{item.orderLineFlag},#{item.childAccountId},#{item.sellerName},#{item.sellerCode},#{item.goodsNum},#{item.commissionRatio},
+		  #{item.prePayCommission},#{item.productFirstCatalog},#{item.productSecondCatalog},#{item.productThirdCatalog},#{item.orderType},#{item.positionId},#{item.goodsGroupCatalog})	
+		 ]]>
+		</foreach>
+	</insert>
+
+	<!-- 苏宁 更新 username 谭程文 -->
+	<update id="updateSuningOrderUserName" parameterType="java.util.List">
+		update cloud_order_suning p,system_user_integral pp set
+		p.user_name
+		=pp.integral_prividor where p.order_line_number =
+		pp.order_number
+		and
+		pp.order_number in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.orderLineNumber}
+		</foreach>
+	</update>
+
+
+	<!--苏宁 查询没算过的订单 ( USER NAME 为空的) -->
+	<select id="searchNotCalSnOrders" resultMap="SuningOrderMap">
+		select * from
+		cloud_order_suning where user_name is null
+	</select>
+
+	<!--苏宁更新所有username 谭程文 -->
+	<update id="updateSnOrderUserNameAll">
+		update cloud_order_suning a , system_user_integral b
+		set a.user_name
+		=b.integral_prividor where a.order_line_number =
+		b.order_number and a.user_name is null
+	</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

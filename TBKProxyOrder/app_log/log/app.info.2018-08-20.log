@@ -1,0 +1,271 @@
+2018-08-20 22:41:18.492 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 4932 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-08-20 22:41:18.494 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-08-20 22:41:18.583 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3299d7cd: startup date [Mon Aug 20 22:41:18 CST 2018]; root of context hierarchy
+2018-08-20 22:41:20.412 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-08-20 22:41:20.433 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-08-20 22:41:20.446 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-08-20 22:41:20.447 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-08-20 22:41:20.456 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-08-20 22:41:20.617 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-08-20 22:41:20.618 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 2035 ms
+2018-08-20 22:41:20.786 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-08-20 22:41:20.788 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-08-20 22:41:20.792 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-08-20 22:41:20.793 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-08-20 22:41:20.793 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-08-20 22:41:20.793 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-08-20 22:41:20.794 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-08-20 22:41:20.883 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-08-20 22:41:21.343 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-08-20 22:41:21.789 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 22:41:22.050 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3299d7cd: startup date [Mon Aug 20 22:41:18 CST 2018]; root of context hierarchy
+2018-08-20 22:41:22.139 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/test]}" onto public java.util.List<com.yj.domain.PaymentRecord> com.yj.controller.TestController.test()
+2018-08-20 22:41:22.143 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-08-20 22:41:22.144 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-08-20 22:41:22.178 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 22:41:22.178 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 22:41:22.238 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-08-20 22:41:22.597 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-08-20 22:41:22.635 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-08-20 22:41:22.637 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-08-20 22:41:22.638 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-08-20 22:41:22.645 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-08-20 22:41:22.646 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-08-20 22:41:22.659 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-08-20 22:41:22.672 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-08-20 22:41:22.683 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-08-20 22:41:22.702 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-08-20 22:41:22.707 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 4.666 seconds (JVM running for 5.116)
+2018-08-20 22:42:00.102 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:43:00.007 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:44:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:45:00.007 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:46:00.010 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:47:00.007 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:48:00.009 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:49:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:50:00.006 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:51:00.006 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:52:00.009 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:53:00.009 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:54:00.009 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:55:00.011 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:56:00.010 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:57:00.011 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:58:00.009 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 22:59:00.010 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:00:00.010 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:01:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:02:00.007 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:03:00.007 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:04:00.011 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:05:00.009 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:06:00.007 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:07:00.007 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:08:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:09:00.006 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:10:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:10:53.436 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 9424 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-08-20 23:10:53.445 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-08-20 23:10:53.778 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7eaf722: startup date [Mon Aug 20 23:10:53 CST 2018]; root of context hierarchy
+2018-08-20 23:10:56.925 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-08-20 23:10:56.946 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:10:56.963 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-08-20 23:10:56.963 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-08-20 23:10:56.976 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-08-20 23:10:57.171 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-08-20 23:10:57.173 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 3394 ms
+2018-08-20 23:10:57.360 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-08-20 23:10:57.362 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-08-20 23:10:57.368 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-08-20 23:10:57.368 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-08-20 23:10:57.369 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-08-20 23:10:57.369 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-08-20 23:10:57.369 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-08-20 23:10:57.642 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-08-20 23:10:58.376 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-08-20 23:10:58.847 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:10:59.493 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7eaf722: startup date [Mon Aug 20 23:10:53 CST 2018]; root of context hierarchy
+2018-08-20 23:10:59.601 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/test]}" onto public java.util.List<com.yj.domain.PaymentRecord> com.yj.controller.TestController.test()
+2018-08-20 23:10:59.605 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-08-20 23:10:59.606 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-08-20 23:10:59.656 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:10:59.656 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:10:59.736 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-08-20 23:11:00.480 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-08-20 23:11:00.523 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-08-20 23:11:00.525 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-08-20 23:11:00.525 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-08-20 23:11:00.531 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-08-20 23:11:00.533 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-08-20 23:11:00.544 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-08-20 23:11:00.555 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:11:00.562 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-08-20 23:11:00.579 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-08-20 23:11:00.587 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 8.081 seconds (JVM running for 8.693)
+2018-08-20 23:15:45.006 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 1788 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-08-20 23:15:45.008 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-08-20 23:15:45.078 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f93b534: startup date [Mon Aug 20 23:15:45 CST 2018]; root of context hierarchy
+2018-08-20 23:15:48.696 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-08-20 23:15:48.749 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:15:48.822 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-08-20 23:15:48.824 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-08-20 23:15:48.867 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-08-20 23:15:49.240 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-08-20 23:15:49.240 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 4162 ms
+2018-08-20 23:15:49.454 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-08-20 23:15:49.455 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-08-20 23:15:49.459 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-08-20 23:15:49.459 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-08-20 23:15:49.459 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-08-20 23:15:49.459 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-08-20 23:15:49.459 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-08-20 23:15:49.644 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-08-20 23:15:50.392 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-08-20 23:15:51.230 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:15:51.858 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f93b534: startup date [Mon Aug 20 23:15:45 CST 2018]; root of context hierarchy
+2018-08-20 23:15:51.959 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/test]}" onto public java.util.List<com.yj.domain.PaymentRecord> com.yj.controller.TestController.test()
+2018-08-20 23:15:51.965 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-08-20 23:15:51.968 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-08-20 23:15:52.011 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:15:52.011 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:15:52.104 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-08-20 23:15:53.404 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-08-20 23:15:53.630 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-08-20 23:15:53.634 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-08-20 23:15:53.635 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-08-20 23:15:53.643 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-08-20 23:15:53.645 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-08-20 23:15:53.666 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-08-20 23:15:53.699 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:15:53.711 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-08-20 23:15:53.742 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-08-20 23:15:53.750 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 9.534 seconds (JVM running for 10.16)
+2018-08-20 23:16:00.107 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:16:52.966 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 9496 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-08-20 23:16:52.968 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-08-20 23:16:53.037 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f93b534: startup date [Mon Aug 20 23:16:53 CST 2018]; root of context hierarchy
+2018-08-20 23:16:56.784 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-08-20 23:16:56.800 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:16:56.811 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-08-20 23:16:56.812 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-08-20 23:16:56.829 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-08-20 23:16:56.938 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-08-20 23:16:56.939 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 3902 ms
+2018-08-20 23:16:57.141 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-08-20 23:16:57.144 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-08-20 23:16:57.149 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-08-20 23:16:57.150 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-08-20 23:16:57.150 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-08-20 23:16:57.150 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-08-20 23:16:57.150 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-08-20 23:16:57.295 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-08-20 23:16:58.061 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-08-20 23:16:58.820 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:16:59.047 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f93b534: startup date [Mon Aug 20 23:16:53 CST 2018]; root of context hierarchy
+2018-08-20 23:16:59.189 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/test]}" onto public java.util.List<com.yj.domain.PaymentRecord> com.yj.controller.TestController.test()
+2018-08-20 23:16:59.204 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-08-20 23:16:59.209 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-08-20 23:16:59.362 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:16:59.364 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:16:59.566 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-08-20 23:17:00.443 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-08-20 23:17:00.528 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-08-20 23:17:00.531 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-08-20 23:17:00.532 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-08-20 23:17:00.538 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-08-20 23:17:00.540 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-08-20 23:17:00.557 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-08-20 23:17:00.572 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:17:00.586 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-08-20 23:17:00.614 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-08-20 23:17:00.621 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 8.467 seconds (JVM running for 8.937)
+2018-08-20 23:18:00.084 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:19:00.007 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:20:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:20:18.090 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 9588 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-08-20 23:20:18.093 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-08-20 23:20:18.156 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f93b534: startup date [Mon Aug 20 23:20:18 CST 2018]; root of context hierarchy
+2018-08-20 23:20:21.729 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-08-20 23:20:21.745 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:20:21.759 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-08-20 23:20:21.759 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-08-20 23:20:21.773 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-08-20 23:20:22.285 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-08-20 23:20:22.286 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 4130 ms
+2018-08-20 23:20:22.550 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-08-20 23:20:22.553 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-08-20 23:20:22.559 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-08-20 23:20:22.560 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-08-20 23:20:22.560 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-08-20 23:20:22.561 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-08-20 23:20:22.561 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-08-20 23:20:22.877 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-08-20 23:20:23.558 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-08-20 23:20:24.275 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:20:25.051 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f93b534: startup date [Mon Aug 20 23:20:18 CST 2018]; root of context hierarchy
+2018-08-20 23:20:25.174 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/test]}" onto public java.util.List<com.yj.domain.PaymentRecord> com.yj.controller.TestController.test()
+2018-08-20 23:20:25.185 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-08-20 23:20:25.186 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-08-20 23:20:25.225 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:20:25.225 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:20:25.314 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-08-20 23:20:26.027 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-08-20 23:20:26.065 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-08-20 23:20:26.066 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-08-20 23:20:26.066 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-08-20 23:20:26.072 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-08-20 23:20:26.073 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-08-20 23:20:26.086 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-08-20 23:20:26.095 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:20:26.105 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-08-20 23:20:26.124 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-08-20 23:20:26.128 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 9.028 seconds (JVM running for 9.863)
+2018-08-20 23:21:00.069 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:21:15.537 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 10548 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-08-20 23:21:15.540 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-08-20 23:21:15.826 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f93b534: startup date [Mon Aug 20 23:21:15 CST 2018]; root of context hierarchy
+2018-08-20 23:21:19.710 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-08-20 23:21:19.787 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:21:19.840 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-08-20 23:21:19.841 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-08-20 23:21:19.881 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-08-20 23:21:20.096 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-08-20 23:21:20.097 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 4270 ms
+2018-08-20 23:21:20.288 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-08-20 23:21:20.289 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-08-20 23:21:20.292 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-08-20 23:21:20.292 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-08-20 23:21:20.292 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-08-20 23:21:20.293 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-08-20 23:21:20.293 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-08-20 23:21:20.412 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-08-20 23:21:21.780 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-08-20 23:21:22.793 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:21:23.095 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f93b534: startup date [Mon Aug 20 23:21:15 CST 2018]; root of context hierarchy
+2018-08-20 23:21:23.281 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/test]}" onto public java.util.List<com.yj.domain.PaymentRecord> com.yj.controller.TestController.test()
+2018-08-20 23:21:23.299 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-08-20 23:21:23.305 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-08-20 23:21:23.556 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:21:23.558 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 23:21:23.663 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-08-20 23:21:24.757 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-08-20 23:21:24.804 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-08-20 23:21:24.806 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-08-20 23:21:24.806 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-08-20 23:21:24.811 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-08-20 23:21:24.813 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-08-20 23:21:24.826 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-08-20 23:21:24.837 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-08-20 23:21:24.846 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-08-20 23:21:24.865 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-08-20 23:21:24.871 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 9.873 seconds (JVM running for 10.681)
+2018-08-20 23:22:00.075 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:23:00.010 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:24:00.010 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:25:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:26:00.011 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:27:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:28:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:29:00.006 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单
+2018-08-20 23:30:00.008 INFO [pool-1-thread-1]com.yj.service.impl.PaymentRecordServiceImpl.grap:38 -开始抓取淘宝订单

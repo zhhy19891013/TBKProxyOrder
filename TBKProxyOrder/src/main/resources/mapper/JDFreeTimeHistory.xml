@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.JDFreeTimeHistoryDao">
+	<resultMap type="JDFreeTimeHistory" id="JDFreeTimeHistoryMap">
+		<result property="databaseID" column="database_id" />
+		<result property="freeTimeRange" column="free_time_range" />
+	</resultMap>
+
+	<select id="searchAllJdFreeTimeHistroy" resultMap="JDFreeTimeHistoryMap">
+		select
+		free_time_range from jd_free_time_history
+	</select>
+
+
+
+</mapper>

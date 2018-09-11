@@ -1,0 +1,659 @@
+2018-09-03 13:08:12.408 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 11548 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-09-03 13:08:12.411 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-09-03 13:08:12.558 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5f32c8d5: startup date [Mon Sep 03 13:08:12 CST 2018]; root of context hierarchy
+2018-09-03 13:08:14.508 INFO [restartedMain]o.s.d.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected:163 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-09-03 13:08:15.200 INFO [restartedMain]o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:328 -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7ff4d000] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-03 13:08:16.066 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-09-03 13:08:16.087 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-09-03 13:08:16.102 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-09-03 13:08:16.102 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-09-03 13:08:16.116 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Program Files\TortoiseSVN\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-09-03 13:08:16.307 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-09-03 13:08:16.307 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 3749 ms
+2018-09-03 13:08:16.526 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-09-03 13:08:16.528 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-09-03 13:08:16.532 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-03 13:08:16.532 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-03 13:08:16.532 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-03 13:08:16.532 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-03 13:08:16.533 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-09-03 13:08:17.510 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-09-03 13:08:18.079 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-09-03 13:08:19.196 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:08:19.593 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5f32c8d5: startup date [Mon Sep 03 13:08:12 CST 2018]; root of context hierarchy
+2018-09-03 13:08:19.694 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-03 13:08:19.695 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-03 13:08:19.730 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:08:19.731 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:08:19.752 INFO [restartedMain]o.s.w.s.m.m.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache:288 -Detected @ExceptionHandler methods in commonExceptionHandler
+2018-09-03 13:08:19.826 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-09-03 13:08:20.599 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-09-03 13:08:20.645 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-09-03 13:08:20.647 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-09-03 13:08:20.647 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-03 13:08:20.655 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-09-03 13:08:20.657 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-09-03 13:08:20.669 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-09-03 13:08:20.702 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-09-03 13:08:20.704 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-09-03 13:08:20.736 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-09-03 13:08:20.741 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 9.451 seconds (JVM running for 10.28)
+2018-09-03 13:09:00.024 INFO [pool-1-thread-1]com.yj.task.OrderRefreshTask.execute:60 -全部订单开始:2018-09-03 13:09:00
+2018-09-03 13:09:00.091 INFO [pool-1-thread-1]com.yj.task.OrderRefreshTask.execute:62 -订单抓取已在服务器执行
+2018-09-03 13:10:00.001 INFO [pool-1-thread-1]com.yj.task.OrderRefreshTask.execute:60 -全部订单开始:2018-09-03 13:10:00
+2018-09-03 13:10:00.023 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:54 -开始抓取淘宝订单
+2018-09-03 13:10:00.762 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 17:31:01.0:淘宝订单
+2018-09-03 13:10:01.155 INFO [pool-1-thread-1]io.lettuce.core.EpollProvider.info:101 -Starting without optional epoll library
+2018-09-03 13:10:01.160 INFO [pool-1-thread-1]io.lettuce.core.KqueueProvider.info:101 -Starting without optional kqueue library
+2018-09-03 13:10:04.094 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有38条淘宝订单需要更新
+2018-09-03 13:10:04.294 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A52D1C73D16E930D200CF00000->SEND_OK
+2018-09-03 13:10:04.402 INFO [pool-1-thread-1]o.s.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions:316 -Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2018-09-03 13:10:04.434 INFO [pool-1-thread-1]org.springframework.jdbc.support.SQLErrorCodesFactory.<init>:128 -SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2018-09-03 13:11:12.238 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 2768 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-09-03 13:11:12.241 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-09-03 13:11:12.353 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5f32c8d5: startup date [Mon Sep 03 13:11:12 CST 2018]; root of context hierarchy
+2018-09-03 13:11:14.030 INFO [restartedMain]o.s.d.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected:163 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-09-03 13:11:14.734 INFO [restartedMain]o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:328 -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$79a68f6d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-03 13:11:15.428 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-09-03 13:11:15.445 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-09-03 13:11:15.459 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-09-03 13:11:15.459 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-09-03 13:11:15.471 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Program Files\TortoiseSVN\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-09-03 13:11:15.634 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-09-03 13:11:15.635 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 3283 ms
+2018-09-03 13:11:15.857 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-09-03 13:11:15.859 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-09-03 13:11:15.864 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-03 13:11:15.864 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-03 13:11:15.865 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-03 13:11:15.865 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-03 13:11:15.865 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-09-03 13:11:16.973 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-09-03 13:11:17.536 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-09-03 13:11:18.717 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:11:19.070 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5f32c8d5: startup date [Mon Sep 03 13:11:12 CST 2018]; root of context hierarchy
+2018-09-03 13:11:19.180 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-03 13:11:19.182 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-03 13:11:19.217 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:11:19.218 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:11:19.239 INFO [restartedMain]o.s.w.s.m.m.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache:288 -Detected @ExceptionHandler methods in commonExceptionHandler
+2018-09-03 13:11:19.299 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-09-03 13:11:20.069 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-09-03 13:11:20.122 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-09-03 13:11:20.124 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-09-03 13:11:20.125 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-03 13:11:20.133 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-09-03 13:11:20.134 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-09-03 13:11:20.147 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-09-03 13:11:20.180 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-09-03 13:11:20.181 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-09-03 13:11:20.201 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-09-03 13:11:20.206 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 8.601 seconds (JVM running for 9.233)
+2018-09-03 13:12:00.025 INFO [pool-1-thread-1]com.yj.task.OrderRefreshTask.execute:60 -全部订单开始:2018-09-03 13:12:00
+2018-09-03 13:12:00.117 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:54 -开始抓取淘宝订单
+2018-09-03 13:12:00.729 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 16:51:01.0:淘宝订单
+2018-09-03 13:12:01.010 INFO [pool-1-thread-1]io.lettuce.core.EpollProvider.info:101 -Starting without optional epoll library
+2018-09-03 13:12:01.014 INFO [pool-1-thread-1]io.lettuce.core.KqueueProvider.info:101 -Starting without optional kqueue library
+2018-09-03 13:12:03.527 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有33条淘宝订单需要更新
+2018-09-03 13:12:03.866 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D21DFF20000->SEND_OK
+2018-09-03 13:12:03.996 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 17:11:01.0:淘宝订单
+2018-09-03 13:12:06.318 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有34条淘宝订单需要更新
+2018-09-03 13:12:06.335 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D21E9AF0001->SEND_OK
+2018-09-03 13:12:06.396 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 17:31:01.0:淘宝订单
+2018-09-03 13:12:06.571 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有38条淘宝订单需要更新
+2018-09-03 13:12:06.596 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D21EAAD0002->SEND_OK
+2018-09-03 13:12:06.650 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 17:51:01.0:淘宝订单
+2018-09-03 13:12:09.415 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有38条淘宝订单需要更新
+2018-09-03 13:12:09.434 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D21F5C80003->SEND_OK
+2018-09-03 13:12:09.486 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 18:11:01.0:淘宝订单
+2018-09-03 13:12:10.739 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有26条淘宝订单需要更新
+2018-09-03 13:12:10.756 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D21FAF40004->SEND_OK
+2018-09-03 13:12:10.791 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 18:31:01.0:淘宝订单
+2018-09-03 13:12:12.375 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有28条淘宝订单需要更新
+2018-09-03 13:12:12.392 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2201580005->SEND_OK
+2018-09-03 13:12:12.424 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 18:51:01.0:淘宝订单
+2018-09-03 13:12:13.836 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有20条淘宝订单需要更新
+2018-09-03 13:12:13.852 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22070D0006->SEND_OK
+2018-09-03 13:12:13.880 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 19:11:01.0:淘宝订单
+2018-09-03 13:12:14.515 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有15条淘宝订单需要更新
+2018-09-03 13:12:14.530 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2209B40007->SEND_OK
+2018-09-03 13:12:14.553 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 19:31:01.0:淘宝订单
+2018-09-03 13:12:15.137 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有23条淘宝订单需要更新
+2018-09-03 13:12:15.153 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D220C220008->SEND_OK
+2018-09-03 13:12:15.179 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 19:51:01.0:淘宝订单
+2018-09-03 13:12:16.883 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有37条淘宝订单需要更新
+2018-09-03 13:12:16.900 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2212F40009->SEND_OK
+2018-09-03 13:12:16.934 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 20:11:01.0:淘宝订单
+2018-09-03 13:12:18.807 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有47条淘宝订单需要更新
+2018-09-03 13:12:18.832 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D221A79000A->SEND_OK
+2018-09-03 13:12:18.866 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 20:31:01.0:淘宝订单
+2018-09-03 13:12:20.547 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有37条淘宝订单需要更新
+2018-09-03 13:12:20.572 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D222144000B->SEND_OK
+2018-09-03 13:12:20.606 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 20:51:01.0:淘宝订单
+2018-09-03 13:12:23.525 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有43条淘宝订单需要更新
+2018-09-03 13:12:23.542 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D222CE6000C->SEND_OK
+2018-09-03 13:12:23.573 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 21:11:01.0:淘宝订单
+2018-09-03 13:12:26.387 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有54条淘宝订单需要更新
+2018-09-03 13:12:26.407 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D223814000D->SEND_OK
+2018-09-03 13:12:26.449 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 21:31:01.0:淘宝订单
+2018-09-03 13:12:28.889 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有38条淘宝订单需要更新
+2018-09-03 13:12:28.905 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2241DA000E->SEND_OK
+2018-09-03 13:12:28.941 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 21:51:01.0:淘宝订单
+2018-09-03 13:12:30.626 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有37条淘宝订单需要更新
+2018-09-03 13:12:30.643 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2248A3000F->SEND_OK
+2018-09-03 13:12:30.671 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 22:11:01.0:淘宝订单
+2018-09-03 13:12:32.766 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有37条淘宝订单需要更新
+2018-09-03 13:12:32.784 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2250FF0010->SEND_OK
+2018-09-03 13:12:32.812 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 22:31:01.0:淘宝订单
+2018-09-03 13:12:35.263 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有59条淘宝订单需要更新
+2018-09-03 13:12:35.280 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D225AC00011->SEND_OK
+2018-09-03 13:12:35.333 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 22:51:01.0:淘宝订单
+2018-09-03 13:12:36.754 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有38条淘宝订单需要更新
+2018-09-03 13:12:36.772 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2260940012->SEND_OK
+2018-09-03 13:12:36.802 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 23:11:01.0:淘宝订单
+2018-09-03 13:12:38.015 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有24条淘宝订单需要更新
+2018-09-03 13:12:38.043 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2265800013->SEND_OK
+2018-09-03 13:12:38.066 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 23:31:01.0:淘宝订单
+2018-09-03 13:12:39.115 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有23条淘宝订单需要更新
+2018-09-03 13:12:39.131 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2269CC0014->SEND_OK
+2018-09-03 13:12:39.158 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 23:51:01.0:淘宝订单
+2018-09-03 13:12:40.097 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有100条淘宝订单需要更新
+2018-09-03 13:12:40.115 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D226DA30015->SEND_OK
+2018-09-03 13:12:40.174 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-01 23:51:01.0:淘宝订单
+2018-09-03 13:12:40.668 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有5条淘宝订单需要更新
+2018-09-03 13:12:40.711 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D226FDC0016->SEND_OK
+2018-09-03 13:12:40.729 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 00:11:01.0:淘宝订单
+2018-09-03 13:12:43.216 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有94条淘宝订单需要更新
+2018-09-03 13:12:43.233 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2279D10017->SEND_OK
+2018-09-03 13:12:43.290 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 00:31:01.0:淘宝订单
+2018-09-03 13:12:44.011 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有36条淘宝订单需要更新
+2018-09-03 13:12:44.027 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D227CEC0018->SEND_OK
+2018-09-03 13:12:44.063 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 00:51:01.0:淘宝订单
+2018-09-03 13:12:44.259 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有18条淘宝订单需要更新
+2018-09-03 13:12:44.315 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D227DE30019->SEND_OK
+2018-09-03 13:12:44.409 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 01:11:01.0:淘宝订单
+2018-09-03 13:12:44.629 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有5条淘宝订单需要更新
+2018-09-03 13:12:44.643 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D227F55001A->SEND_OK
+2018-09-03 13:12:44.660 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 01:31:01.0:淘宝订单
+2018-09-03 13:12:44.873 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有8条淘宝订单需要更新
+2018-09-03 13:12:44.890 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22804A001B->SEND_OK
+2018-09-03 13:12:44.910 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 01:51:01.0:淘宝订单
+2018-09-03 13:12:45.258 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有14条淘宝订单需要更新
+2018-09-03 13:12:45.273 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2281CA001C->SEND_OK
+2018-09-03 13:12:45.290 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 02:11:01.0:淘宝订单
+2018-09-03 13:12:45.521 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有6条淘宝订单需要更新
+2018-09-03 13:12:45.538 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2282D2001D->SEND_OK
+2018-09-03 13:12:45.560 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 02:31:01.0:淘宝订单
+2018-09-03 13:12:45.649 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有5条淘宝订单需要更新
+2018-09-03 13:12:45.665 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D228352001E->SEND_OK
+2018-09-03 13:12:45.682 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 02:51:01.0:淘宝订单
+2018-09-03 13:12:45.791 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有4条淘宝订单需要更新
+2018-09-03 13:12:45.808 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2283DF001F->SEND_OK
+2018-09-03 13:12:45.836 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 03:11:01.0:淘宝订单
+2018-09-03 13:12:46.043 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有5条淘宝订单需要更新
+2018-09-03 13:12:46.061 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2284DC0020->SEND_OK
+2018-09-03 13:12:46.081 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 03:31:01.0:淘宝订单
+2018-09-03 13:12:46.183 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:12:46.214 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2285690021->SEND_OK
+2018-09-03 13:12:46.248 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 03:51:01.0:淘宝订单
+2018-09-03 13:12:46.334 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:12:46.351 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2285FF0022->SEND_OK
+2018-09-03 13:12:46.372 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 04:11:01.0:淘宝订单
+2018-09-03 13:12:46.454 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:12:46.469 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2286770023->SEND_OK
+2018-09-03 13:12:46.489 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 04:31:01.0:淘宝订单
+2018-09-03 13:12:46.570 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:12:46.587 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2286EB0024->SEND_OK
+2018-09-03 13:12:46.604 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 04:51:01.0:淘宝订单
+2018-09-03 13:12:46.692 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:12:46.706 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2287650025->SEND_OK
+2018-09-03 13:12:46.727 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 05:11:01.0:淘宝订单
+2018-09-03 13:12:46.903 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有4条淘宝订单需要更新
+2018-09-03 13:12:46.918 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2288380026->SEND_OK
+2018-09-03 13:12:46.932 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 05:31:01.0:淘宝订单
+2018-09-03 13:12:47.435 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有5条淘宝订单需要更新
+2018-09-03 13:12:47.450 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D228A4B0027->SEND_OK
+2018-09-03 13:12:47.461 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 05:51:01.0:淘宝订单
+2018-09-03 13:12:47.558 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有6条淘宝订单需要更新
+2018-09-03 13:12:47.573 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D228AC60028->SEND_OK
+2018-09-03 13:12:47.585 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 06:11:01.0:淘宝订单
+2018-09-03 13:12:47.834 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有9条淘宝订单需要更新
+2018-09-03 13:12:47.851 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D228BDB0029->SEND_OK
+2018-09-03 13:12:47.862 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 06:31:01.0:淘宝订单
+2018-09-03 13:12:48.434 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有12条淘宝订单需要更新
+2018-09-03 13:12:48.452 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D228E32002A->SEND_OK
+2018-09-03 13:12:48.473 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 06:51:01.0:淘宝订单
+2018-09-03 13:12:49.058 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有20条淘宝订单需要更新
+2018-09-03 13:12:49.074 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2290A3002B->SEND_OK
+2018-09-03 13:12:49.088 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 07:11:01.0:淘宝订单
+2018-09-03 13:12:49.563 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有11条淘宝订单需要更新
+2018-09-03 13:12:49.578 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22929C002C->SEND_OK
+2018-09-03 13:12:49.590 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 07:31:01.0:淘宝订单
+2018-09-03 13:12:50.020 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有18条淘宝订单需要更新
+2018-09-03 13:12:50.036 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D229465002D->SEND_OK
+2018-09-03 13:12:50.052 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 07:51:01.0:淘宝订单
+2018-09-03 13:12:50.651 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有18条淘宝订单需要更新
+2018-09-03 13:12:50.668 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2296DC002E->SEND_OK
+2018-09-03 13:12:50.684 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 08:11:01.0:淘宝订单
+2018-09-03 13:12:50.997 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有17条淘宝订单需要更新
+2018-09-03 13:12:51.013 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D229835002F->SEND_OK
+2018-09-03 13:12:51.028 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 08:31:01.0:淘宝订单
+2018-09-03 13:12:51.914 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有14条淘宝订单需要更新
+2018-09-03 13:12:51.930 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D229BCB0030->SEND_OK
+2018-09-03 13:12:51.944 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 08:51:01.0:淘宝订单
+2018-09-03 13:12:53.743 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有13条淘宝订单需要更新
+2018-09-03 13:12:53.762 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22A2EF0031->SEND_OK
+2018-09-03 13:12:53.775 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 09:11:01.0:淘宝订单
+2018-09-03 13:12:55.474 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有42条淘宝订单需要更新
+2018-09-03 13:12:55.492 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22A9B30032->SEND_OK
+2018-09-03 13:12:55.510 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 09:31:01.0:淘宝订单
+2018-09-03 13:12:56.603 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有26条淘宝订单需要更新
+2018-09-03 13:12:56.622 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22AE1B0033->SEND_OK
+2018-09-03 13:12:56.637 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 09:51:01.0:淘宝订单
+2018-09-03 13:12:57.933 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有29条淘宝订单需要更新
+2018-09-03 13:12:57.949 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22B34E0034->SEND_OK
+2018-09-03 13:12:57.965 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 10:11:01.0:淘宝订单
+2018-09-03 13:12:58.879 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有39条淘宝订单需要更新
+2018-09-03 13:12:58.896 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22B7000035->SEND_OK
+2018-09-03 13:12:58.912 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 10:31:01.0:淘宝订单
+2018-09-03 13:13:01.436 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有36条淘宝订单需要更新
+2018-09-03 13:13:01.452 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22C0FD0036->SEND_OK
+2018-09-03 13:13:01.470 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 10:51:01.0:淘宝订单
+2018-09-03 13:13:04.074 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有39条淘宝订单需要更新
+2018-09-03 13:13:04.103 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22CB4B0037->SEND_OK
+2018-09-03 13:13:04.122 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 11:11:01.0:淘宝订单
+2018-09-03 13:13:04.994 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有35条淘宝订单需要更新
+2018-09-03 13:13:05.023 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22CEE20038->SEND_OK
+2018-09-03 13:13:05.044 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 11:31:01.0:淘宝订单
+2018-09-03 13:13:07.950 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有45条淘宝订单需要更新
+2018-09-03 13:13:07.966 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22DA6E0039->SEND_OK
+2018-09-03 13:13:07.994 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 11:51:01.0:淘宝订单
+2018-09-03 13:13:10.438 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有46条淘宝订单需要更新
+2018-09-03 13:13:10.454 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22E427003A->SEND_OK
+2018-09-03 13:13:10.474 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 12:11:01.0:淘宝订单
+2018-09-03 13:13:11.504 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有33条淘宝订单需要更新
+2018-09-03 13:13:11.522 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22E850003B->SEND_OK
+2018-09-03 13:13:11.553 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 12:31:01.0:淘宝订单
+2018-09-03 13:13:13.031 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有39条淘宝订单需要更新
+2018-09-03 13:13:13.047 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22EE47003C->SEND_OK
+2018-09-03 13:13:13.065 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 12:51:01.0:淘宝订单
+2018-09-03 13:13:15.286 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有47条淘宝订单需要更新
+2018-09-03 13:13:15.302 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22F717003D->SEND_OK
+2018-09-03 13:13:15.322 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 13:11:01.0:淘宝订单
+2018-09-03 13:13:16.257 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有26条淘宝订单需要更新
+2018-09-03 13:13:16.274 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22FAE2003E->SEND_OK
+2018-09-03 13:13:16.290 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 13:31:01.0:淘宝订单
+2018-09-03 13:13:17.404 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有33条淘宝订单需要更新
+2018-09-03 13:13:17.422 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D22FF5C003F->SEND_OK
+2018-09-03 13:13:17.440 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 13:51:01.0:淘宝订单
+2018-09-03 13:13:19.371 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有46条淘宝订单需要更新
+2018-09-03 13:13:19.389 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D23070C0040->SEND_OK
+2018-09-03 13:13:19.413 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 14:11:01.0:淘宝订单
+2018-09-03 13:13:23.576 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有59条淘宝订单需要更新
+2018-09-03 13:13:23.596 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2317790041->SEND_OK
+2018-09-03 13:13:23.618 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 14:31:01.0:淘宝订单
+2018-09-03 13:13:25.633 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有48条淘宝订单需要更新
+2018-09-03 13:13:25.650 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D231F820042->SEND_OK
+2018-09-03 13:13:25.671 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 14:51:01.0:淘宝订单
+2018-09-03 13:13:28.431 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有48条淘宝订单需要更新
+2018-09-03 13:13:28.449 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D232A700043->SEND_OK
+2018-09-03 13:13:28.468 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 15:11:01.0:淘宝订单
+2018-09-03 13:13:33.732 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有82条淘宝订单需要更新
+2018-09-03 13:13:33.750 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D233F260044->SEND_OK
+2018-09-03 13:13:33.781 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 15:31:01.0:淘宝订单
+2018-09-03 13:13:37.369 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有96条淘宝订单需要更新
+2018-09-03 13:13:37.387 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D234D5A0045->SEND_OK
+2018-09-03 13:13:37.420 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 15:51:01.0:淘宝订单
+2018-09-03 13:13:40.065 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有62条淘宝订单需要更新
+2018-09-03 13:13:40.085 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2357E20046->SEND_OK
+2018-09-03 13:13:40.108 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 16:11:01.0:淘宝订单
+2018-09-03 13:13:42.080 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有52条淘宝订单需要更新
+2018-09-03 13:13:42.098 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D235FC20047->SEND_OK
+2018-09-03 13:13:42.120 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 16:31:01.0:淘宝订单
+2018-09-03 13:13:43.802 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有51条淘宝订单需要更新
+2018-09-03 13:13:43.827 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D23667B0048->SEND_OK
+2018-09-03 13:13:43.850 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 16:51:01.0:淘宝订单
+2018-09-03 13:13:45.342 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有34条淘宝订单需要更新
+2018-09-03 13:13:45.367 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D236C7F0049->SEND_OK
+2018-09-03 13:13:45.383 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 17:11:01.0:淘宝订单
+2018-09-03 13:13:46.660 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有32条淘宝订单需要更新
+2018-09-03 13:13:46.677 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2371A5004A->SEND_OK
+2018-09-03 13:13:46.694 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 17:31:01.0:淘宝订单
+2018-09-03 13:13:48.056 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有35条淘宝订单需要更新
+2018-09-03 13:13:48.073 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D237718004B->SEND_OK
+2018-09-03 13:13:48.098 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 17:51:01.0:淘宝订单
+2018-09-03 13:13:49.605 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有27条淘宝订单需要更新
+2018-09-03 13:13:49.620 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D237D25004C->SEND_OK
+2018-09-03 13:13:49.638 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 18:11:01.0:淘宝订单
+2018-09-03 13:13:50.901 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有33条淘宝订单需要更新
+2018-09-03 13:13:50.918 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D238236004D->SEND_OK
+2018-09-03 13:13:50.934 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 18:31:01.0:淘宝订单
+2018-09-03 13:13:51.977 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有35条淘宝订单需要更新
+2018-09-03 13:13:52.002 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D23866A004E->SEND_OK
+2018-09-03 13:13:52.022 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 18:51:01.0:淘宝订单
+2018-09-03 13:13:53.248 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有29条淘宝订单需要更新
+2018-09-03 13:13:53.270 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D238B61004F->SEND_OK
+2018-09-03 13:13:53.285 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 19:11:01.0:淘宝订单
+2018-09-03 13:13:54.240 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有35条淘宝订单需要更新
+2018-09-03 13:13:54.257 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D238F410050->SEND_OK
+2018-09-03 13:13:54.275 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 19:31:01.0:淘宝订单
+2018-09-03 13:13:55.958 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有42条淘宝订单需要更新
+2018-09-03 13:13:55.975 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2395F70051->SEND_OK
+2018-09-03 13:13:55.994 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 19:51:01.0:淘宝订单
+2018-09-03 13:13:56.899 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有31条淘宝订单需要更新
+2018-09-03 13:13:56.915 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D2399A40052->SEND_OK
+2018-09-03 13:13:56.932 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 20:11:01.0:淘宝订单
+2018-09-03 13:13:59.310 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有41条淘宝订单需要更新
+2018-09-03 13:13:59.333 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D23A30E0053->SEND_OK
+2018-09-03 13:13:59.352 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 20:31:01.0:淘宝订单
+2018-09-03 13:14:01.027 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有32条淘宝订单需要更新
+2018-09-03 13:14:01.052 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A50AD073D16E930D23A9C40054->SEND_OK
+2018-09-03 13:14:01.071 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 20:51:01.0:淘宝订单
+2018-09-03 13:49:39.559 INFO [restartedMain]com.yj.StartUpApplication.logStarting:50 -Starting StartUpApplication on PC-20180809XXFB with PID 6640 (started by Administrator in C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder)
+2018-09-03 13:49:39.562 INFO [restartedMain]com.yj.StartUpApplication.logStartupProfileInfo:659 -No active profile set, falling back to default profiles: default
+2018-09-03 13:49:39.685 INFO [restartedMain]o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext.prepareRefresh:590 -Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5f32c8d5: startup date [Mon Sep 03 13:49:39 CST 2018]; root of context hierarchy
+2018-09-03 13:49:41.474 INFO [restartedMain]o.s.d.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected:163 -Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-09-03 13:49:42.140 INFO [restartedMain]o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker.postProcessAfterInitialization:328 -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e40867df] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-09-03 13:49:42.788 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.initialize:91 -Tomcat initialized with port(s): 8088 (http)
+2018-09-03 13:49:42.804 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Initializing ProtocolHandler ["http-nio-8088"]
+2018-09-03 13:49:42.818 INFO [restartedMain]org.apache.catalina.core.StandardService.log:180 -Starting service [Tomcat]
+2018-09-03 13:49:42.818 INFO [restartedMain]org.apache.catalina.core.StandardEngine.log:180 -Starting Servlet Engine: Apache Tomcat/8.5.29
+2018-09-03 13:49:42.829 INFO [localhost-startStop-1]org.apache.catalina.core.AprLifecycleListener.log:180 -The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\Administrator\AppData\Local\MyEclipse 2017 CI\binary\com.sun.java.jdk8.win32.x86_64_1.8.0.v112\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\maven\apache-maven-3.5.4\bin;C:\Program Files\TortoiseSVN\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;;D:\软件;.]
+2018-09-03 13:49:42.979 INFO [localhost-startStop-1]o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/].log:180 -Initializing Spring embedded WebApplicationContext
+2018-09-03 13:49:42.980 INFO [localhost-startStop-1]org.springframework.web.context.ContextLoader.prepareWebApplicationContext:285 -Root WebApplicationContext: initialization completed in 3295 ms
+2018-09-03 13:49:43.203 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet dispatcherServlet mapped to [/]
+2018-09-03 13:49:43.206 INFO [localhost-startStop-1]o.s.boot.web.servlet.ServletRegistrationBean.addRegistration:185 -Servlet statViewServlet mapped to [/druid/*]
+2018-09-03 13:49:43.212 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-09-03 13:49:43.212 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-09-03 13:49:43.212 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-09-03 13:49:43.213 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:244 -Mapping filter: 'requestContextFilter' to: [/*]
+2018-09-03 13:49:43.213 INFO [localhost-startStop-1]o.s.boot.web.servlet.FilterRegistrationBean.configure:257 -Mapping filter: 'webStatFilter' to urls: [/*]
+2018-09-03 13:49:44.097 INFO [restartedMain]c.a.d.s.boot.autoconfigure.DruidDataSourceAutoConfigure.dataSource:56 -Init DruidDataSource
+2018-09-03 13:49:44.636 INFO [restartedMain]com.alibaba.druid.pool.DruidDataSource.init:928 -{dataSource-1} inited
+2018-09-03 13:49:45.760 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:49:46.207 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache:574 -Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5f32c8d5: startup date [Mon Sep 03 13:49:39 CST 2018]; root of context hierarchy
+2018-09-03 13:49:46.333 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-09-03 13:49:46.336 INFO [restartedMain]o.s.w.s.m.method.annotation.RequestMappingHandlerMapping.register:547 -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-09-03 13:49:46.393 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:49:46.394 INFO [restartedMain]o.s.web.servlet.handler.SimpleUrlHandlerMapping.registerHandler:373 -Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-09-03 13:49:46.422 INFO [restartedMain]o.s.w.s.m.m.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache:288 -Detected @ExceptionHandler methods in commonExceptionHandler
+2018-09-03 13:49:46.513 WARN [restartedMain]o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:104 -Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2018-09-03 13:49:47.365 INFO [restartedMain]o.s.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:57 -LiveReload server is running on port 35729
+2018-09-03 13:49:47.412 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.afterSingletonsInstantiated:433 -Registering beans for JMX exposure on startup
+2018-09-03 13:49:47.413 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'statFilter' has been autodetected for JMX exposure
+2018-09-03 13:49:47.414 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.autodetect:895 -Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-09-03 13:49:47.421 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.spring.boot.autoconfigure:name=dataSource,type=DruidDataSourceWrapper]
+2018-09-03 13:49:47.422 INFO [restartedMain]o.s.jmx.export.annotation.AnnotationMBeanExporter.registerBeanInstance:668 -Located MBean 'statFilter': registering with JMX server as MBean [com.alibaba.druid.filter.stat:name=statFilter,type=StatFilter]
+2018-09-03 13:49:47.433 INFO [restartedMain]o.s.s.annotation.ScheduledAnnotationBeanPostProcessor.finishRegistration:275 -No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2018-09-03 13:49:47.444 INFO [restartedMain]org.apache.coyote.http11.Http11NioProtocol.log:180 -Starting ProtocolHandler ["http-nio-8088"]
+2018-09-03 13:49:47.445 INFO [restartedMain]org.apache.tomcat.util.net.NioSelectorPool.log:180 -Using a shared selector for servlet write/read
+2018-09-03 13:49:47.467 INFO [restartedMain]o.s.boot.web.embedded.tomcat.TomcatWebServer.start:206 -Tomcat started on port(s): 8088 (http) with context path ''
+2018-09-03 13:49:47.472 INFO [restartedMain]com.yj.StartUpApplication.logStarted:59 -Started StartUpApplication in 8.485 seconds (JVM running for 9.124)
+2018-09-03 13:50:00.006 INFO [pool-1-thread-1]com.yj.task.OrderRefreshTask.execute:60 -全部订单开始:2018-09-03 13:50:00
+2018-09-03 13:50:00.091 INFO [pool-1-thread-1]com.yj.task.OrderRefreshTask.execute:62 -订单抓取已在服务器执行
+2018-09-03 13:51:00.001 INFO [pool-1-thread-1]com.yj.task.OrderRefreshTask.execute:60 -全部订单开始:2018-09-03 13:51:00
+2018-09-03 13:51:00.022 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:54 -开始抓取淘宝订单
+2018-09-03 13:51:00.697 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 20:11:01.0:淘宝订单
+2018-09-03 13:51:01.029 INFO [pool-1-thread-1]io.lettuce.core.EpollProvider.info:101 -Starting without optional epoll library
+2018-09-03 13:51:01.035 INFO [pool-1-thread-1]io.lettuce.core.KqueueProvider.info:101 -Starting without optional kqueue library
+2018-09-03 13:51:04.371 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有41条淘宝订单需要更新
+2018-09-03 13:51:04.661 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4597BA0000->SEND_OK
+2018-09-03 13:51:04.800 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 20:31:01.0:淘宝订单
+2018-09-03 13:51:06.529 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有32条淘宝订单需要更新
+2018-09-03 13:51:06.549 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D459F230001->SEND_OK
+2018-09-03 13:51:06.586 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 20:51:01.0:淘宝订单
+2018-09-03 13:51:08.576 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有45条淘宝订单需要更新
+2018-09-03 13:51:08.597 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45A7220002->SEND_OK
+2018-09-03 13:51:08.640 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 21:11:01.0:淘宝订单
+2018-09-03 13:51:11.912 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有57条淘宝订单需要更新
+2018-09-03 13:51:11.933 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45B42A0003->SEND_OK
+2018-09-03 13:51:11.974 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 21:31:01.0:淘宝订单
+2018-09-03 13:51:13.961 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有41条淘宝订单需要更新
+2018-09-03 13:51:13.979 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45BC2A0004->SEND_OK
+2018-09-03 13:51:14.011 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 21:51:01.0:淘宝订单
+2018-09-03 13:51:16.239 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有50条淘宝订单需要更新
+2018-09-03 13:51:16.259 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45C5100005->SEND_OK
+2018-09-03 13:51:16.314 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 22:11:01.0:淘宝订单
+2018-09-03 13:51:19.317 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有66条淘宝订单需要更新
+2018-09-03 13:51:19.337 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45D1170006->SEND_OK
+2018-09-03 13:51:19.371 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 22:31:01.0:淘宝订单
+2018-09-03 13:51:21.253 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有38条淘宝订单需要更新
+2018-09-03 13:51:21.272 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45D8A60007->SEND_OK
+2018-09-03 13:51:21.296 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 22:51:01.0:淘宝订单
+2018-09-03 13:51:23.808 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有36条淘宝订单需要更新
+2018-09-03 13:51:23.827 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45E2A20008->SEND_OK
+2018-09-03 13:51:23.848 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 23:11:01.0:淘宝订单
+2018-09-03 13:51:25.759 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有30条淘宝订单需要更新
+2018-09-03 13:51:25.776 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45EA400009->SEND_OK
+2018-09-03 13:51:25.801 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 23:31:01.0:淘宝订单
+2018-09-03 13:51:27.190 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有17条淘宝订单需要更新
+2018-09-03 13:51:27.210 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45EFD7000A->SEND_OK
+2018-09-03 13:51:27.228 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-02 23:51:01.0:淘宝订单
+2018-09-03 13:51:29.044 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有28条淘宝订单需要更新
+2018-09-03 13:51:29.061 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45F715000B->SEND_OK
+2018-09-03 13:51:29.080 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 00:11:01.0:淘宝订单
+2018-09-03 13:51:29.858 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有14条淘宝订单需要更新
+2018-09-03 13:51:29.876 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45FA43000C->SEND_OK
+2018-09-03 13:51:29.890 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 00:31:01.0:淘宝订单
+2018-09-03 13:51:30.185 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有6条淘宝订单需要更新
+2018-09-03 13:51:30.201 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45FB89000D->SEND_OK
+2018-09-03 13:51:30.214 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 00:51:01.0:淘宝订单
+2018-09-03 13:51:31.117 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有15条淘宝订单需要更新
+2018-09-03 13:51:31.136 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D45FF2E000E->SEND_OK
+2018-09-03 13:51:31.149 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 01:11:01.0:淘宝订单
+2018-09-03 13:51:31.519 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有6条淘宝订单需要更新
+2018-09-03 13:51:31.537 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4600BF000F->SEND_OK
+2018-09-03 13:51:31.551 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 01:31:01.0:淘宝订单
+2018-09-03 13:51:31.731 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:51:31.750 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4601930010->SEND_OK
+2018-09-03 13:51:31.762 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 01:51:01.0:淘宝订单
+2018-09-03 13:51:31.841 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:51:31.857 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4602010011->SEND_OK
+2018-09-03 13:51:31.867 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 02:11:01.0:淘宝订单
+2018-09-03 13:51:32.064 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:51:32.080 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4602E10012->SEND_OK
+2018-09-03 13:51:32.093 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 02:31:01.0:淘宝订单
+2018-09-03 13:51:32.358 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有5条淘宝订单需要更新
+2018-09-03 13:51:32.377 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4604070013->SEND_OK
+2018-09-03 13:51:32.392 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 02:51:01.0:淘宝订单
+2018-09-03 13:51:32.490 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 03:11:01.0:淘宝订单
+2018-09-03 13:51:32.579 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 03:31:01.0:淘宝订单
+2018-09-03 13:51:32.658 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:51:32.677 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4605320014->SEND_OK
+2018-09-03 13:51:32.687 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 03:51:01.0:淘宝订单
+2018-09-03 13:51:32.760 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:51:32.777 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4605980015->SEND_OK
+2018-09-03 13:51:32.786 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 04:11:01.0:淘宝订单
+2018-09-03 13:51:32.871 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 04:31:01.0:淘宝订单
+2018-09-03 13:51:32.957 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 04:51:01.0:淘宝订单
+2018-09-03 13:51:33.129 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:51:33.146 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46070A0016->SEND_OK
+2018-09-03 13:51:33.155 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 05:11:01.0:淘宝订单
+2018-09-03 13:51:33.236 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:51:33.254 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4607740017->SEND_OK
+2018-09-03 13:51:33.264 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 05:31:01.0:淘宝订单
+2018-09-03 13:51:33.340 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 05:51:01.0:淘宝订单
+2018-09-03 13:51:33.453 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:51:33.471 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46084D0018->SEND_OK
+2018-09-03 13:51:33.484 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 06:11:01.0:淘宝订单
+2018-09-03 13:51:33.710 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有6条淘宝订单需要更新
+2018-09-03 13:51:33.728 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46094F0019->SEND_OK
+2018-09-03 13:51:33.741 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 06:31:01.0:淘宝订单
+2018-09-03 13:51:34.007 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有10条淘宝订单需要更新
+2018-09-03 13:51:34.025 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D460A77001A->SEND_OK
+2018-09-03 13:51:34.037 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 06:51:01.0:淘宝订单
+2018-09-03 13:51:34.500 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有7条淘宝订单需要更新
+2018-09-03 13:51:34.519 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D460C65001B->SEND_OK
+2018-09-03 13:51:34.531 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 07:11:01.0:淘宝订单
+2018-09-03 13:51:34.754 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有11条淘宝订单需要更新
+2018-09-03 13:51:34.774 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D460D63001C->SEND_OK
+2018-09-03 13:51:34.788 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 07:31:01.0:淘宝订单
+2018-09-03 13:51:35.047 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有4条淘宝订单需要更新
+2018-09-03 13:51:35.063 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D460E87001D->SEND_OK
+2018-09-03 13:51:35.076 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 07:51:01.0:淘宝订单
+2018-09-03 13:51:35.834 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有11条淘宝订单需要更新
+2018-09-03 13:51:35.853 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46119B001E->SEND_OK
+2018-09-03 13:51:35.865 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 08:11:01.0:淘宝订单
+2018-09-03 13:51:36.271 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有8条淘宝订单需要更新
+2018-09-03 13:51:36.288 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46134F001F->SEND_OK
+2018-09-03 13:51:36.301 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 08:31:01.0:淘宝订单
+2018-09-03 13:51:38.159 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有15条淘宝订单需要更新
+2018-09-03 13:51:38.175 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D461AAF0020->SEND_OK
+2018-09-03 13:51:38.188 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 08:51:01.0:淘宝订单
+2018-09-03 13:51:39.030 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有16条淘宝订单需要更新
+2018-09-03 13:51:39.052 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D461E170021->SEND_OK
+2018-09-03 13:51:39.067 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 09:11:01.0:淘宝订单
+2018-09-03 13:51:40.729 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有18条淘宝订单需要更新
+2018-09-03 13:51:40.748 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4624B90022->SEND_OK
+2018-09-03 13:51:40.763 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 09:31:01.0:淘宝订单
+2018-09-03 13:51:42.690 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有23条淘宝订单需要更新
+2018-09-03 13:51:42.707 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D462C630023->SEND_OK
+2018-09-03 13:51:42.723 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 09:51:01.0:淘宝订单
+2018-09-03 13:51:44.424 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有28条淘宝订单需要更新
+2018-09-03 13:51:44.444 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4633280024->SEND_OK
+2018-09-03 13:51:44.462 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 10:11:01.0:淘宝订单
+2018-09-03 13:51:46.390 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有51条淘宝订单需要更新
+2018-09-03 13:51:46.408 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D463AD70025->SEND_OK
+2018-09-03 13:51:46.431 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 10:31:01.0:淘宝订单
+2018-09-03 13:51:48.129 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有48条淘宝订单需要更新
+2018-09-03 13:51:48.146 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4641A20026->SEND_OK
+2018-09-03 13:51:48.166 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 10:51:01.0:淘宝订单
+2018-09-03 13:51:49.959 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有52条淘宝订单需要更新
+2018-09-03 13:51:49.977 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4648C80027->SEND_OK
+2018-09-03 13:51:50.019 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 11:11:01.0:淘宝订单
+2018-09-03 13:51:51.794 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有44条淘宝订单需要更新
+2018-09-03 13:51:51.812 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D464FF20028->SEND_OK
+2018-09-03 13:51:51.831 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 11:31:01.0:淘宝订单
+2018-09-03 13:51:52.762 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有42条淘宝订单需要更新
+2018-09-03 13:51:52.780 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4653BB0029->SEND_OK
+2018-09-03 13:51:52.799 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 11:51:01.0:淘宝订单
+2018-09-03 13:51:54.586 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有43条淘宝订单需要更新
+2018-09-03 13:51:54.607 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D465ADB002A->SEND_OK
+2018-09-03 13:51:54.627 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 12:11:01.0:淘宝订单
+2018-09-03 13:51:55.420 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有37条淘宝订单需要更新
+2018-09-03 13:51:55.439 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D465E1D002B->SEND_OK
+2018-09-03 13:51:55.466 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 12:31:01.0:淘宝订单
+2018-09-03 13:51:56.774 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有53条淘宝订单需要更新
+2018-09-03 13:51:56.793 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D466367002C->SEND_OK
+2018-09-03 13:51:56.814 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 12:51:01.0:淘宝订单
+2018-09-03 13:51:57.908 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有30条淘宝订单需要更新
+2018-09-03 13:51:57.926 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4667D4002D->SEND_OK
+2018-09-03 13:51:57.941 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 13:11:01.0:淘宝订单
+2018-09-03 13:52:00.136 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有39条淘宝订单需要更新
+2018-09-03 13:52:00.154 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D467088002E->SEND_OK
+2018-09-03 13:52:00.177 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 13:31:01.0:淘宝订单
+2018-09-03 13:52:01.982 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有44条淘宝订单需要更新
+2018-09-03 13:52:02.001 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4677BF002F->SEND_OK
+2018-09-03 13:52:02.026 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:小捷_stand:2018-09-03 13:51:01.0:淘宝订单
+2018-09-03 13:52:02.099 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:52:02.117 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4678330030->SEND_OK
+2018-09-03 13:52:02.213 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 17:25:01.0:淘宝订单
+2018-09-03 13:52:02.674 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有4条淘宝订单需要更新
+2018-09-03 13:52:02.691 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D467A720031->SEND_OK
+2018-09-03 13:52:02.704 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 17:45:01.0:淘宝订单
+2018-09-03 13:52:03.326 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有7条淘宝订单需要更新
+2018-09-03 13:52:03.342 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D467CFE0032->SEND_OK
+2018-09-03 13:52:03.358 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 18:05:01.0:淘宝订单
+2018-09-03 13:52:03.714 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:52:03.731 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D467E820033->SEND_OK
+2018-09-03 13:52:03.743 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 18:25:01.0:淘宝订单
+2018-09-03 13:52:03.994 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:04.009 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D467F9B0034->SEND_OK
+2018-09-03 13:52:04.019 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 18:45:01.0:淘宝订单
+2018-09-03 13:52:04.503 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:52:04.520 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4681970035->SEND_OK
+2018-09-03 13:52:04.533 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 19:05:01.0:淘宝订单
+2018-09-03 13:52:04.831 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:52:04.848 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4682DF0036->SEND_OK
+2018-09-03 13:52:04.858 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 19:25:01.0:淘宝订单
+2018-09-03 13:52:05.169 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:52:05.188 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4684310037->SEND_OK
+2018-09-03 13:52:05.196 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 19:45:01.0:淘宝订单
+2018-09-03 13:52:05.638 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有4条淘宝订单需要更新
+2018-09-03 13:52:05.655 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4686070038->SEND_OK
+2018-09-03 13:52:05.667 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 20:05:01.0:淘宝订单
+2018-09-03 13:52:05.898 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:05.914 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46870A0039->SEND_OK
+2018-09-03 13:52:05.925 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 20:25:01.0:淘宝订单
+2018-09-03 13:52:06.273 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:06.290 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D468881003A->SEND_OK
+2018-09-03 13:52:06.301 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 20:45:01.0:淘宝订单
+2018-09-03 13:52:06.467 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:52:06.484 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D468944003B->SEND_OK
+2018-09-03 13:52:06.496 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 21:05:01.0:淘宝订单
+2018-09-03 13:52:06.998 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有4条淘宝订单需要更新
+2018-09-03 13:52:07.015 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D468B56003C->SEND_OK
+2018-09-03 13:52:07.026 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 21:25:01.0:淘宝订单
+2018-09-03 13:52:07.490 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有4条淘宝订单需要更新
+2018-09-03 13:52:07.507 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D468D43003D->SEND_OK
+2018-09-03 13:52:07.518 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 21:45:01.0:淘宝订单
+2018-09-03 13:52:07.814 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:07.830 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D468E87003E->SEND_OK
+2018-09-03 13:52:07.839 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 22:05:01.0:淘宝订单
+2018-09-03 13:52:08.187 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:52:08.204 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D468FFC003F->SEND_OK
+2018-09-03 13:52:08.212 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 22:25:01.0:淘宝订单
+2018-09-03 13:52:08.387 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:52:08.404 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4690C30040->SEND_OK
+2018-09-03 13:52:08.415 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 22:45:01.0:淘宝订单
+2018-09-03 13:52:08.845 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:52:08.866 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46928E0041->SEND_OK
+2018-09-03 13:52:08.877 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 23:05:01.0:淘宝订单
+2018-09-03 13:52:09.082 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:52:09.098 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46937A0042->SEND_OK
+2018-09-03 13:52:09.108 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 23:25:01.0:淘宝订单
+2018-09-03 13:52:09.906 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有7条淘宝订单需要更新
+2018-09-03 13:52:09.922 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4696B20043->SEND_OK
+2018-09-03 13:52:09.933 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-01 23:45:01.0:淘宝订单
+2018-09-03 13:52:10.213 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:10.229 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D4697E60044->SEND_OK
+2018-09-03 13:52:10.237 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 00:05:01.0:淘宝订单
+2018-09-03 13:52:10.397 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:10.415 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46989D0045->SEND_OK
+2018-09-03 13:52:10.426 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 00:25:01.0:淘宝订单
+2018-09-03 13:52:10.506 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 00:45:01.0:淘宝订单
+2018-09-03 13:52:10.581 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 01:05:01.0:淘宝订单
+2018-09-03 13:52:10.663 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 01:25:01.0:淘宝订单
+2018-09-03 13:52:10.765 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:52:10.781 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D469A0E0046->SEND_OK
+2018-09-03 13:52:10.790 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 01:45:01.0:淘宝订单
+2018-09-03 13:52:11.048 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:11.065 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D469B280047->SEND_OK
+2018-09-03 13:52:11.076 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 02:05:01.0:淘宝订单
+2018-09-03 13:52:11.158 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 02:25:01.0:淘宝订单
+2018-09-03 13:52:11.240 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 02:45:01.0:淘宝订单
+2018-09-03 13:52:11.329 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 03:05:01.0:淘宝订单
+2018-09-03 13:52:11.420 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 03:25:01.0:淘宝订单
+2018-09-03 13:52:11.500 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 03:45:01.0:淘宝订单
+2018-09-03 13:52:11.579 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 04:05:01.0:淘宝订单
+2018-09-03 13:52:11.661 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 04:25:01.0:淘宝订单
+2018-09-03 13:52:11.819 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 04:45:01.0:淘宝订单
+2018-09-03 13:52:11.896 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 05:05:01.0:淘宝订单
+2018-09-03 13:52:11.981 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 05:25:01.0:淘宝订单
+2018-09-03 13:52:12.072 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 05:45:01.0:淘宝订单
+2018-09-03 13:52:12.177 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 06:05:01.0:淘宝订单
+2018-09-03 13:52:12.267 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 06:25:01.0:淘宝订单
+2018-09-03 13:52:12.453 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:12.471 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46A0A60048->SEND_OK
+2018-09-03 13:52:12.486 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 06:45:01.0:淘宝订单
+2018-09-03 13:52:12.575 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 07:05:01.0:淘宝订单
+2018-09-03 13:52:12.666 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 07:25:01.0:淘宝订单
+2018-09-03 13:52:12.863 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有1条淘宝订单需要更新
+2018-09-03 13:52:12.882 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46A23F0049->SEND_OK
+2018-09-03 13:52:12.894 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 07:45:01.0:淘宝订单
+2018-09-03 13:52:13.058 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有2条淘宝订单需要更新
+2018-09-03 13:52:13.075 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46A303004A->SEND_OK
+2018-09-03 13:52:13.089 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 08:05:01.0:淘宝订单
+2018-09-03 13:52:13.172 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 08:25:01.0:淘宝订单
+2018-09-03 13:52:13.532 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有3条淘宝订单需要更新
+2018-09-03 13:52:13.547 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46A4DC004B->SEND_OK
+2018-09-03 13:52:13.557 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 08:45:01.0:淘宝订单
+2018-09-03 13:52:13.862 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有25条淘宝订单需要更新
+2018-09-03 13:52:13.879 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46A626004C->SEND_OK
+2018-09-03 13:52:13.899 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 09:05:01.0:淘宝订单
+2018-09-03 13:52:14.317 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有90条淘宝订单需要更新
+2018-09-03 13:52:14.334 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46A7EE004D->SEND_OK
+2018-09-03 13:52:14.371 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 09:25:01.0:淘宝订单
+2018-09-03 13:52:14.712 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:119 -共有100条淘宝订单需要更新
+2018-09-03 13:52:14.729 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.sendMessage:55 -C0A801A519F073D16E930D46A979004E->SEND_OK
+2018-09-03 13:52:14.773 INFO [pool-1-thread-1]com.yj.service.impl.TbOrderGrapServiceImpl.grap:98 -开始同步:仅有的依赖884:2018-09-02 09:25:01.0:淘宝订单

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.JDFreeOrderDetailsTemporaryDao">
+	<resultMap type="JDFreeOrderDetailsTemporary" id="JDFreeOrderDetailsTemporaryMap">
+		<result property="databaseID" column="database_id" />
+		<result property="itemId" column="item_id" />
+		<result property="commision" column="commision" />
+		<result property="orderfrom" column="orderfrom" />
+		<result property="orderid" column="orderid" />
+		<result property="ordertime" column="ordertime" />
+		<result property="status" column="status" />
+		<result property="subunionid" column="subunionid" />
+		<result property="username" column="username" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="amount" column="amount" />
+		<result property="price" column="price" />
+		<result property="prodpic" column="prodpic" />
+		<result property="productname" column="productname" />
+		<result property="produrl" column="produrl" />
+		<result property="costs" column="costs" />
+		<result property="money" column="money" />
+		<result property="returnamount" column="returnamount" />
+		<result property="subsidyRate" column="subsidyRate" />
+		<result property="plus" column="plus" />
+		<result property="commissionRate" column="commissionRate" />
+	</resultMap>
+
+	<!-- 清空表 -->
+	<delete id="deleteTemporaryJDOrderDetails">
+		delete from jd_free_order_details_temporary
+	</delete>
+
+	<!-- 新增 -->
+	<insert id="addJDFreeOrderDetailsTemporary" parameterType="java.util.List">
+		insert into jd_free_order_details_temporary
+		(item_id,commision,orderfrom,orderid,ordertime,status,subunionid,username,create_time,update_time,amount,price,prodpic,productname,produrl,returnamount,money,costs,subsidyRate,plus,commissionRate)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+           <![CDATA[ 
+           (#{item.itemId},#{item.commision},#{item.orderfrom},#{item.orderid},#{item.ordertime},#{item.status},#{item.subunionid},#{item.username},
+           #{item.createTime},#{item.updateTime},#{item.amount},#{item.price},#{item.prodpic},#{item.productname},#{item.produrl},#{item.returnamount},#{item.money},#{item.costs},#{item.subsidyRate},#{item.plus},#{item.commissionRate})
+             ]]>
+		</foreach>
+	</insert>
+
+	<select id="searchJDFreeOrderDetailsInConditions" parameterType="JDFreeOrderDetailsTemporary"
+		resultMap="JDFreeOrderDetailsTemporaryMap">
+		select * from jd_free_order_details_temporary where <![CDATA[ ordertime >= #{createTime1}]]> <![CDATA[and ordertime < #{createTime2}]]>
+		and<![CDATA[ price <= #{price}]]>
+		and <![CDATA[ price >0]]>
+	</select>
+
+	<select id="searchJDFreeOrderDetailsStatusY" parameterType="JDFreeOrderDetailsTemporary"
+		resultMap="JDFreeOrderDetailsTemporaryMap">
+		select * from jd_free_order_details_temporary where <![CDATA[ ordertime >= #{createTime1}]]> <![CDATA[and ordertime < #{createTime2}]]>
+		and<![CDATA[ price <= #{price}]]>
+		and <![CDATA[ price >0]]>
+		and status = 'Y'
+	</select>
+
+	<update id="updateJDFreeReturnIntegralOutOfLine" parameterType="JDFreeOrderDetailsTemporary">
+		update jd_free_return_integral set
+		integral_status = '订单有效',
+		integral_note = '违规订单算有效',
+		integral = #{costs},real_integral = #{costs}
+		where order_number = #{orderid}
+	</update>
+
+
+</mapper>

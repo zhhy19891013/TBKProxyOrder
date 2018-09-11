@@ -1,0 +1,192 @@
+2018-08-29 14:07:00.690 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:07:00.688^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^165^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&sign=0D05DA6274FBA282E8BBFA7583186BD6&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A07%3A00^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"4q4oj8gknr7h"}}
+2018-08-29 14:07:42.547 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:07:42.546^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^108^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010021674d0149fba481e402154cde3c8bfc2c5a4a7d9e9200522df0ade18aba48c1964612622&sign=05814A5070CB0BC7CD6E8D6858F7D6E7&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A07%3A42^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"10en4ea2kudra"}}
+2018-08-29 14:08:21.075 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:08:21.075^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^97^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010093578546ca9c539c5bd80b1c2a0c39e70152a4f1f6c7bdfd1665ea186384ba627236983&sign=265313182CD2B2CBC0FE95921C32CDE5&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A08%3A20^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"10c29y65ak1r6"}}
+2018-08-29 14:12:00.718 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:12:00.718^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^82^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&sign=FE35860F3AC9CF074DED761547DA864F&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A12%3A00^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"107act4lak657"}}
+2018-08-29 14:19:00.795 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:19:00.794^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^200^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&sign=0DEF0A3DEF6A832107E9D38FFC3DB864&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A19%3A00^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"zikyj5fsoar9"}}
+2018-08-29 14:20:57.678 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:20:57.678^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^99^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010021674d0149fba481e402154cde3c8bfc2c5a4a7d9e9200522df0ade18aba48c1964612622&sign=59B272F8018E7900E03F2873C246CA19&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A20%3A57^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"10st2wx6cfvbi"}}
+2018-08-29 14:22:30.083 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:22:30.083^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^80^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010093578546ca9c539c5bd80b1c2a0c39e70152a4f1f6c7bdfd1665ea186384ba627236983&sign=2D75B25F8232A55D406D8DE560188128&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A22%3A30^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"143ec9a2fnupp"}}
+2018-08-29 14:31:00.773 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:31:00.772^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^184^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&sign=C064A1F23050DC671E7379BC195C9375&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A31%3A00^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"bs3ayejp619e"}}
+2018-08-29 14:32:23.762 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:32:23.762^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15002^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&tk_status=1&sign=4DE02DD2C93ED434E14FA78A9A843293&format=json&page_no=1&start_time=2018-07-30+09%3A11%3A00&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+14%3A32%3A08&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 14:33:02.939 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:33:02.939^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15001^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&tk_status=1&sign=3E28573737349DCAB9EA9C820B87F723&format=json&page_no=1&start_time=2018-07-31+00%3A31%3A00&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+14%3A32%3A47&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 14:34:35.137 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:34:35.137^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15002^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&tk_status=1&sign=754C77D7F7BEFBB60EE3435FEBD0689C&format=json&page_no=1&start_time=2018-08-02+00%3A11%3A00&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+14%3A34%3A20&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 14:34:54.624 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:34:54.624^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15002^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&tk_status=1&sign=1633E0A69634EBB0B4D9798D56AEE164&format=json&page_no=1&start_time=2018-08-02+04%3A51%3A00&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+14%3A34%3A39&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 14:35:53.271 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:35:53.271^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15001^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&tk_status=1&sign=829CB565241ADA1F12219FD8DB4BFEDD&format=json&page_no=1&start_time=2018-08-03+10%3A51%3A00&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+14%3A35%3A38&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 14:38:19.265 ERROR[pool-1-thread-1]com.alibaba.druid.pool.DruidPooledStatement.errorCheck:296 -CommunicationsException, druid version 1.1.9, jdbcUrl : jdbc:mysql://139.199.123.237:3306/mytbkproxy?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true, testWhileIdle true, idle millis 56915, minIdle 10, poolingCount 0, timeBetweenEvictionRunsMillis 60000, lastValidIdleMillis 56915, driver com.mysql.jdbc.Driver, exceptionSorter com.alibaba.druid.pool.vendor.MySqlExceptionSorter
+2018-08-29 14:38:19.268 ERROR[pool-1-thread-1]com.alibaba.druid.pool.DruidDataSource.handleFatalError:1600 -discard connection
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 56,835 milliseconds ago.  The last packet sent successfully to the server was 19,170 milliseconds ago.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3562)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3462)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3903)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2486)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1197)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3051)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3049)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:143)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy107.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	at com.sun.proxy.$Proxy72.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:83)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy74.searchSystemCommonConfigByName(Unknown Source)
+	at com.yj.task.OrderRefreshTask.getQzLock(OrderRefreshTask.java:94)
+	at com.yj.task.OrderRefreshTask.execute(OrderRefreshTask.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
+	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:973)
+	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:930)
+	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3011)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3472)
+	... 50 common frames omitted
+2018-08-29 14:38:19.679 ERROR[pool-1-thread-1]o.s.scheduling.support.TaskUtils$LoggingErrorHandler.handleError:96 -Unexpected error occurred in scheduled task.
+org.springframework.dao.RecoverableDataAccessException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 56,835 milliseconds ago.  The last packet sent successfully to the server was 19,170 milliseconds ago.
+### The error may exist in file [C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\target\classes\mapper\SystemCommonConfig.xml]
+### The error may involve com.yj.dao.SystemCommonConfigDao.searchSystemCommonConfigByName-Inline
+### The error occurred while setting parameters
+### SQL: select * from   system_common_conifg where config_name   =? limit 1
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 56,835 milliseconds ago.  The last packet sent successfully to the server was 19,170 milliseconds ago.
+; ]; Communications link failure
+
+The last packet successfully received from the server was 56,835 milliseconds ago.  The last packet sent successfully to the server was 19,170 milliseconds ago.; nested exception is com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 56,835 milliseconds ago.  The last packet sent successfully to the server was 19,170 milliseconds ago.
+	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:100)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at com.sun.proxy.$Proxy72.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:83)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at com.sun.proxy.$Proxy74.searchSystemCommonConfigByName(Unknown Source)
+	at com.yj.task.OrderRefreshTask.getQzLock(OrderRefreshTask.java:94)
+	at com.yj.task.OrderRefreshTask.execute(OrderRefreshTask.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:93)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 56,835 milliseconds ago.  The last packet sent successfully to the server was 19,170 milliseconds ago.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:990)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3562)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3462)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3903)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2486)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1197)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3051)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3049)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:167)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:498)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:143)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy107.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 21 common frames omitted
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at sun.security.ssl.InputRecord.readFully(InputRecord.java:465)
+	at sun.security.ssl.InputRecord.read(InputRecord.java:503)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:973)
+	at sun.security.ssl.SSLSocketImpl.readDataRecord(SSLSocketImpl.java:930)
+	at sun.security.ssl.AppInputStream.read(AppInputStream.java:105)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3011)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3472)
+	... 50 common frames omitted
+2018-08-29 14:39:00.738 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:39:00.737^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^146^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&sign=83043D88DC3CF661656A5A8C254EE540&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+14%3A39%3A00^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"4u6yrdp18g6q"}}
+2018-08-29 14:56:02.560 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 14:56:02.560^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15001^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&tk_status=1&sign=A37B122A91615739A5B28586D23AF8FF&format=json&page_no=1&start_time=2018-08-19+10%3A19%3A00&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+14%3A55%3A47&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 15:04:12.945 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 15:04:12.945^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15002^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021274d0149fba48e14ee75d1b1007cbe264ee0643ebd660c548274f283f134685101760&tk_status=1&sign=ED0B51CC8C2C55C1E227570F61B7F4EB&format=json&page_no=1&start_time=2018-08-29+09%3A59%3A00&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+15%3A03%3A57&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 15:04:22.279 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 15:04:22.279^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^79^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010021674d0149fba481e402154cde3c8bfc2c5a4a7d9e9200522df0ade18aba48c1964612622&sign=D7355BF65E04F0865BAC510057B36EDB&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+15%3A04%3A22^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"6iorqe7etm1t"}}
+2018-08-29 15:04:59.692 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 15:04:59.692^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15001^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021674d0149fba481e402154cde3c8bfc2c5a4a7d9e9200522df0ade18aba48c1964612622&tk_status=1&sign=073408ED2A74A600029BFBCF50D8A847&format=json&page_no=1&start_time=2018-07-29+13%3A44%3A22&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+15%3A04%3A44&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 15:07:58.037 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 15:07:58.037^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15000^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021674d0149fba481e402154cde3c8bfc2c5a4a7d9e9200522df0ade18aba48c1964612622&tk_status=1&sign=2BC109BBCED4697E2E24C70E5B4DDE90&format=json&page_no=1&start_time=2018-08-04+17%3A24%3A22&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+15%3A07%3A43&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 15:18:10.412 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 15:18:10.412^_^23383504^_^taobao.tbk.sc.order.get^_^192.168.1.165^_^Windows 10^_^15001^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.sc.order.get&session=7000010021674d0149fba481e402154cde3c8bfc2c5a4a7d9e9200522df0ade18aba48c1964612622&tk_status=1&sign=68319106573657860776E6ACC767042F&format=json&page_no=1&start_time=2018-08-23+10%3A44%3A22&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&fields=tb_trade_parent_id%2Ctb_trade_id%2Cnum_iid%2Citem_title%2Citem_num%2Cprice%2Cpay_price%2Cseller_nick%2Cseller_shop_title%2Ccommission%2Ccommission_rate%2Cunid%2Ccreate_time%2Cearning_time%2Ctk3rd_pub_id%2Ctk3rd_site_id%2Ctk3rd_adzone_id%2Crelation_id%2Ctk_status&timestamp=2018-08-29+15%3A17%3A55&order_query_type=create_time&page_size=100&span=1200^_^java.net.SocketTimeoutException: connect timed out
+2018-08-29 15:21:56.955 ERROR[pool-1-thread-1]topsdk.logApiError:50 -2018-08-29 15:21:56.955^_^23383504^_^taobao.tbk.privilege.get^_^192.168.1.165^_^Windows 10^_^112^_^http://gw.api.taobao.com/router/rest^_^method=taobao.tbk.privilege.get&item_id=111&session=7000010093578546ca9c539c5bd80b1c2a0c39e70152a4f1f6c7bdfd1665ea186384ba627236983&sign=7D4FE64F35ACAA0E608EF22314F69B3B&format=json&adzone_id=1&platform=2&app_key=23383504&partner_id=top-sdk-java-20180820&v=2.0&sign_method=hmac&site_id=1&timestamp=2018-08-29+15%3A21%3A56^_^{"error_response":{"code":15,"msg":"Remote service error","sub_code":"isv.pid-not-correct","sub_msg":"请检查site_id和adzone_id是否匹配","request_id":"4186l3xsezor"}}

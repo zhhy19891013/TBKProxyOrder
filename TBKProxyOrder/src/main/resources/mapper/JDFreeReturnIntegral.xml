@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.JDFreeReturnIntegralDao">
+	<resultMap id="JDFreeReturnIntegralMap" type="JDFreeReturnIntegral">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="order_number" column="order_number" />
+		<result property="integral" column="integral" />
+		<result property="create_time" column="create_time" />
+		<result property="user_name" column="user_name" />
+		<result property="realIntegral" column="real_integral" />
+		<result property="orderDate" column="order_date" />
+		<result property="orderStatus" column="integral_status" />
+		<result property="integralOrign" column="integral_orign" />
+		<result property="integralPrividor" column="integral_prividor" />
+		<result property="integralNote" column="integral_note" />
+		<result property="create_date" column="create_date" />
+		<result property="totalAlipayFeeString" column="total_alipay_fee_string" />
+		<result property="integralRate" column="integral_rate" />
+		<result property="groupName" column="group_name" />
+		<result property="realPay" column="real_pay" />
+		<result property="auctionId" column="auction_id" />
+		<result property="auctionTitle" column="auction_title" />
+		<result property="auctionUrl" column="auction_url" />
+		<result property="tbName" column="tb_name" />
+		<result property="aliIntegral" column="ali_integral" />
+		<result property="finalDiscountToString" column="final_discount_to_string" />
+	</resultMap>
+
+	<resultMap id="JDFreeReturnIntegralMap2" type="JDFreeReturnIntegral">
+		<result property="integral" column="integral" />
+		<result property="realIntegral" column="real_integral" />
+	</resultMap>
+
+	<resultMap id="JDFreeReturnIntegraRanlMap" type="JDFreeReturnIntegral">
+		<result property="user_name" column="user_name" />
+		<result property="integralNote" column="integral_note" />
+	</resultMap>
+	
+		<!-- 更新退款积分 -->
+	<update id="updateJDFreeIntegralExpireIntegralByJDFree">
+		update jd_free_return_integral set
+		integral_status='订单退款',integral_note='订单退款',real_integral=0,integral=0,create_time=now()
+		where order_number in
+		(select
+		orderid from jd_free_order_details
+		where
+		status
+		='X' or status
+		='R') and integral_status!='订单退款' and
+		order_date>='2018-06-01'
+	</update>
+
+	<!-- 将订单状态为结算或者收货状态的订单积分从预估转为有效 -->
+	<update id="updateJDFreeIntegralRealIntegral">
+		update jd_free_return_integral set real_integral =
+		integral where
+		order_number in (
+		select orderid from
+		jd_free_order_details where `status` = 'D' or `status` = 'S' or
+		`status` = 'Y'
+		)
+	</update>
+
+
+	<!-- 根据id删除 -->
+	<delete id="deleteJDFreeIntegralByNumOutOfLine" parameterType="java.util.List">
+		delete from jd_free_return_integral where order_number in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.order_number}
+		</foreach>
+	</delete>
+	<!-- 批量新增 -->
+	<insert id="addJDFreeIntegralBatch" parameterType="java.util.List">
+		insert
+		into
+		jd_free_return_integral(order_number,integral,create_time,user_name,real_integral,order_date,integral_status,integral_orign,integral_prividor,integral_note,create_date,integral_rate,total_alipay_fee_string,group_name,auction_id,auction_title,auction_url,real_pay,tb_name,final_discount_to_string)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+         (#{item.order_number},#{item.integral},#{item.create_time},#{item.user_name},#{item.realIntegral},#{item.orderDate},#{item.orderStatus},#{item.integralOrign},#{item.integralPrividor},#{item.integralNote},#{item.create_date},#{item.integralRate},#{item.totalAlipayFeeString},#{item.groupName},#{item.auctionId},#{item.auctionTitle},#{item.auctionUrl},#{item.realPay},#{item.tbName},#{item.finalDiscountToString} )
+     		   ]]>
+		</foreach>
+	</insert>
+
+
+	<select id="searchJDFreeIntegralRankCount" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Long">
+		select count(DISTINCT user_name) from jd_free_return_integral where
+		1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="createTime1!=null">
+			and	<![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and	<![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+	</select>
+
+
+	<select id="searchJDFreeIntegralRank" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegraRanlMap">
+		select count(DISTINCT order_number) as integral_note ,user_name
+		from
+		jd_free_return_integral
+		where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="createTime1!=null">
+			and	<![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and	<![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		GROUP BY user_name ORDER BY count(DISTINCT order_number) desc
+		limit
+		#{beginPage},#{perPage}
+	</select>
+	<select id="searchMyJdFreeOrderNumRankNum" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegraRanlMap">
+		select (@i:=@i+1) as order_number,a.* FROM
+		(select count(DISTINCT
+		order_number) as integral_note ,user_name
+		from
+		jd_free_return_integral
+		where 1=1
+		<if test="createTime1!=null">
+			and	<![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and	<![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		GROUP BY user_name ORDER BY count(DISTINCT order_number) desc)
+		a,(select @i:=0) as it
+	</select>
+
+	<select id="searchJDFreeOrderNumRankNumLimit3" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegraRanlMap">
+		select (@i:=@i+1) as order_number,a.* FROM
+		(select count(DISTINCT
+		order_number) as integral_note ,user_name
+		from
+		jd_free_return_integral
+		where 1=1
+		<if test="createTime1!=null">
+			and	<![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and	<![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		GROUP BY user_name ORDER BY count(DISTINCT order_number) desc)
+		a,(select @i:=0) as it limit 3
+	</select>
+
+
+	<select id="searchJDFreeIntegralRankQudaoCount" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Long">
+		select count(DISTINCT user_name)
+		from
+		jd_free_return_integral
+		where
+		integral_note is not null
+		and user_name IN (select user_name from
+		system_user where qudao_name =
+		#{orderStatus})
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="createTime1!=null">
+			and	<![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and	<![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+	</select>
+	<select id="searchJDFreeIntegralRankQudao" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegraRanlMap">
+		select count(DISTINCT order_number) as integral_note ,user_name
+		from
+		jd_free_return_integral
+		where integral_note is not null
+		and user_name IN
+		(select user_name from system_user where qudao_name =
+		#{orderStatus})
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="createTime1!=null">
+			and	<![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and	<![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		GROUP BY user_name
+		ORDER BY integral_note DESC
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+
+
+	<select id="searchJDFreeIntegralCountPC" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Long">
+		select count(*) from jd_free_return_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[create_time >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[create_time <=#{createTime2} ]]>
+		</if>
+	</select>
+	<select id="searchJDFreeIntegralPC" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegralMap">
+		select * from jd_free_return_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[create_time >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[create_time <=#{createTime2} ]]>
+		</if>
+		order by database_id desc
+		limit #{beginPage},#{perPage}
+	</select>
+
+
+
+
+	<!-- 手机端查询京东免单预估积分 -->
+	<select id="searchMobileJdFreeIntegral" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Double">
+		select sum(integral) from jd_free_return_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status ='订单有效' and
+
+		order_number !='exchange'
+
+	</select>
+	<!-- 手机端查询京东免单有效积分 -->
+	<select id="searchMobileProxyJdFreeRealIntegral" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Double">
+		select sum(real_integral) from jd_free_return_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status ='订单有效' and
+		order_number !='exchange'
+	</select>
+
+	<!-- 手机端查非本月有效积分 -->
+	<select id="searchMobileProxyJdFreeRealIntegralLastTime"
+		parameterType="JDFreeReturnIntegral" resultType="java.lang.Double">
+		select sum(real_integral) from jd_free_return_integral where 1=1
+
+		and <![CDATA[order_date < #{create_date} ]]>
+
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status ='订单有效' and
+		order_number !='exchange'
+	</select>
+	<!-- 手机端查本月有效积分 -->
+	<select id="searchMobileProxyJdFreeRealIntegralCurrentMonth"
+		parameterType="JDFreeReturnIntegral" resultType="java.lang.Double">
+		select sum(real_integral) from jd_free_return_integral where 1=1
+
+		and <![CDATA[order_date >= #{create_date} ]]>
+
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status ='订单有效' and
+		order_number !='exchange'
+	</select>
+
+	<!-- 代理查询自己的非本月积分汇总 -->
+	<select id="searchMySystemUserJDFreeIntegralLastTime"
+		parameterType="JDFreeReturnIntegral" resultMap="JDFreeReturnIntegralMap2">
+		select sum(integral) as
+		integral,sum(real_integral) as
+		real_integral
+		from
+		jd_free_return_integral
+		where <![CDATA[order_date < #{create_date} ]]>
+		and user_name
+		=#{user_name}
+		and
+		integral_status='订单有效' and order_number
+		!= 'exchange'
+	</select>
+
+
+	<!-- 代理查看合计的兑换 -->
+	<select id="searchMobileProxyJdFreeExchangeIntegral"
+		parameterType="JDFreeReturnIntegral" resultType="java.lang.Double">
+		select sum(-integral) from jd_free_return_integral where 1=1 and
+		order_number ='exchange' and integral_status ='订单有效'
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+	</select>
+
+	<!-- 代理查看合计的有效订单 -->
+	<select id="searchMobileJdFreeProxyOrderCount" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Long">
+		select count(*) from jd_free_return_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status='订单有效' and order_number !='exchange'
+	</select>
+	<!-- 代理查看合计的单量 -->
+	<select id="searchMobileJdFreeOrderCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long" useCache="true">
+		select count(*) from jd_free_return_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status !='订单退款'
+	</select>
+
+	<!--阿里模式下查积分 -->
+	<select id="searchMobileJdFreeAliIntegral" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Double">
+		select sum(ali_integral) from jd_free_return_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status ='订单有效' and
+		order_number !='exchange'
+	</select>
+
+	<!-- 删除 -->
+	<delete id="deleteJDFreeReturnIntegral" parameterType="java.util.List">
+		delete from jd_free_return_integral where database_id in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.databaseID}
+		</foreach>
+	</delete>
+
+	<!-- 订单号查询积分记录 -->
+	<select id="searchJdFreeIntegralByOrderNumber" resultMap="JDFreeReturnIntegralMap"
+		parameterType="JDFreeReturnIntegral">
+		select * from
+		jd_free_return_integral where order_number
+		=#{order_number}
+	</select>
+
+	<!-- 新增记录 -->
+	<insert id="addJdFreeIntegral" parameterType="JDFreeReturnIntegral">
+		insert into
+		jd_free_return_integral(order_number,integral,create_time,user_name,real_integral,order_date,integral_status,integral_orign,integral_prividor,integral_note,create_date,integral_rate,total_alipay_fee_string,group_name,auction_id,auction_title,auction_url,ali_integral)
+		values(#{order_number},#{integral},#{create_time},#{user_name},#{realIntegral},#{orderDate},#{orderStatus},#{integralOrign},#{integralPrividor},#{integralNote},#{create_date},#{integralRate},#{totalAlipayFeeString},#{groupName},#{auctionId},#{auctionTitle},#{auctionUrl},#{realIntegral})
+	</insert>
+
+
+	<!-- 代理查询自己的阿里模式积分汇总 -->
+	<select id="searchMyUserJdFreeAliIntegral" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegralMap2">
+		select sum(integral) as
+		integral,sum(ali_integral) as
+		real_integral from
+		jd_free_return_integral
+		where
+		user_name =#{user_name}
+		and
+		integral_status='订单有效'
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+	</select>
+	<!-- 代理查询自己的积分汇总 -->
+	<select id="searchMySystemUserJDFreeIntegral" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegralMap2">
+		select sum(integral) as
+		integral,sum(real_integral) as
+		real_integral from
+		jd_free_return_integral
+		where
+		user_name
+		=#{user_name}
+		and
+		integral_status='订单有效'
+	</select>
+
+	<!-- 管理员查询用户积分 -->
+	<select id="searchSystemUserJdFreeExchangeIntegralCount"
+		parameterType="JDFreeReturnIntegral" resultType="java.lang.Long">
+		select count(*) from jd_free_return_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="orderStatus!=null">
+			and integral_status =#{orderStatus}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[order_date>=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+
+	</select>
+
+	<!-- 管理员查询用户积分 -->
+	<select id="searchSystemUserJdFreeExchangeIntegral"
+		parameterType="JDFreeReturnIntegral" resultMap="JDFreeReturnIntegralMap">
+		select * from jd_free_return_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="orderStatus!=null">
+			and integral_status =#{orderStatus}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		order by order_date desc
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<!-- 管理员查询用户积分 -->
+	<select id="findMyProxyJdFreeIntegralCount" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Long">
+		select count(*) from jd_free_return_integral where 1=1 and
+		tb_name='京东订单'
+		and user_name =#{user_name}
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="integralOrign==null">
+			and integral_status ='订单有效'
+		</if>
+		<if test="integralOrign!=null">
+			and integral_status !='订单有效'
+		</if>
+		and order_number !='exchange'
+
+	</select>
+	<!-- <if test="integralOrign!=null"> and order_number in ( select orderid 
+		from jd_free_order_details where status = 'M' and username = #{user_name} 
+		) </if> -->
+
+
+	<select id="findMyProxyJdFreeIntegral" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegralMap">
+		select * from jd_free_return_integral where 1=1 and
+		tb_name='京东订单'
+		and
+		user_name =#{user_name}
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="integralOrign==null">
+			and integral_status ='订单有效'
+		</if>
+		<if test="integralOrign!=null">
+			and integral_status !='订单有效'
+		</if>
+		and order_number !='exchange'
+		order by
+		order_date desc
+		limit
+		#{beginPage},#{perPage}
+	</select>
+	<!-- <if test="integralOrign!=null"> and order_number in ( select orderid 
+		from jd_free_order_details where status = 'M' and username = #{user_name} 
+		) </if> -->
+	<!-- 新增记录 -->
+	<insert id="addSystemUserJdFreeIntegral" parameterType="JDFreeReturnIntegral">
+		insert
+		into
+		jd_free_return_integral(order_number,integral,create_time,user_name,real_integral,order_date,integral_status,integral_orign,integral_prividor,integral_note,create_date,integral_rate,total_alipay_fee_string,group_name,auction_id,auction_title,auction_url,ali_integral)
+		values(#{order_number},#{integral},#{create_time},#{user_name},#{realIntegral},#{orderDate},#{orderStatus},#{integralOrign},#{integralPrividor},#{integralNote},#{create_date},#{integralRate},#{totalAlipayFeeString},#{groupName},#{auctionId},#{auctionTitle},#{auctionUrl},#{realIntegral})
+	</insert>
+	<!-- 提现前查询获取id -->
+	<select id="searchJdFreeIntegralByNote" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegralMap">
+		select * from
+		jd_free_return_integral where integral_note
+		=#{integralNote} limit 1
+	</select>
+	<!-- 非提交 -->
+	<select id="searchNotCommitJdFreeIntegral" parameterType="java.lang.String"
+		resultMap="JDFreeReturnIntegralMap">
+		select * from jd_free_return_integral
+		where integral_status
+		!='订单提交'
+		and order_number =#{order_number}
+	</select>
+
+	<!-- 查询所有提交的订单 -->
+	<select id="searchAllCommitJdFreeIntegral" resultMap="JDFreeReturnIntegralMap">
+		select
+		*
+		from jd_free_return_integral where integral_status='订单提交'
+	</select>
+
+
+
+
+
+
+	<!-- 超过设置天数预估积分转换为有效积分 -->
+	<!-- <update id="updateJDFreeIntegralRealIntegral"> update jd_free_return_integral 
+		set real_integral=integral where DATEDIFF(now(),order_date)> (select config_value 
+		from system_common_conifg where config_name ='jd_txrq_interval') </update> -->
+
+
+
+
+
+
+	<select id="searchJDFreeIntegralToExchange" resultMap="JDFreeReturnIntegralMap">
+		select
+		user_name,sum(integral) as integral,SUM(real_integral) as
+		real_integral from jd_free_return_integral
+		where integral_status='订单有效'
+		GROUP BY user_name
+	</select>
+
+	<!-- 查活动时间的拉新人数 -->
+	<select id="searchNewUserByFatherNameJDFree" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Long">
+		select count(*) from system_user where father_name = #{user_name} 
+		<![CDATA[and reg_time >= #{createTime1} and reg_time <= #{createTime2} ]]>
+	</select>
+
+
+	<!-- 查渠道排行 -->
+	<select id="searchJdFreeQudaoRankCount" parameterType="JDFreeReturnIntegral"
+		resultType="java.lang.Long">
+		select count(DISTINCT e.qudao_name) from (
+		select
+		c.user_name,COUNT(d.database_id) as orderNum,c.qudao_name from
+		jd_free_return_integral d LEFT JOIN(
+		select a.user_name,b.user_name as
+		qudao_name from system_user a LEFT JOIN (
+		select user_name from
+		system_user where group_name = 'qudao'
+		) b on a.qudao_name =
+		b.user_name where a.qudao_name is not null
+		) c ON d.user_name =
+		c.user_name where integral_status = '订单有效'
+		<if test="createTime1!=null">
+			<![CDATA[ and order_date >= #{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			<![CDATA[ and order_date <= #{createTime2} ]]>
+		</if>
+		GROUP BY c.user_name ) e
+		where e.user_name is not null
+	</select>
+	<select id="searchJdFreeQudaoRank" parameterType="JDFreeReturnIntegral"
+		resultMap="JDFreeReturnIntegralMap">
+		select e.qudao_name as user_name,SUM(e.orderNum) as integralNote from
+		(
+		select c.user_name,COUNT(d.database_id) as orderNum,c.qudao_name from
+		jd_free_return_integral d LEFT JOIN(
+		select a.user_name,b.user_name as
+		qudao_name from system_user a LEFT JOIN (
+		select user_name from
+		system_user where group_name = 'qudao'
+		) b on a.qudao_name =
+		b.user_name where a.qudao_name is not null
+		) c ON d.user_name =
+		c.user_name where integral_status = '订单有效'
+		<if test="createTime1!=null">
+			<![CDATA[ and order_date >= #{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			<![CDATA[ and order_date <= #{createTime2} ]]>
+		</if>
+		GROUP BY c.user_name ) e
+		where e.user_name is not null
+		GROUP BY
+		e.qudao_name
+		order by integralNote
+		desc
+		limit #{beginPage},#{perPage}
+	</select>
+
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.MogujieOrderDetailsDao">
+	<resultMap type="MogujieOrderDetails" id="MogujieOrderDetailsMap">
+		<result property="databaseID" column="database_id" />
+		<result property="orderNo" column="orderNo" />
+		<result property="groupId" column="groupId" />
+		<result property="channel" column="channel" />
+		<result property="orderStatus" column="orderStatus" />
+		<result property="updateTime" column="updateTime" />
+		<result property="expense" column="expense" />
+		<result property="paymentType" column="paymentType" />
+		<result property="tradeItemId" column="tradeItemId" />
+		<result property="shopInfo" column="shopInfo" />
+		<result property="amount" column="amount" />
+		<result property="price" column="price" />
+		<result property="name" column="name" />
+		<result property="commission" column="commission" />
+		<result property="productUrl" column="productUrl" />
+		<result property="category" column="category" />
+		<result property="categoryName" column="categoryName" />
+		<result property="orderTime" column="orderTime" />
+		<result property="createdDate" column="createdDate" />
+		<result property="userName" column="userName" />
+		<result property="MogujieName" column="MogujieName" />
+		<result property="paymentStatus" column="paymentStatus" />
+		<result property="productNo" column="productNo" />
+	</resultMap>
+	<!--蘑菇街退款的转换为订单退款 -->
+	<update id="updateSystemUserIntegralExpireIntegralByMgj"
+		flushCache="true">
+		update system_user_integral set
+		integral_status='订单退款',integral_note='订单退款',real_integral=0,create_time=now()
+		where order_number in
+		(select
+		orderNo from mogujie_order_details
+		where
+		paymentStatus
+		='30000' or paymentStatus='90000') and
+		integral_status!='订单退款'
+	</update>
+
+	<!-- 更新蘑菇街订单的用户名 -->
+	<update id="updateMgjOrderDetailUserNameFromIntegralAll">
+		update mogujie_order_details
+		p,system_user_integral pp
+		set
+		p.userName
+		=pp.integral_prividor where
+		p.orderNo =
+		pp.order_number
+		and
+		p.username is null
+	</update>
+
+	<!-- 查询没有计算的蘑菇街订单 -->
+	<select id="searchAllNotCalMgjOrder" resultMap="MogujieOrderDetailsMap"
+		parameterType="MogujieOrderDetails">
+		select * from mogujie_order_details where groupId is not null and
+		userName is
+		null and <![CDATA[orderTime >=#{orderTime} ]]>
+		and paymentStatus !='30000' and paymentStatus!='90000' and
+		paymentStatus!='10000'
+	</select>
+	<!-- 批量删除 -->
+	<delete id="deleteMogujieOrdersBatch" parameterType="java.util.List">
+		delete from mogujie_order_details where orderNo in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.orderNo}
+		</foreach>
+	</delete>
+	<!-- 批量新增 -->
+	<insert id="addMogujieOrdersBatch" parameterType="java.util.List">
+		insert into
+		mogujie_order_details(orderNo,groupId,channel,orderStatus,updateTime,expense,paymentType,tradeItemId,shopInfo,amount,price,name,commission,productUrl,category,categoryName,orderTime,
+		createdDate,userName,MogujieName,paymentStatus,productNo)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		              <![CDATA[ 
+		                 (#{item.orderNo},#{item.groupId},#{item.channel},#{item.orderStatus},#{item.updateTime},#{item.expense},#{item.paymentType},#{item.tradeItemId},
+		                     #{item.shopInfo},#{item.amount},#{item.price},#{item.name},#{item.commission},#{item.productUrl},#{item.category},#{item.categoryName},#{item.orderTime},
+		                     #{item.createdDate},#{item.userName},#{item.MogujieName},#{item.paymentStatus},#{item.productNo})
+                          ]]>
+		</foreach>
+	</insert>
+	<!-- 更新蘑菇街订单用户名 -->
+	<update id="updateMgjOrderDetailUserName" parameterType="java.util.List">
+		update mogujie_order_details p,system_user_integral pp set
+		p.userName
+		=pp.integral_prividor where p.orderNo =
+		pp.order_number
+		and
+		pp.order_number in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.orderNo}
+		</foreach>
+	</update>
+
+
+
+	<select id="searchMogujieOrderByOrderNo" parameterType="MogujieOrderDetails"
+		resultMap="MogujieOrderDetailsMap">
+		select * form mogujie_order_details where orderNo=#{orderNo}
+	</select>
+
+
+
+	<!-- 根据指定时间查询没有计算的蘑菇街订单 -->
+	<select id="searchAllNotCalMgjOrderByTime" resultMap="MogujieOrderDetailsMap"
+		parameterType="MogujieOrderDetails">
+		select * from mogujie_order_details where groupId is not null
+		and <![CDATA[orderTime >=#{createTime1} ]]>
+		and <![CDATA[orderTime <=#{createTime2} ]]>
+		and paymentStatus !='30000' and paymentStatus!='90000' and
+		paymentStatus!='10000'
+	</select>
+
+
+
+
+
+</mapper>

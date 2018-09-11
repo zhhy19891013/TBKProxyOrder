@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.TbSessionKeyDao">
+
+	<resultMap type="TbSessionKey" id="TbSessionKeyMap">
+		<result property="tbName" column="tb_name" />
+		<result property="sessionKey" column="session_key" />
+	</resultMap>
+	<!-- 查询sessionKey -->
+	<select id="searchSessionKeyByTbName" parameterType="java.lang.String"
+		resultMap="TbSessionKeyMap">
+		select * from tb_session_key where tb_name = #{tbName} limit
+		1
+	</select>
+</mapper>

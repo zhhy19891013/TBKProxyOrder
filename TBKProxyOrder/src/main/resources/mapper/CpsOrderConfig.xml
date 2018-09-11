@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.CpsOrderConfigDao">
+	<resultMap type="CpsOrderConfig" id="CpsOrderConfigMap">
+		<result property="databaseID" column="database_id" />
+		<result property="cpsAccountName" column="cps_account_name" />
+		<result property="lastUpdateDate" column="last_update_date" />
+	</resultMap>
+	<!-- 根据账号名称查询配置 -->
+	<select id="searchCpsOrderConfigByName" parameterType="java.lang.String" resultMap="CpsOrderConfigMap">
+		select *
+		from cps_order_config where cps_account_name=#{name} limit 1
+	</select>
+	<!--新增订单配置 -->
+	<insert id="addCpsOrderConfig" parameterType="CpsOrderConfig">
+		insert into
+		cps_order_config
+		(cps_account_name,last_update_date)
+		values
+		(#{cpsAccountName},#{lastUpdateDate})
+	</insert>
+	<!-- 更新订单配置 -->
+	<update id="updateCpsOrderConfig" parameterType="CpsOrderConfig">
+		update
+		cps_order_config set last_update_date=#{lastUpdateDate} where
+		cps_account_name =#{cpsAccountName}
+	</update>
+
+</mapper>

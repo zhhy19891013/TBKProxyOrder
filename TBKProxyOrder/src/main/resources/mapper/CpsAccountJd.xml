@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.CpsAccountJdDao">
+	<resultMap id="CpsAccountJdMap" type="CpsAccountJd">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="jdName" column="jd_name" />
+		<result property="unionID" column="union_id" />
+		<result property="accountType" column="account_type" />
+		<result property="siteID" column="site_id" />
+		<result property="empowerKey" column="empowerKey" />
+		<result property="stime" column="stime" />
+		<result property="etime" column="etime" />
+	</resultMap>
+	<!-- 公用查询语句 -->
+	<sql id="selectJdAccount">
+		select
+		DATABASE_ID,jd_name,union_id,account_type,site_id,empowerKey,stime,etime
+		from
+		cps_acccount_jd
+	</sql>
+	<!-- 根据账号类型查询绑定的京东账号 -->
+	<select id="searchCpsAccountJdByType" resultMap="CpsAccountJdMap"
+		parameterType="java.lang.String">
+		<include refid="selectJdAccount"></include>
+		where account_type=#{accountType} limit 1
+	</select>
+	<!-- 查询绑定的京东账号 -->
+	<select id="searchAccount" resultMap="CpsAccountJdMap">
+		<include refid="selectJdAccount"></include>
+	</select>
+	<!-- 查询绑定的京东账号数量 -->
+	<select id="searchAccountCount" resultType="java.lang.Long">
+		select
+		count(*) from
+		cps_acccount_jd
+	</select>
+	<!-- 添加京东账号 -->
+	<update id="addCpsJdAccount" parameterType="CpsAccountJd">
+		insert into
+		cps_acccount_jd
+		(jd_name,union_id,account_type,site_id,empowerKey,stime,etime)
+		values
+		(#{jdName},#{unionID},#{accountType},#{siteID},#{empowerKey},#{stime},#{etime})
+	</update>
+	<!-- 更新京东账号 -->
+	<update id="updateCpsAccountJd" parameterType="CpsAccountJd">
+		update
+		cps_acccount_jd
+		set
+		jd_name=#{jdName},union_id=#{unionID},site_id=#{siteID},empowerKey=#{empowerKey},stime=#{stime},etime=#{etime}
+		where
+		database_id = #{databaseID}
+	</update>
+	<!-- 刪除账号 -->
+	<delete id="deleteAccountById" parameterType="java.lang.Long">
+		delete from
+		cps_acccount_jd where
+		database_id = #{databaseID}
+	</delete>
+
+</mapper>

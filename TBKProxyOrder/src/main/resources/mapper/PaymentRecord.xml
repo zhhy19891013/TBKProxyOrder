@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.PaymentRecordDao">
+	<resultMap id="PaymentRecordMap" type="PaymentRecord">
+		<result property="databaseID" column="database_id" />
+		<result property="tbName" column="tb_name" />
+		<result property="userName" column="user_name" />
+		<result property="createTime" column="create_time" />
+		<result property="createDate" column="create_date" />
+		<result property="auctionId" column="auction_id" />
+		<result property="earningTime" column="earning_time" />
+		<result property="bizType" column="biz_type" />
+		<result property="tkBizTag" column="tk_biz_tag" />
+		<result property="tk3rdPubShareFee" column="tk3rd_pub_share_fee" />
+		<result property="auctionTitle" column="auction_title" />
+		<result property="auctionUrl" column="auction_url" />
+		<result property="tkShareRate" column="tk_share_rate" />
+		<result property="exShopTitle" column="ex_shop_title" />
+		<result property="realPayFeeString" column="real_pay_fee_string" />
+		<result property="auctionNum" column="auction_num" />
+		<result property="payPrice" column="pay_price" />
+		<result property="taobaoTradeParentId" column="taobao_trade_parent_id" />
+		<result property="exNickName" column="ex_nick_name" />
+		<result property="tkPubShareFeeString" column="tk_pub_share_fee_string" />
+		<result property="terminalType" column="terminal_type" />
+		<result property="finalDiscountToString" column="final_discount_to_string" />
+		<result property="payStatus" column="payStatus" />
+		<result property="totalAlipayFeeString" column="total_alipay_fee_string" />
+		<result property="lastUpdate" column="last_update_date" />
+		<result property="pid" column="pid" />
+		<result property="feeString" column="fee_string" />
+		<result property="wqRemark" column="wqremark" />
+		<result property="pictUrl" column="pict_url" />
+	</resultMap>
+
+	<!-- 根据订单号删除 -->
+	<delete id="deleteRepeatPay" parameterType="java.util.List">
+		delete from payment_record where
+		taobao_trade_parent_id in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item}
+		</foreach>
+	</delete>
+
+	<select id="searchTest" resultMap="PaymentRecordMap">
+		select * from payment_record
+		limit 1
+	</select>
+	<!-- 根据订单号删除 -->
+	<delete id="deletePaymentRecordByIds" parameterType="java.util.List">
+		delete from payment_record where
+		taobao_trade_parent_id in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.taobaoTradeParentId}
+		</foreach>
+	</delete>
+	<!-- 新增淘宝订单 -->
+	<insert id="addPayementRecord" parameterType="java.util.List">
+		insert into payment_record
+		(tb_name,create_time,auction_id,earning_time ,biz_type ,tk_biz_tag
+		,tk3rd_pub_share_fee,auction_title,auction_url,
+		tk_share_rate,ex_shop_title,real_pay_fee_string,auction_num,pay_price,taobao_trade_parent_id,ex_nick_name,
+		tk_pub_share_fee_string,terminal_type,final_discount_to_string,payStatus,total_alipay_fee_string,last_update_date,pid,fee_string,create_date,wqremark,pict_url)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<![CDATA[  
+           (#{item.tbName},#{item.createTime},#{item.auctionId},#{item.earningTime},#{item.bizType},#{item.tkBizTag},#{item.tk3rdPubShareFee},
+          #{item.auctionTitle},#{item.auctionUrl},#{item.tkShareRate},#{item.exShopTitle},#{item.realPayFeeString},
+          #{item.auctionNum},#{item.payPrice},#{item.taobaoTradeParentId},#{item.exNickName},#{item.tkPubShareFeeString},#{item.terminalType},
+          #{item.finalDiscountToString},#{item.payStatus},#{item.totalAlipayFeeString},#{item.lastUpdate},#{item.pid},#{item.feeString},#{item.createDate},#{item.wqRemark},#{item.pictUrl})
+       	 ]]>
+		</foreach>
+	</insert>
+	<!-- 更新下订单的username 根据积分表 -->
+	<update id="updatePaymentRecordUserNameByIntegralAndOrderNumber"
+		parameterType="java.util.List">
+		update payment_record p,system_user_integral pp set
+		p.user_name
+		=pp.integral_prividor where p.taobao_trade_parent_id =
+		pp.order_number
+		and
+		pp.order_number in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.taobaoTradeParentId}
+		</foreach>
+	</update>
+	<!-- 更新下订单的username 根据积分表 -->
+	<update id="updatePaymentRecordUserNameByIntegral">
+		update payment_record p,system_user_integral pp set
+		p.user_name
+		=pp.integral_prividor where p.taobao_trade_parent_id =
+		pp.order_number and p.user_name is null
+	</update>
+	<!-- 查询没有计算积分的订单 -->
+	<select id="searchAllNotCalPayment" resultMap="PaymentRecordMap"
+		parameterType="PaymentRecord">
+		select * from payment_record where pid is not null and user_name is
+		null and <![CDATA[create_date >=#{createDate} ]]>
+		and payStatus !='13'
+	</select>
+	<!-- 根据单号查询订单 -->
+	<select id="searchPaymentBytaobaoTradeParentId" parameterType="java.lang.String"
+		resultMap="PaymentRecordMap">
+		select * from payment_record where taobao_trade_parent_id
+		=#{taobaoTradeParentId} and payStatus !='13'
+	</select>
+
+
+</mapper>

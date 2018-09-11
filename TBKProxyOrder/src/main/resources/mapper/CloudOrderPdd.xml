@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.CloudOrderPddDao">
+	<resultMap type="CloudOrderPdd" id="CloudOrderPddMap">
+		<result property="databaseID" column="database_id" />
+		<result property="userName" column="userName" />
+		<result property="order_sn" column="order_sn" />
+		<result property="goods_id" column="goods_id" />
+		<result property="goods_name" column="goods_name" />
+		<result property="goods_thumbnail_url" column="goods_thumbnail_url" />
+		<result property="goods_quantity" column="goods_quantity" />
+		<result property="goods_price" column="goods_price" />
+		<result property="order_amount" column="order_amount" />
+		<result property="order_create_time" column="order_create_time" />
+		<result property="promotion_rate" column="promotion_rate" />
+		<result property="promotion_amount" column="promotion_amount" />
+		<result property="order_status" column="order_status" />
+		<result property="p_id" column="p_id" />
+		<result property="createDate" column="createDate" />
+	</resultMap>
+
+	<!-- 批量删除拼多多订单 谭程文 -->
+	<delete id="deletePddOrders" parameterType="java.util.List">
+		delete from cloud_order_pdd
+		where order_sn in
+		<foreach collection="list" item="item" index="index" open="("
+			separator="," close=")">
+			#{item.order_sn}
+		</foreach>
+	</delete>
+	<!-- 批量新增拼多多订单 -->
+	<insert id="addCloudOrderPddBatch" parameterType="java.util.List">
+		insert into
+		cloud_order_pdd(userName,order_sn,goods_id,goods_name,goods_thumbnail_url,goods_quantity,goods_price,order_amount,order_create_time,
+		promotion_rate,promotion_amount,order_status,p_id,createDate)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<![CDATA[  
+		  (#{item.userName},#{item.order_sn},#{item.goods_id},#{item.goods_name},#{item.goods_thumbnail_url},#{item.goods_quantity},#{item.goods_price},#{item.order_amount}
+		  ,#{item.order_create_time},#{item.promotion_rate},#{item.promotion_amount},#{item.order_status},#{item.p_id},#{item.createDate})	
+		 ]]>
+		</foreach>
+	</insert>
+	<!-- 拼多多更新所有username 谭程文 -->
+	<update id="updatePddOrderUserNameAll">
+		update cloud_order_pdd a , system_user_integral b
+		set
+		a.username
+		=b.integral_prividor where a.order_sn =
+		b.order_number and
+		a.userName is null
+	</update>
+
+	<!--拼多多查询需要计算的订单 -->
+	<select id="searchNotCalPddOrders" resultMap="CloudOrderPddMap">
+		select b.* from
+		system_user a , cloud_order_pdd b where
+		a.pdd_pid = b.p_id
+		and
+		b.userName is null and b.order_status != '-1'
+		and b.order_status != '8'
+	</select>
+	<!-- 根据订单号查询订单 -->
+	<select id="searchPddOrderById" parameterType="java.lang.String"
+		resultMap="CloudOrderPddMap">
+		select * from cloud_order_pdd where order_sn=#{order_sn}
+		limit 1
+	</select>
+	<!-- 更新下管理员下单的订单 -->
+	<update id="updateAdminPddOrder">
+		update cloud_order_pdd set userName='admin' where
+		p_id =(select pdd_pid from system_user where user_name='admin') and
+		userName is null
+	</update>
+
+	<!-- 删掉不是这个平台的订单 -->
+	<delete id="deleteNotThisPlatform">
+		delete from cloud_order_pdd where userName is null
+		and p_id !=(select pdd_pid from system_user where user_name='admin')
+	</delete>
+
+
+
+	<!-- 拼多多更新username 谭程文 -->
+	<update id="updatePddOrderUserName" parameterType="java.util.List">
+		update cloud_order_pdd p,system_user_integral pp set
+		p.username
+		=pp.integral_prividor where p.order_sn =
+		pp.order_number
+		and
+		pp.order_number in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.order_sn}
+		</foreach>
+	</update>
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

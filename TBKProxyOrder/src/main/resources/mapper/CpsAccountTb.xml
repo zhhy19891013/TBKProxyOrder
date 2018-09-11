@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.dao.CpsAccountTbDao">
+	<resultMap id="CpsAccountTbMap" type="CpsAccountTb">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="xbTbName" column="xb_tb_name" />
+		<result property="productTbName" column="product_tb_name" />
+		<result property="zlTbName" column="zl_tb_name" />
+		<result property="flTbName" column="fl_tb_name" />
+	</resultMap>
+	<!-- 查询绑定的淘宝账号 -->
+	<select id="searchTbAccount" resultMap="CpsAccountTbMap">
+		select * from
+		cps_acccount_tb
+		limit 1
+	</select>
+
+</mapper>
