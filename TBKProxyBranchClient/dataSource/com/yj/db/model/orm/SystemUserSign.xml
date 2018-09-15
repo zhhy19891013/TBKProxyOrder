@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserSignMap" type="SystemUserSign">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="userName" column="user_name" />
+		<result property="lastSignDate" column="last_sign_date" />
+		<result property="signCount" column="sign_count" />
+		<result property="totalSignCount" column="total_sign_count" />
+		<result property="signScore" column="sign_score" />
+	</resultMap>
+
+<select id="searchSystemUserSignByName" parameterType="SystemUserSign" resultMap="SystemUserSignMap">
+	select * from system_user_sign 
+	where user_name = #{userName}
+</select>
+<insert id="saveUserSign" parameterType="SystemUserSign">
+	insert into system_user_sign(user_name,last_sign_date,sign_count,total_sign_count)
+	values ( #{userName},#{lastSignDate},#{signCount},#{totalSignCount})
+</insert>
+
+	<update id="updateUserSignMsg" parameterType="SystemUserSign">
+	update system_user_sign set last_sign_date = #{lastSignDate} , sign_count = #{signCount},total_sign_count = #{totalSignCount}
+	where user_name = #{userName}
+	</update>
+	
+	<select id="searchSignByUsername" parameterType="SystemUserSign" resultMap="SystemUserSignMap">
+		select * from system_user_sign where user_name = #{userName}
+		limit 1
+	</select>
+	
+		<select id="totalRankCount" parameterType="SystemUserSign" resultType="java.lang.Long">
+		
+				select count(*) from System_user_sign order by ${sord} desc limit 6
+		</select>
+	
+	
+	<select id="totalRank" parameterType="SystemUserSign" resultMap="SystemUserSignMap">
+			select * from System_user_sign order by ${sord} desc 
+			limit 6 	
+	</select>
+
+</mapper>

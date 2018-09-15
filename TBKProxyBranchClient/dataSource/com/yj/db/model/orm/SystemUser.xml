@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserMap" type="SystemUser">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="userName" column="user_name" />
+		<result property="password" column="password" />
+		<result property="group_name" column="group_name" />
+		<result property="reg_time" column="reg_time" />
+		<result property="regDate" column="reg_date" />
+		<result property="expire_time" column="expire_time" />
+		<result property="qq" column="qq" />
+		<result property="phone" column="phone" />
+		<result property="email" column="email" />
+		<result property="pictUrl" column="pict_url" />
+		<result property="fatherName" column="father_name" />
+		<result property="proxyRate" column="proxy_rate" />
+		<result property="userType" column="user_type" />
+		<result property="integralRate" column="integral_rate" />
+		<result property="fatherWx" column="father_wx" />
+		<result property="groupAdminName" column="group_admin_name" />
+		<result property="databaseFlag" column="database_flag" />
+		<result property="productPid" column="product_pid" />
+		<result property="pid" column="pid" />
+		<result property="lastPid" column="last_pid" />
+		<result property="zfb" column="zfb" />
+		<result property="qudaoName" column="qudao_name" />
+		<result property="realName" column="real_name" />
+		<result property="openId" column="open_id" />
+		<result property="pidInfo" column="pid_info" />
+		<result property="proxyLevel" column="proxy_level" />
+		<result property="jdPid" column="jd_pid" />
+		<result property="banTime" column="ban_time" />
+
+	</resultMap>
+
+	<!-- 代理分析页面查询所有用户信息 -->
+	<select id="searchAllSystemUserForReport" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user where 1=1
+		<if test="userName!=null">
+			and father_name = #{userName}
+		</if>
+	</select>
+
+
+
+
+	<select id="searchSystemUserByProductId" resultType="java.lang.Long"
+		parameterType="java.lang.String">
+		select count(DATABASE_ID) from system_user where
+		product_pid =#{productPid}
+	</select>
+
+	<update id="upgradeUser">
+		update system_user set proxy_level = #{proxyLevel}
+		where user_name = #{userName}
+	</update>
+	<update id="updateBanTime">
+		update system_user set ban_time = #{banTime}
+		where
+		user_name = #{userName}
+	</update>
+
+	<select id="searchUserGroup" resultMap="SystemUserMap">
+		select * from system_user where
+		group_name = 'qudao'
+		<if test="userName!=null">
+			and user_name
+			LIKE '%${userName}%'
+		</if>
+
+	</select>
+
+	<select id="searchUserByCondition" resultMap="SystemUserMap">
+		select * from system_user where
+		qudao_name=#{qudaoName}
+		and user_name LIKE '%${userName}%'
+	</select>
+
+
+	<select id="searchByFatherName" resultMap="SystemUserMap"
+		parameterType="SystemUser">
+		select * from system_user where
+		father_name=#{userName}
+	</select>
+
+
+	<select id="searchByFatherNameCount" resultType="java.lang.Long"
+		parameterType="SystemUser">
+		select count(*) from system_user where
+		father_name=#{userName}
+	</select>
+
+	<update id="updateFatherName" parameterType="systemUser">
+		update system_user set father_name = #{userName} where father_name =
+		#{fatherName}
+	</update>
+
+
+	<select id="searchFatherNameByUserName" resultMap="SystemUserMap"
+		parameterType="SystemUser">
+		select * from system_user where
+		qudao_name = #{qudaoName}
+	</select>
+
+	<select id="searchAllQrcodeUser" resultMap="SystemUserMap">
+		select * from
+		system_user where group_name !='proxy2'
+	</select>
+
+	<select id="searchSystemConfigByUserName" resultMap="SystemUserMap"
+		parameterType="SystemUser">
+		select * from system_user where group_name !='admin'
+		<if test="userName!=null">
+			and USER_NAME
+			LIKE '%${userName}%'
+		</if>
+		<if test="phone!=null">
+			and phone = #{phone}
+		</if>
+	</select>
+	<!-- 分页查询所有代理 -->
+	<select id="searchAllSystemUserCount" parameterType="SystemUser"
+		resultType="java.lang.Long">
+		select count(*) from system_user where group_name !='admin'
+		<if test="phone!=null">
+			and phone =#{phone}
+		</if>
+		<if test="userName!=null">
+			and USER_NAME like '%${userName}%'
+		</if>
+	</select>
+	<select id="searchAllSystemUser" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user where group_name !='admin'
+		<if test="phone!=null">
+			and phone =#{phone}
+		</if>
+		<if test="userName!=null">
+			and USER_NAME like '%${userName}%'
+		</if>
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<!-- 查询所有的代理 -->
+	<select id="searchAllNotAdminUser" resultMap="SystemUserMap">
+		select * from
+		system_user where group_name !='admin'
+	</select>
+	<!-- 查询所有的一级代理 -->
+	<select id="searchAllProxyUser" resultMap="SystemUserMap">
+		select * from
+		system_user where group_name='proxy'
+	</select>
+	<!-- 查询所有的管理员 -->
+	<select id="searchAllAdminUser" resultMap="SystemUserMap">
+		select * from
+		system_user where group_name='admin'
+	</select>
+	<!-- 渠道商查询我的代理 -->
+	<select id="searchMyQudaoProxyCount" parameterType="SystemUser"
+		resultType="java.lang.Long">
+		select count(*) from system_user
+		where qudao_name
+		=#{qudaoName}
+	</select>
+	<!--渠道商查询我的代理 -->
+	<select id="searchMyQuDaoProxy" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user
+		where qudao_name =#{qudaoName}
+	</select>
+
+	<!-- 查询我的代理 -->
+	<select id="searchMyProxyCount" parameterType="SystemUser"
+		resultType="java.lang.Long">
+		select count(*) from system_user
+		where father_name
+		=#{fatherName}
+	</select>
+
+	<!-- 查询我的代理 -->
+	<select id="searchMyProxy" parameterType="SystemUser" resultMap="SystemUserMap">
+		select * from system_user
+		where father_name =#{fatherName}
+	</select>
+	<!-- 验证支付宝有没有绑定 -->
+	<select id="searchSystemUserByZfb" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from
+		system_user where zfb =#{zfb}
+	</select>
+	<!--修改支付宝验证支付宝是不是已经绑定过了 -->
+	<select id="searchSystemUserByZfbAndUserName" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from
+		system_user where zfb =#{zfb} and user_name
+		!=#{userName}
+	</select>
+	<!--修改支付宝验证支付宝是不是已经绑定过了 -->
+	<select id="searchSystemUserByPhoneAndUserName" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from
+		system_user where phone =#{phone} and user_name
+		!=#{userName}
+	</select>
+
+	<select id="searchSystemUserByPhone" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from
+		system_user where phone =#{phone}
+	</select>
+
+	<select id="searchSystemUserByemailAndUserName" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from
+		system_user where email =#{email} and user_name
+		!=#{userName}
+	</select>
+
+
+	<select id="searchSystemUserByQQAndUserName" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from
+		system_user where qq =#{qq} and user_name
+		!=#{userName}
+	</select>
+
+	<select id="searchSysemUserByDataBaseId" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user
+		where DATABASE_ID =#{databaseID}
+	</select>
+
+	<select id="searchSystemUserByUserName" parameterType="SystemUser"
+		resultMap="SystemUserMap" useCache="true">
+		select * from system_user where
+		user_name =#{userName} limit
+		1
+	</select>
+	<select id="searchSystemUserLoginByPhone" parameterType="SystemUser"
+		resultMap="SystemUserMap" useCache="true">
+		select * from system_user where
+		phone =#{phone} limit
+		1
+	</select>
+
+	<select id="searchSystemUserByPid" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user where user_name !=#{userName} and
+		product_pid =#{productPid}
+	</select>
+
+	<insert id="addSystemUser" parameterType="SystemUser"
+		flushCache="true">
+		insert into
+		system_user(user_name,password,group_name,reg_time,expire_time,qq,phone,email,pict_url,father_name,proxy_rate,user_type,integral_rate,father_wx,group_admin_name,database_flag,pid,zfb,product_pid,last_pid,qudao_name,reg_date,real_name,open_id,pid_info,jd_pid)
+		values(#{userName},#{password},#{group_name},#{reg_time},#{expire_time},#{qq},#{phone},#{email},#{pictUrl},#{fatherName},#{proxyRate},#{userType},#{integralRate},#{fatherWx},#{groupAdminName},#{databaseFlag},#{pid},#{zfb},#{productPid},#{lastPid},#{qudaoName},#{regDate},#{realName},#{openId},#{pidInfo},#{jdPid})
+	</insert>
+
+	<update id="updateQudao" parameterType="SystemUser">
+		update
+		system_user set
+		qudao_name=#{qudaoName}
+		where
+		user_name
+		=#{userName}
+	</update>
+
+	<update id="updateFather" parameterType="SystemUser">
+		update
+		system_user set
+		father_name=#{fatherName}
+		where
+		user_name
+		=#{userName}
+	</update>
+
+
+	<update id="updateQudaoAndFather" parameterType="SystemUser">
+		update
+		system_user set
+		father_name=#{fatherName},qudao_name=#{qudaoName}
+		where
+		user_name
+		=#{userName}
+	</update>
+
+
+	<update id="updateSystemUserPid" parameterType="SystemUser">
+		update
+		system_user set
+		pid=#{pid},product_pid=#{productPid},last_pid=#{lastPid}
+		where
+		user_name
+		=#{userName}
+	</update>
+
+
+	<update id="updatePwdByPhone" parameterType="SystemUser">
+		update
+		system_user
+		set password=#{password}
+		where phone=#{phone}
+	</update>
+
+	<update id="updateSystemUserType" parameterType="SystemUser">
+		update
+		system_user set user_type =#{userType}
+		where user_name =#{userName}
+	</update>
+
+	<update id="updateSystemUser" parameterType="SystemUser">
+		update system_user
+		set password=#{password} where user_name =#{userName}
+	</update>
+
+	<update id="updateSystemUserGroup" parameterType="SystemUser">
+		update
+		system_user
+		set group_name=#{group_name} where user_name =#{userName}
+	</update>
+
+
+	<update id="updateSystemUserQrCode" parameterType="SystemUser">
+		update
+		system_user
+		set pict_url=#{pictUrl} where user_name =#{userName}
+	</update>
+
+	<update id="updateSystemUserInfo" parameterType="SystemUser">
+		update
+		system_user
+		set qq=#{qq},phone=#{phone},email=#{email},zfb=#{zfb}
+		,real_name=#{realName} where
+		user_name
+		=#{userName}
+	</update>
+
+
+	<update id="updateSystemUserInfo2" parameterType="SystemUser">
+		update
+		system_user
+		set
+		qq=#{qq},phone=#{phone},email=#{email},zfb=#{zfb},proxy_level =
+		#{proxyLevel}
+		,real_name=#{realName},user_name=#{userName}
+		where database_id = #{databaseID}
+	</update>
+
+	<update id="updateSystemUserProxyRate" parameterType="SystemUser">
+		update
+		system_user
+		set proxy_rate =#{proxyRate}
+		where user_name
+		=#{userName}
+	</update>
+
+	<update id="updateSystemUserIntegralRate" parameterType="SystemUser">
+		update
+		system_user
+		set integral_rate =#{integralRate}
+		where user_name
+		=#{userName}
+	</update>
+
+	<delete id="deleteSystemUser" parameterType="java.util.List">
+		delete from system_user where user_name in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.userName}
+		</foreach>
+	</delete>
+
+
+	<select id="searchUsernameCount" parameterType="SystemUser"
+		resultType="java.lang.Long">
+		select count(*) from system_user where 1=1
+		<if test="userName!=null">
+			and USER_NAME = #{userName}
+		</if>
+		<if test="phone!=null">
+			and phone = #{phone}
+		</if>
+	<![CDATA[ and database_id <> ${databaseID} ]]>
+	</select>
+
+
+
+	<select id="searchEmpCount" parameterType="SystemUser"
+		resultType="java.lang.Long">
+		select count(*) from system_user where 1=1
+		<if test="userName!=null">
+			and USER_NAME
+			LIKE '%${userName}%'
+		</if>
+		<if test="qq!=null">
+			and qq = #{qq}
+		</if>
+		<if test="phone!=null">
+			and phone
+			=#{phone}
+		</if>
+		<if test="email!=null">
+			and email
+			=#{email}
+		</if>
+		<if test="group_name!=null">
+			and group_name
+			=#{group_name}
+		</if>
+		<if test="userType!=null">
+			and user_type
+			=#{userType}
+		</if>
+	</select>
+
+
+
+	<select id="searchSystemUserCount" parameterType="SystemUser"
+		resultType="java.lang.Long">
+		select count(*) from system_user where 1=1 and
+		group_admin_name=#{groupAdminName}
+		<if test="userName!=null">
+			and USER_NAME
+			LIKE '%${userName}%'
+		</if>
+		<if test="qq!=null">
+			and qq = #{qq}
+		</if>
+		<if test="phone!=null">
+			and phone
+			=#{phone}
+		</if>
+		<if test="email!=null">
+			and email
+			=#{email}
+		</if>
+		<if test="group_name!=null">
+			and group_name
+			=#{group_name}
+		</if>
+		<if test="userType!=null">
+			and user_type
+			=#{userType}
+		</if>
+	</select>
+
+	<select id="searchSystemUser" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user where 1=1 and
+		group_admin_name=#{groupAdminName}
+		<if test="userName!=null">
+			and USER_NAME
+			LIKE '%${userName}%'
+		</if>
+		<if test="qq!=null">
+			and qq = #{qq}
+		</if>
+		<if test="phone!=null">
+			and phone
+			=#{phone}
+		</if>
+		<if test="email!=null">
+			and email
+			=#{email}
+		</if>
+		<if test="group_name!=null">
+			and group_name
+			=#{group_name}
+		</if>
+		<if test="userType!=null">
+			and user_type
+			=#{userType}
+		</if>
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<!-- 查询所有的用户 -->
+	<select id="searchAllUserCount" parameterType="SystemUser"
+		resultType="java.lang.Long">
+		select count(*) from system_user
+	</select>
+	<select id="searchAllUser" parameterType="SystemUser" resultMap="SystemUserMap">
+		select * from system_user limit #{beginPage},#{perPage}
+	</select>
+
+	<update id="updateSystemUserPidInfo" parameterType="SystemUser">
+		update
+		system_user set pid_info =#{pidInfo} where USER_NAME =#{userName}
+	</update>
+
+	<!-- 上传头像 -->
+	<update id="updateSystemPict" parameterType="SystemUser">
+		update system_user
+		set pict_url =#{pictUrl}
+		where phone =#{phone}
+	</update>
+
+
+	<!-- 京东查询所有的用户 -->
+	<select id="searchAllUserJdCount" parameterType="SystemUser"
+		resultType="java.lang.Long">
+		select count(*) from system_user where jd_pid is null
+	</select>
+	<select id="searchAllUserJd" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user where jd_pid is null
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+	<!-- 京东根据jdPid查询用户名 -->
+	<select id="searchUserByJdPid" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user where jd_pid=#{jdPid}
+	</select>
+
+	<!-- 更新京东pid -->
+	<update id="updateSystemUserJdPid" parameterType="SystemUser">
+		update
+		system_user set jd_pid =#{jdPid} where USER_NAME =#{userName}
+	</update>
+
+	<!-- 查询所有用户 -->
+	<select id="findAllUser" resultMap="SystemUserMap">
+		select * from system_user
+
+	</select>
+	<!--  当渠道的名字被修改后 ，更改所有原渠道下的渠道名称 -->
+    <update id="updateQudaoNameWhenQudaoNameChanged" parameterType="SystemUser">
+    
+    	update system_user set qudao_name = #{qudaoName} where qudao_name = #{userName}
+    
+    
+    </update>
+</mapper>

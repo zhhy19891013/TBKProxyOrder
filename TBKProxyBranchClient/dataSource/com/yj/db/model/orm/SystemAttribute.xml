@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemAttributeMap" type="SystemAttribute">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="attributeKey" column="attribute_key" />
+		<result property="attributeValue" column="attribute_value" />
+	</resultMap>
+
+	<select id="searchSystemAttribute" resultMap="SystemAttributeMap"
+		parameterType="SystemAttribute">
+		select * from system_attribute where attribute_key
+		=#{attributeKey}
+	</select>
+
+	<update id="updateSystemAttribute" parameterType="SystemAttribute">
+		update
+		system_attribute set attribute_value =#{attributeValue}
+		where
+		attribute_key =#{attributeKey}
+	</update>
+
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap type="TbSessionKey" id="TbSessionKeyMap">
+		<result property="tbName" column="tb_name" />
+		<result property="sessionKey" column="session_key"/>
+	</resultMap>
+	<!-- 根据tbname删除sessionkey -->
+	<delete id="deleteSessionkeyTbName" parameterType="TbSessionKey">
+		delete from tb_session_key
+		where tb_name = #{tbName}
+	</delete>
+	<!-- 保存sessionkey -->
+	<insert id="insertSessionKeyTbName" parameterType="TbSessionKey">
+		INSERT INTO tb_session_key(tb_name,session_key)
+		VALUES(#{tbName},#{sessionKey})
+	</insert>
+	<!-- 查询sessionKey -->
+	<select id="searchSessionKeyByTbName" parameterType="TbSessionKey" resultMap="TbSessionKeyMap">
+		select * from  tb_session_key where tb_name = #{tbName} limit 1
+	</select>
+</mapper>

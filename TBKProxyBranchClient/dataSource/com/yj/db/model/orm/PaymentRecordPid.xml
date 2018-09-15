@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="PaymentRecordPidMap" type="PaymentRecordPid">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="orderNumber" column="order_number" />
+		<result property="pid" column="pid" />
+	</resultMap>
+
+
+	<select id="searchAllPaymentRecordPid" resultMap="PaymentRecordPidMap">
+		select * from
+		payment_record_pid
+	</select>
+
+	<insert id="addPaymentRecordPid" parameterType="java.util.List">
+		insert into
+		payment_record_pid(order_number,pid)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<![CDATA[  
+             (#{item.orderNumber},#{item.pid})
+       	 ]]>
+		</foreach>
+
+	</insert>
+
+	<delete id="deletePaymentRecordPid">
+		delete from payment_record_pid
+	</delete>
+
+	<delete id="deletePaymentRecordPidByOrderNumber" parameterType="java.util.List">
+		delete from payment_record_pid where order_number in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.orderNumber}
+		</foreach>
+	</delete>
+
+	<update id="updatePaymentRecordPid">
+		update payment_record p,payment_record_pid pp
+		set
+		p.pid =pp.pid
+		where p.taobao_trade_parent_id =pp.order_number
+	</update>
+
+</mapper>

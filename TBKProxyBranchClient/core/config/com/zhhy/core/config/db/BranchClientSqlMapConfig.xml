@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="defaultStatementTimeout" value="25000" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="ClientSleepConfig" type="com.yj.db.model.ClientSleepConfig" />
+		<typeAlias alias="SystemUserClientStatus" type="com.yj.db.model.SystemUserClientStatus" />
+		<typeAlias alias="CloudProduct" type="com.yj.db.model.CloudProduct" />
+		<typeAlias alias="CloudProductXbTj" type="com.yj.db.model.CloudProductXbTj" />
+		<typeAlias alias="JDCloudProduct" type="com.yj.db.model.JDCloudProduct" />
+		<typeAlias alias="SystemCommonConfig" type="com.yj.db.model.SystemCommonConfig" />
+		<typeAlias alias="SystemConfig2" type="com.yj.db.model.SystemConfig2" />
+		<typeAlias alias="SystemUser" type="com.yj.db.model.SystemUser" />
+		<typeAlias alias="SystemUserClientConfig" type="com.yj.db.model.SystemUserClientConfig" />
+		<typeAlias alias="TbSessionKey" type="com.yj.db.model.TbSessionKey" />
+		<typeAlias alias="TKLApp" type="com.yj.db.model.TKLApp" />
+		<typeAlias alias="TKLAppIp" type="com.yj.db.model.TKLAppIp" />
+		<typeAlias alias="JDCloudProductSend" type="com.yj.db.model.JDCloudProductSend" />
+		<typeAlias alias="JDBind" type="com.yj.db.model.JDBind" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/yj/db/model/orm/ClientSleepConfig.xml" />
+		<mapper resource="com/yj/db/model/orm/CloudProduct.xml" />
+		<mapper resource="com/yj/db/model/orm/CloudProductXbTj.xml" />
+		<mapper resource="com/yj/db/model/orm/JDCloudProduct.xml" />
+		<mapper resource="com/yj/db/model/orm/SystemCommonConfig.xml" />
+		<mapper resource="com/yj/db/model/orm/SystemConfig2.xml" />
+		<mapper resource="com/yj/db/model/orm/SystemUser.xml" />
+		<mapper resource="com/yj/db/model/orm/SystemUserClientConfig.xml" />
+		<mapper resource="com/yj/db/model/orm/TbSessionKey.xml" />
+		<mapper resource="com/yj/db/model/orm/TKLApp.xml" />
+		<mapper resource="com/yj/db/model/orm/TKLAppIp.xml" />
+		<mapper resource="com/yj/db/model/orm/JDCloudProductSend.xml" />
+		<mapper resource="com/yj/db/model/orm/SystemUserClientStatus.xml" />
+		<mapper resource="com/yj/db/model/orm/JDbind.xml" />
+	</mappers>
+</configuration>  
+
+	
+

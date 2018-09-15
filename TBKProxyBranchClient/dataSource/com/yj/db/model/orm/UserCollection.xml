@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="userCollectionMap" type="userCollection">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="userName" column="user_name" />
+		<result property="itemId" column="item_id" />
+		<result property="collectionTime" column="collection_time" />
+	</resultMap>
+	 
+	<select id="searchCollections"  parameterType="userCollection"  resultMap="userCollectionMap">
+				select * from 
+				system_user_collection
+				where 1 = 1 
+				<if test="userName!=null">
+				and  <![CDATA[user_name = #{userName} ]]>
+				</if>
+				<if test="itemId!=null">
+				and  <![CDATA[item_id = #{itemId} ]]>
+				</if>
+	</select>
+	
+	<!-- 根据ID查有多少条收藏 -->
+	<select id="searchCollectionsCountById" parameterType="userCollection" resultType="java.lang.Long">
+			select count(*) from 
+			system_user_collection
+			where user_name=#{userName}
+	</select>
+	
+	
+		<!-- 根据ID查收藏 -->
+	<select id="searchCollectionsById" parameterType="userCollection" resultMap="userCollectionMap">
+			select * from 
+			system_user_collection
+			where user_name=#{userName}
+			limit #{beginPage},#{perPage}
+	</select>
+	 
+	 
+	  
+		<!-- 根据ID和NAME删除收藏 -->
+	<delete id="deleteCollectionsByIdAndName" parameterType="userCollection" >
+			delete from 
+			system_user_collection
+			where user_name=#{userName}
+			and  item_id = #{itemId}			
+	</delete>
+	
+	
+	 <!-- 插入一条收藏 -->
+	<insert id="insertCollection" parameterType="userCollection">
+			insert into system_user_collection(item_id,user_name,collection_time)
+			values(#{itemId},#{userName},#{collectionTime})
+	</insert>
+	
+</mapper>

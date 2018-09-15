@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="TKLAppIpMap" type="TKLAppIp">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="ip" column="ip" />
+	</resultMap>
+
+	<select id="searchMyTklIp" resultMap="TKLAppIpMap">
+		select * from tkl_app_ip
+		limit 1
+	</select>
+
+	<update id="updateTklId" parameterType="TKLAppIp">
+		update tkl_app_ip set
+		ip=#{ip}
+	</update>
+
+
+</mapper>

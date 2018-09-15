@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap type="SystemUserClientStatus" id="SystemUserClientStatusMap">
+		<result property="databaseID" column="database_id"/>
+		<result property="groupBy" column="group_by"/>
+		<result property="clientState" column="client_state"/>
+		<result property="status" column="status" />
+	</resultMap>
+	
+	<select id="searchClientStateCount" parameterType="SystemUserClientStatus" resultType="java.lang.Long">
+		select count(database_id) from system_user_client_status where 1=1
+		<if test="groupBy!=null">
+			and group_by = #{groupBy}
+		</if>
+	</select>
+	<select id="searchClientState" parameterType="SystemUserClientStatus" resultMap="SystemUserClientStatusMap">
+		select database_id,group_by,status,client_state from system_user_client_status where 1=1
+		<if test="groupBy!=null">
+			and group_by = #{groupBy}
+		</if>
+		<if test="status!=null">
+			and status = #{status}
+		</if>
+		order by database_id desc
+		limit #{beginPage},#{perPage}
+	</select>
+	
+	<select id="searchForClientState" parameterType="SystemUserClientStatus" resultMap="SystemUserClientStatusMap">
+		select group_by,client_state from system_user_client_status where 1=1
+		<if test="groupBy!=null">
+			and group_by = #{groupBy}
+		</if>
+	</select>
+	
+	<insert id="changeClientState" parameterType="SystemUserClientStatus">
+		insert into system_user_client_status(group_by,client_state,status) values(#{groupBy},#{clientState},#{status})
+	</insert>
+	<update id="updateClientState" parameterType="SystemUserClientStatus">
+		update system_user_client_status set client_state =#{clientState},status=#{status} where group_by =#{groupBy}
+	</update>
+	<delete id="deleteClientState" parameterType="SystemUserClientStatus">
+		delete from system_user_client_status where group_by = #{groupBy}
+	</delete>
+
+
+</mapper>

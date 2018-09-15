@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap type="SeoOptimize" id="SeoOptimizeMap">
+		<result property="databaseId" column="database_id" />
+		<result property="title" column="title"/>
+		<result property="description" column="describe"/>
+		<result property="keyWord" column="key_word"/>
+	
+	</resultMap>
+	<!-- 查 -->
+	<select id="searchSeoOptimize" parameterType="SeoOptimize" resultMap="SeoOptimizeMap">
+		select * from seo_optimize
+	</select>
+	<!-- 新增 -->
+	<insert id="addSeoOptimize" parameterType="SeoOptimize">
+		insert into seo_optimize(title,description,key_word) values(#{title},#{description},#{keyWord})
+	</insert>
+	
+	<!-- 修改 -->
+	<update id="updateSeoOptimize" parameterType="SeoOptimize">
+		update seo_optimize set title=#{title},description=#{description},key_word=#{keyWord}
+	
+	</update>
+	
+	
+
+</mapper>

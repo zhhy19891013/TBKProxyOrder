@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserIntegralReportMap" type="SystemUserIntegralReportBean">
+		<result property="integral" column="integral" />
+		<result property="real_integral" column="real_integral" />
+		<result property="user_name" column="user_name" />
+		<result property="ordersNum" column="ordersNum" />
+	</resultMap>
+	
+
+	<!-- 管理员查询非活跃代理 -->
+
+	<select id="searchSystemUserIntegralReportNoActiviteCount"
+		parameterType="SystemUserIntegral" resultType="java.lang.Long">
+		select count(o.user_name)from system_user o left join system_user_integral b
+		on o.user_name =b.user_name where b.database_id is null
+	</select>
+
+	<select id="searchSystemUserIntegralReportNoActivite"
+		parameterType="SystemUserIntegral" resultMap="SystemUserIntegralReportMap">
+		select o.user_name,0 as
+		integral, 0 as real_integral from system_user o left
+		join
+		system_user_integral b on o.user_name =b.user_name where
+		b.database_id
+		is null
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<!-- 管理查询积分排名 -->
+	<select id="searchSystemUserIntegralReportCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long">
+		select count(distinct user_name) from system_user_integral
+		where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="groupName!=null">
+			and group_name !=#{groupName}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		and integral_status='订单有效' and order_number !='exchange'
+	</select>
+
+	<select id="searchSystemUserIntegralReport" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralReportMap">
+		select sum(integral) as integral,sum(real_integral) as
+		real_integral,user_name
+		from system_user_integral where
+		1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="groupName!=null">
+			and group_name !=#{groupName}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		and integral_status='订单有效' and order_number !='exchange'
+		group by
+		user_name
+		order by integral desc
+		limit #{beginPage},#{perPage}
+	</select>
+	<select id="searchSystemUserIntegralOrderNumbers" parameterType="SystemUserIntegral" resultMap="SystemUserIntegralReportMap" useCache="true">
+		select user_name,count(order_number) as ordersNum from system_user_integral  where 1=1 
+		<if test="createTime1!=null">
+			and <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		and integral_status='订单有效' and order_number !='exchange'
+		group by user_name
+	</select>
+	<select id="searchSystemUserIntegralProxyProvide" resultMap="SystemUserIntegralReportMap">
+		select sum(real_integral) as
+		proxy_real_integral,user_name
+		from system_user_integral where 
+		1=1
+		<if test="createTime1!=null">
+			and <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		and integral_status='订单有效' and order_number !='exchange' and integral_prividor != user_name
+		group by
+		user_name
+	
+	</select>
+
+
+
+
+</mapper>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="ReportMediaMap" type="ReportMedia">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="thedate" column="thedate" />
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+		<result property="reportId" column="reportId" />
+		<result property="mixPv" column="mixPv" />
+		<result property="mixCtr" column="mixCtr" />
+		<result property="mixEcpm" column="mixEcpm" />
+		<result property="alipayAmt" column="alipayAmt" />
+		<result property="mixRphc" column="mixRphc" />
+		<result property="clickConversion" column="clickConversion" />
+		<result property="clickWorth" column="clickWorth" />
+		<result property="pct" column="pct" />
+		<result property="tbName" column="tbName" />
+		<result property="tbkName" column="tbkName" />
+		<result property="siteId" column="siteId" />
+		<result property="siteName" column="siteName" />
+		<result property="mediaType" column="mediaType" />
+	</resultMap>
+
+	<resultMap id="ReportMediaMap2"  type="ReportMedia">
+		<result property="thedate" column="thedate" />
+	</resultMap>
+
+	<resultMap id="ReportMediaMap3" type="ReportMedia">
+		<result property="siteName" column="siteName" />
+		<result property="mediaType" column="mediaType" />
+
+	</resultMap>
+
+	<resultMap id="ReportMediaMap4" type="ReportMedia">
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+	</resultMap>
+
+	<resultMap id="ReportMediaMap5" type="ReportMedia">
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+		<result property="thedate" column="thedate" />
+	</resultMap>
+
+	<select id="searchReportMediaSumup" parameterType="ReportMedia"
+		resultMap="ReportMediaMap4">
+		select sum(alipayNum) as alipayNum,sum(mixClick) as
+		mixClick,sum(alipayRec) as alipayRec,sum(rec) as rec from report_media
+		where tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="siteName!=null">
+			and siteName=#{siteName}
+		</if>
+		<if test="mediaType!=null">
+			and mediaType =#{mediaType}
+		</if>
+	</select>
+
+	<select id="searchReportMediaSumupGroupbyThedate" parameterType="ReportMedia"
+		resultMap="ReportMediaMap5">
+		select sum(alipayNum) as alipayNum,sum(mixClick) as
+		mixClick,sum(alipayRec) as alipayRec,sum(rec) as rec,thedate from
+		report_media
+		where tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="siteName!=null">
+			and siteName=#{siteName}
+		</if>
+		<if test="mediaType!=null">
+			and mediaType =#{mediaType}
+		</if>
+		group by thedate
+		order by thedate
+	</select>
+
+
+
+	<select id="searchReportMediaCount" parameterType="ReportMedia"
+		resultType="java.lang.Long">
+		select count(*) from report_media
+		where 1=1 and tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="siteName!=null">
+			and siteName=#{siteName}
+		</if>
+		<if test="mediaType!=null">
+			and mediaType =#{mediaType}
+		</if>
+	</select>
+
+	<select id="searchReportMedia" parameterType="ReportMedia"
+		resultMap="ReportMediaMap">
+		select * from report_media
+		where 1=1 and tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="siteName!=null">
+			and siteName=#{siteName}
+		</if>
+		<if test="mediaType!=null">
+			and mediaType =#{mediaType}
+		</if>
+		order by thedate limit #{beginPage},#{perPage}
+	</select>
+
+
+	<select id="searchAllMediaType" parameterType="ReportMedia"
+		resultMap="ReportMediaMap3">
+		select mediaType,siteName from report_media where
+		tbName=#{tbName}
+	</select>
+
+
+
+	<select id="searchMaxReportMediaTime" parameterType="java.lang.String"
+		resultMap="ReportMediaMap2">
+		select
+		max(thedate) as thedate
+		from report_media
+		where
+		tbName=#{tbName}
+	</select>
+
+
+	<delete id="deleteOldReportMedia" parameterType="java.util.List">
+		delete from report_media where
+		reportId in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.reportId}
+		</foreach>
+	</delete>
+
+
+	<insert id="addReportMedia" parameterType="java.util.List">
+		insert into report_media
+		(thedate,alipayNum,mixClick,alipayRec ,rec
+		,reportId
+		,mixPv,mixCtr,mixEcpm,
+		alipayAmt,mixRphc,clickConversion,clickWorth,pct,tbName,tbkName,
+		siteId,siteName,mediaType)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+        <![CDATA[  
+          (#{item.thedate},#{item.alipayNum},#{item.mixClick},#{item.alipayRec},#{item.rec},#{item.reportId},#{item.mixPv},
+          #{item.mixCtr},#{item.mixEcpm},#{item.alipayAmt},#{item.mixRphc},#{item.clickConversion},
+          #{item.clickWorth},#{item.pct},#{item.tbName},#{item.tbkName},#{item.siteId},#{item.siteName},#{item.mediaType})
+        ]]>
+		</foreach>
+
+	</insert>
+
+
+</mapper>

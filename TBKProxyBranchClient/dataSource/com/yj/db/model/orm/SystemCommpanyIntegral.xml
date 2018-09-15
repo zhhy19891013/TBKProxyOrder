@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemCommpanyIntegralMap" type="SystemCommpanyIntegral">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="userName" column="user_name" />
+		<result property="createTime" column="create_time" />
+		<result property="createDate" column="create_date" />
+		<result property="orderNumber" column="order_number" />
+		<result property="integral" column="integral" />
+		<result property="realIntegral" column="real_integral" />
+		<result property="integralStatus" column="integral_status" />
+		<result property="integralOrign" column="integral_orign" />
+		<result property="totalAlipayFeeString" column="total_alipay_fee_string" />
+		<result property="realCommisonRate" column="real_commision_rate" />
+		<result property="orderDate" column="order_date" />
+		<result property="realCommison" column="real_commision" />
+	</resultMap>
+	<!-- 新增积分 -->
+	<insert id="addSystemCommpanyIntegral" parameterType="java.util.List">
+		insert into
+		system_commpany_integral(user_name,create_time,create_date,order_number,integral,real_integral,integral_status,integral_orign,total_alipay_fee_string,real_commision_rate,order_date,real_commision)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+		(#{item.userName},#{item.createTime},#{item.createDate},#{item.orderNumber},#{item.integral},#{item.realIntegral},#{item.integralStatus},#{item.integralOrign},#{item.totalAlipayFeeString},#{item.realCommisonRate},#{item.orderDate},#{item.realCommison})
+     		   ]]>
+		</foreach>
+
+	</insert>
+	<!-- 超过15天预估积分转换为有效积分 -->
+	<update id="updateSystemCommpanyIntegralRealIntegral">
+		update system_commpany_integral set
+		real_integral=integral where
+		DATEDIFF(now(),order_date)>15
+	</update>
+	<!-- 退款的转换为订单退款 -->
+	<update id="updateSystemCommpanyIntegralExpireIntegral">
+		update system_commpany_integral set
+		integral_status='订单退款',integral_orign='订单退款' where order_number in
+		(select
+		taobao_trade_parent_id from payment_record where payStatus
+		=13);
+	</update>
+	<!-- 订单提交了超过7天没查到任何订单 -->
+	<update id="updateSystemCommpanyExpire">
+		update system_commpany_integral set
+		integral_status='无效订单',integral_orign='无效订单，订单不存在' where
+		DATEDIFF(now(),order_date)>7 and integral_status='订单提交'
+	</update>
+</mapper>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<!-- <cache type="com.yj.db.cache.RedisCache" /> -->
+	<resultMap id="PayementRecordMap" type="PayementRecord">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="tbName" column="tb_name" />
+		<result property="userName" column="user_name" />
+		<result property="createTime" column="create_time" />
+		<result property="createDate" column="create_date" />
+		<result property="auctionId" column="auction_id" />
+		<result property="earningTime" column="earning_time" />
+		<result property="bizType" column="biz_type" />
+		<result property="tkBizTag" column="tk_biz_tag" />
+		<result property="tk3rdPubShareFee" column="tk3rd_pub_share_fee" />
+		<result property="auctionTitle" column="auction_title" />
+		<result property="auctionUrl" column="auction_url" />
+		<result property="tkShareRate" column="tk_share_rate" />
+		<result property="exShopTitle" column="ex_shop_title" />
+		<result property="realPayFeeString" column="real_pay_fee_string" />
+		<result property="auctionNum" column="auction_num" />
+		<result property="payPrice" column="pay_price" />
+		<result property="taobaoTradeParentId" column="taobao_trade_parent_id" />
+		<result property="exNickName" column="ex_nick_name" />
+		<result property="tkPubShareFeeString" column="tk_pub_share_fee_string" />
+		<result property="terminalType" column="terminal_type" />
+		<result property="finalDiscountToString" column="final_discount_to_string" />
+		<result property="payStatus" column="payStatus" />
+		<result property="totalAlipayFeeString" column="total_alipay_fee_string" />
+		<result property="lastUpdate" column="last_update_date" />
+		<result property="pid" column="pid" />
+		<result property="feeString" column="fee_string" />
+		<result property="wqRemark" column="wqremark"/>
+	</resultMap>
+
+	<resultMap id="PayementRecordMap2" type="PayementRecord">
+		<result property="createTime" column="create_time" />
+	</resultMap>
+
+
+
+	<!-- 出单排行统计 -->
+	<resultMap type="PayementRecord" id="PayementRecordMap3">
+		<result property="num" column="num" />
+		<result property="auctionUrl" column="auction_url" />
+		<result property="auctionTitle" column="auction_title" />
+		<result property="totalAlipayFeeString" column="total_alipay_fee_string" />
+		<result property="feeString" column="fee_string" />
+		<result property="finalDiscountToString" column="final_discount_to_string" />
+		<result property="auctionId" column="auction_id" />
+		<result property="createDate" column="create_date" />
+	</resultMap>
+
+	<select id="searchAllRecords" parameterType="PayementRecord" resultType="java.lang.Long">
+		select count(*) from payment_record where 1=1
+			
+	</select>
+
+
+   <select id="searchCensus" parameterType="PayementRecord"
+		resultMap="PayementRecordMap3">
+		select count(auction_id) as
+		num,auction_id,auction_title,auction_url,total_alipay_fee_string,fee_string,final_discount_to_string
+		from payment_record
+		where 1=1
+		<if test="createTime1!=null">
+			and  <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		and payStatus !='13'
+		GROUP BY
+		auction_id,auction_title,auction_url,total_alipay_fee_string,fee_string,final_discount_to_string
+		order by num desc
+		limit #{beginPage},#{perPage}
+	</select>
+	<update id="updateRecordUserNameForRecord" parameterType="systemUser">
+		update payment_record set user_name = #{userName} where user_name =
+		#{fatherName}
+	</update>
+
+	<select id="searchCensusCount" parameterType="PayementRecord"
+		resultType="java.lang.Long">
+		select count(distinct auction_id) from payment_record
+		where 1=1 and payStatus !='13'
+		<if test="createTime1!=null">
+			and  <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+	</select>
+
+	<select id="searchPaymentRecordByPid" parameterType="java.util.List"
+		resultMap="PayementRecordMap">
+		select * from payment_record where pid in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.pid}
+		</foreach>
+	</select>
+
+
+	<select id="searchAllNotCalPayment" resultMap="PayementRecordMap"
+		parameterType="PayementRecord">
+		select * from payment_record where pid is not null and user_name is
+		null and <![CDATA[create_date >=#{createDate} ]]>
+		and payStatus !='13'
+	</select>
+
+	<select id="searchPaymentBytaobaoTradeParentId" parameterType="PayementRecord"
+		resultMap="PayementRecordMap">
+		select * from payment_record where taobao_trade_parent_id
+		=#{taobaoTradeParentId} and payStatus !='13'
+	</select>
+
+	<delete id="deleteOldPayment" parameterType="java.util.List">
+		delete from payment_record where
+		taobao_trade_parent_id in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.taobaoTradeParentId}
+		</foreach>
+	</delete>
+
+	<update id="updateRefundRecord" parameterType="java.util.List">
+		update payment_record
+		set payStatus = '13', wqremark='维权订单'
+		where taobao_trade_parent_id in (
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			#{item.taobaoTradeParentId}
+		</foreach>
+		)
+	</update>
+	<insert id="addPayementRecord" parameterType="java.util.List">
+		insert into payment_record
+		(tb_name,create_time,auction_id,earning_time ,biz_type ,tk_biz_tag
+		,tk3rd_pub_share_fee,auction_title,auction_url,
+		tk_share_rate,ex_shop_title,real_pay_fee_string,auction_num,pay_price,taobao_trade_parent_id,ex_nick_name,
+		tk_pub_share_fee_string,terminal_type,final_discount_to_string,payStatus,total_alipay_fee_string,last_update_date,pid,fee_string,create_date)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<![CDATA[  
+           (#{item.tbName},#{item.createTime},#{item.auctionId},#{item.earningTime},#{item.bizType},#{item.tkBizTag},#{item.tk3rdPubShareFee},
+          #{item.auctionTitle},#{item.auctionUrl},#{item.tkShareRate},#{item.exShopTitle},#{item.realPayFeeString},
+          #{item.auctionNum},#{item.payPrice},#{item.taobaoTradeParentId},#{item.exNickName},#{item.tkPubShareFeeString},#{item.terminalType},
+          #{item.finalDiscountToString},#{item.payStatus},#{item.totalAlipayFeeString},#{item.lastUpdate},#{item.pid},#{item.feeString},#{item.createDate})
+       	 ]]>
+		</foreach>
+	</insert>
+
+	<select id="searchMaxCreateTime" parameterType="PayementRecord"
+		resultMap="PayementRecordMap2">
+		select
+		max(create_time) as create_time
+		from payment_record
+		where
+		tb_name=#{tbName}
+	</select>
+
+	<select id="searchMaxUpdateime" parameterType="PayementRecord"
+		resultType="java.util.Date">
+		select
+		max(last_update_date) as last_update_date
+		from
+		payment_record
+		where
+		tb_name=#{tbName}
+	</select>
+
+	<select id="searchPaymentRecords" parameterType="PayementRecord"
+		resultMap="PayementRecordMap">
+		select * from payment_record
+		where 1=1
+		<if test="createTime1!=null">
+			and  <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		<if test="userName!=null">
+			and  <![CDATA[user_name = #{userName} ]]>
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="payStatus!=null">
+			and payStatus=#{payStatus}
+		</if>
+		<if test="taobaoTradeParentId!=null">
+			and taobao_trade_parent_id
+			=#{taobaoTradeParentId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		<if test="tbName!=null">
+			and tb_name=#{tbName}
+		</if>
+		order by create_time desc
+
+		<if test="beginPage!=null">
+			limit #{beginPage}
+		</if>
+		<if test="perPage!=null">
+			,#{perPage}
+		</if>
+		
+	</select>
+
+	<select id="searchPaymentRecordsCount" parameterType="PayementRecord"
+		resultType="java.lang.Long" useCache="true">
+		select count(*) from payment_record
+		where 1=1
+		<if test="createTime1!=null">
+			and  <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="userName!=null">
+			and  <![CDATA[user_name = #{userName} ]]>
+		</if>
+		<if test="payStatus!=null">
+			and payStatus=#{payStatus}
+		</if>
+		<if test="taobaoTradeParentId!=null">
+			and taobao_trade_parent_id
+			=#{taobaoTradeParentId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		<if test="tbName!=null">
+			and tb_name=#{tbName}
+		</if>
+	</select>
+
+	<!-- 代理查询自己的订单 -->
+	<select id="searchPaymentByProxyRecords" parameterType="PayementRecord"
+		resultMap="PayementRecordMap">
+		select * from payment_record
+		where 1=1
+		<if test="userName!=null">
+			and  <![CDATA[user_name = #{userName} ]]>
+		</if>
+		<if test="createTime1!=null">
+			and  <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="payStatus!=null">
+			and payStatus=#{payStatus}
+		</if>
+		<if test="taobaoTradeParentId!=null">
+			and taobao_trade_parent_id
+			=#{taobaoTradeParentId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<select id="searchPaymentRecordsByProxyCount" parameterType="PayementRecord"
+		resultType="java.lang.Long">
+		select count(*) from payment_record
+		where 1=1
+		<if test="userName!=null">
+			and  <![CDATA[user_name = #{userName} ]]>
+		</if>
+		<if test="createTime1!=null">
+			and  <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="payStatus!=null">
+			and payStatus=#{payStatus}
+		</if>
+		<if test="taobaoTradeParentId!=null">
+			and taobao_trade_parent_id
+			=#{taobaoTradeParentId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+	</select>
+
+
+	<update id="updateSystemUserIntegralTbName">
+		update system_user_integral p,payment_record pp set
+		p.tb_name=pp.tb_name
+		where p.order_number =pp.taobao_trade_parent_id
+		and p.tb_name is null
+	</update>
+	<update id="updatePaymentRecordUserNameByIntegral">
+		update payment_record p,system_user_integral pp set
+		p.user_name
+		=pp.integral_prividor where p.taobao_trade_parent_id =
+		pp.order_number and p.user_name is null
+	</update>
+	<!-- 根据订单号来更新 -->
+	<update id="updateSystemUserIntegralTbNameByOrderNumber"
+		parameterType="java.util.List">
+		update system_user_integral p,payment_record pp set
+		p.tb_name=pp.tb_name
+		where p.order_number =pp.taobao_trade_parent_id
+		and p.tb_name is null and
+		pp.taobao_trade_parent_id in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.taobaoTradeParentId}
+		</foreach>
+	</update>
+	<update id="updatePaymentRecordUserNameByIntegralAndOrderNumber"
+		parameterType="java.util.List">
+		update payment_record p,system_user_integral pp set
+		p.user_name
+		=pp.integral_prividor where p.taobao_trade_parent_id =
+		pp.order_number
+		and
+		pp.order_number in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.taobaoTradeParentId}
+		</foreach>
+	</update>
+
+	<select id="serchPaymentRecordTaoBaoIdCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long">
+		select count(*) from
+		(select * from payment_record
+		where
+		taobao_trade_parent_id in
+		(select order_number from
+		system_user_integral
+		where 1 = 1
+		<if test="user_name!=null">
+			and user_name = #{user_name}
+		</if>
+		<if test="orderStatus != null">
+			and integral_status = #{orderStatus}
+		</if>
+		)
+		and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		)a
+	</select>
+	<select id="serchPaymentRecordTaoBaoId" parameterType="SystemUserIntegral"
+		resultMap="PayementRecordMap">
+		select * from payment_record
+		where taobao_trade_parent_id in
+		(select
+		order_number from system_user_integral	
+		where 1 = 1
+		<if test="user_name != null">
+			and user_name = #{user_name}
+		</if>
+		<if test="orderStatus != null">
+			and integral_status = #{orderStatus}
+		</if>
+		)
+		and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		order by create_time desc
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<delete id="deletePaymentByAuctionId" parameterType="PayementRecord">
+
+		delete from payment_record
+		where taobao_trade_parent_id = #{taobaoTradeParentId}
+	</delete>
+
+	<select id="serchPaymentRecordByAuctionId" parameterType="PayementRecord"
+		resultType="PayementRecord">
+		select * from payment_record
+		where taobao_trade_parent_id =
+		#{taobaoTradeParentId}
+
+	</select>
+
+</mapper>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 代理个人报表 -->
+<mapper namespace="BasicDao">
+
+
+<!-- 代理查看一段时间内的有效积分 -->
+	<select id="searchMobileAliIntegral" parameterType="SystemUserIntegral"
+		resultType="java.lang.Double">
+		select sum(ali_integral) from system_user_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status ='订单有效' and
+		order_number !='exchange'
+	</select>
+
+	<!-- 代理查看一段时间内的有效积分 -->
+	<select id="searchMobileProxyRealIntegral" parameterType="SystemUserIntegral"
+		resultType="java.lang.Double">
+		select sum(real_integral) from system_user_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status ='订单有效' and
+		order_number !='exchange'
+	</select>
+	<!-- 代理查看合计的预估积分 -->
+	<select id="searchMobileProxyIntegral" parameterType="SystemUserIntegral"
+		resultType="java.lang.Double">
+		select sum(integral) from system_user_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status ='订单有效' and
+		order_number !='exchange'
+	</select>
+	<!-- 代理查看合计的兑换 -->
+	<select id="searchMobileProxyExchangeIntegral" parameterType="SystemUserIntegral"
+		resultType="java.lang.Double">
+		select sum(-integral) from system_user_integral where 1=1 and
+		order_number ='exchange' and integral_status ='订单有效'
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+	</select>
+
+	<!-- 代理查看合计的有效订单 -->
+	<select id="searchMobileProxyOrderCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long">
+		select count(*) from system_user_integral where 1=1
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		and integral_status='订单有效' and order_number !='exchange'
+		and order_number !='exchange'
+	</select>
+
+
+	<!-- 管理员查询用户积分 -->
+	<select id="findMyProxyIntegralCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long">
+		select count(*) from system_user_integral where 1=1 and tb_name
+		!='京东订单'
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="orderStatus!=null">
+			and integral_status =#{orderStatus}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[order_date>=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+
+	</select>
+	<!-- 管理员查询用户积分 -->
+	<select id="findMyProxyIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap">
+		select * from system_user_integral where 1=1 and tb_name
+		!='京东订单'
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="orderStatus!=null">
+			and integral_status =#{orderStatus}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		order by order_date desc
+		limit #{beginPage},#{perPage}
+	</select>
+
+
+	<!-- 管理员查询用户积分 -->
+	<select id="findMyProxyJdIntegralCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long">
+		select count(*) from system_user_integral where 1=1 and
+		tb_name='京东订单'
+		and user_name =#{user_name}
+		and integral_status ='订单有效'
+		and order_number !='exchange'
+	</select>
+	<!-- 管理员查询用户积分 -->
+	<select id="findMyProxyJdIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap">
+		select * from system_user_integral where 1=1 and
+		tb_name='京东订单'
+		and user_name =#{user_name}
+		and integral_status ='订单有效'
+		and order_number !='exchange'
+		order by
+		order_date desc
+		limit
+		#{beginPage},#{perPage}
+	</select>
+	<!-- 查询积分明细 -->
+	<select id="searchJdDetailsByOrderId" parameterType="java.util.List"
+		resultMap="JDOrderDetailsMap">
+		select * from jd_order_details where
+		orderid in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.order_number}
+		</foreach>
+	</select>
+
+
+</mapper>

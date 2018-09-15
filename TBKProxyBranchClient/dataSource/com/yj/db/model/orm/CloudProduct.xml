@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="CloudProductMap" type="CloudProduct">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="productType" column="product_type" />
+		<result property="cat" column="cat" />
+		<result property="isMall" column="isMall" />
+		<result property="itemTitle" column="item_title" />
+		<result property="shortTitle" column="short_title" />
+		<result property="score" column="score" />
+		<result property="discountPrice" column="discountPrice" />
+		<result property="soldQuantity" column="soldQuantity" />
+		<result property="realCommissionRate" column="real_commission_rate" />
+		<result property="content" column="content" />
+		<result property="updateTime" column="update_time" />
+		<result property="indexFlag" column="index_flag" />
+		<result property="auditFlag" column="audit_flag" />
+		<result property="pictUrl" column="pictUrl" />
+		<result property="pictUrl2" column="pictUrl2" />
+		<result property="pictUrl3" column="pictUrl3" />
+		<result property="pictUrl4" column="pictUrl4" />
+		<result property="pictUrl5" column="pictUrl5" />
+		<result property="itemId" column="item_id" />
+		<result property="eventId" column="event_id" />
+		<result property="wxContent" column="wx_content" />
+		<result property="tkl" column="tkl" />
+		<result property="yhqTkl" column="yhq_tkl" />
+		<result property="newUrl" column="new_url" />
+		<result property="tbName" column="tb_name" />
+		<result property="realCommission" column="realCommission" />
+		<result property="quanPrice" column="quan_price" />
+		<result property="rest" column="rest" />
+		<result property="used" column="used" />
+		<result property="expired" column="expired" />
+		<result property="require" column="require" />
+		<result property="refundReason" column="refundReason" />
+		<result property="commentCount" column="commentCount" />
+		<result property="avgRefundRate" column="avgRefundRate" />
+		<result property="sellerScore" column="sellerScore" />
+		<result property="ind" column="ind" />
+		<result property="merchandisAvgScore" column="MerchandisAvgScore" />
+		<result property="merchandisGap" column="MerchandisGap" />
+		<result property="serviceAvgScore" column="ServiceAvgScore" />
+		<result property="serviceGap" column="ServiceGap" />
+		<result property="consignmentAvgScore" column="ConsignmentAvgScore" />
+		<result property="consignmentGap" column="ConsignmentGap" />
+		<result property="campId" column="campId" />
+		<result property="keeperId" column="keeperId" />
+		<result property="pcCoupon" column="pcCoupon" />
+		<result property="mobileCoupon" column="mobileCoupon" />
+		<result property="require" column="c_require" />
+		<result property="orig" column="orig" />
+	</resultMap>
+
+
+	<resultMap id="CloudProductMap2" type="CloudProduct">
+		<result property="itemId" column="item_id" />
+		<result property="mobileCoupon" column="mobileCoupon" />
+	</resultMap>
+
+
+	<resultMap id="CloudProductMap3" type="CloudProduct">
+		<result property="itemId" column="item_id" />
+	</resultMap>
+
+	<resultMap id="CloudProductMapPlan" type="CloudProduct">
+		<result property="itemId" column="item_id" />
+		<result property="keeperId" column="keeperId" />
+		<result property="campId" column="campId" />
+		<result property="realCommissionRate" column="real_commission_rate" />
+	</resultMap>
+
+
+	<resultMap id="CloudProductMapPlanCache" type="CloudProduct">
+		<result property="itemId" column="item_id" />
+		<result property="keeperId" column="keeperId" />
+		<result property="campId" column="campId" />
+		<result property="tbName" column="tb_name" />
+		<result property="productType" column="product_type" />
+	</resultMap>
+	
+	<resultMap id="CloudProductMapPlanCache2" type="CloudProduct">
+		<result property="keeperId" column="keeperId" />
+		<result property="campId" column="campId" />
+		<result property="tbName" column="tb_name" />
+	</resultMap>
+
+	<!-- 置顶 -->
+	<select id="searchTop100" resultMap="CloudProductMap">
+		select * from
+		cloud_product
+		order by soldQuantity desc
+		limit 100
+	</select>
+
+
+	<update id="updateCloudProductZd" parameterType="CloudProduct">
+		update
+		cloud_product set orig =#{orig} where item_id =#{itemId}
+	</update>
+
+	<select id="searchAllProducts" resultMap="CloudProductMap">
+		select * from
+		cloud_product
+		order by update_time desc
+	</select>
+
+	<select id="searchAllPlanProduct" resultMap="CloudProductMap">
+		select * from
+		cloud_product where
+		product_type='3'
+		order by update_time desc
+	</select>
+
+	<update id="updateCloudTkl" parameterType="CloudProduct">
+		update cloud_product
+		set tkl=#{tkl},wx_content=#{wxContent}
+		where item_id =#{itemId}
+	</update>
+
+	<select id="searchAllNeedUpdateCloudProduct" resultMap="CloudProductMap"
+		parameterType="CloudProduct">
+		select * from
+		cloud_product
+		where index_flag='update'
+		limit
+		#{beginPage},#{perPage}
+	</select>
+	<select id="searchAllNotIndexCloudProduct" resultMap="CloudProductMap"
+		parameterType="CloudProduct">
+		select * from
+		cloud_product
+		where index_flag='new'
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+
+	<select id="searchCloudProdcutPlanCache2" resultMap="CloudProductMapPlanCache2"
+		parameterType="CloudProduct">
+		select keeperId,campId,tb_name from
+		cloud_product
+		where
+		product_type='3' 
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+	<select id="searchCloudProdcutPlanCache" resultMap="CloudProductMapPlanCache"
+		parameterType="CloudProduct">
+		select keeperId,campId,tb_name,item_id,product_type from
+		cloud_product
+		where
+		product_type='1'
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+
+	<select id="searchAllNeedUpdateCloudProductCount" resultType="java.lang.Long">
+		select
+		count(DATABASE_ID) from cloud_product where index_flag='update'
+	</select>
+
+	<delete id="deleteAllExpireCloudProduct" parameterType="CloudProduct">
+		delete from cloud_product
+		where <![CDATA[update_time <#{updateTime} ]]>
+	</delete>
+	<delete id="deleteAllQuanExpireCloudProduct" parameterType="CloudProduct">
+		delete from cloud_product
+		where <![CDATA[expired <#{expired} ]]>
+	</delete>
+
+	<select id="searchCloudProductByItemId" parameterType="CloudProduct"
+		resultMap="CloudProductMap">
+		select * from cloud_product where item_id =#{itemId}
+	</select>
+
+	<delete id="deleteColudProductByItemIds" parameterType="java.util.List">
+		delete from cloud_product where item_id in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.itemId}
+		</foreach>
+	</delete>
+
+	<delete id="deleteColudProductByCampIds" parameterType="java.util.List">
+		delete from cloud_product where campId in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.campId}
+		</foreach>
+	</delete>
+
+	<update id="updateCloudProductToOld" parameterType="java.util.List">
+		update cloud_product set index_flag='old' where
+		DATABASE_ID in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.databaseID}
+		</foreach>
+	</update>
+
+	<insert id="addColudProductBatch" parameterType="java.util.List">
+		insert into cloud_product
+		(product_type,cat,isMall,item_title,score,discountPrice,soldQuantity,real_commission_rate,content,pictUrl,update_time,index_flag,
+		audit_flag,item_id,event_id,
+		quan_price,rest,used,expired,refundReason,commentCount,avgRefundRate,sellerScore,ind,MerchandisAvgScore,MerchandisGap,ServiceAvgScore,ServiceGap,ConsignmentAvgScore,
+		ConsignmentGap,campId,keeperId,realCommission,pcCoupon,mobileCoupon,c_require,short_title,orig,pictUrl2,pictUrl3,pictUrl4,pictUrl5,wx_content,tkl,new_url,tb_name)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+         	 (#{item.productType},#{item.cat},#{item.isMall},#{item.itemTitle},#{item.score},#{item.discountPrice},
+         	 	#{item.soldQuantity},#{item.realCommissionRate},#{item.content},#{item.pictUrl},#{item.updateTime},#{item.indexFlag},
+         	 	#{item.auditFlag},#{item.itemId},#{item.eventId}, 
+         	 	#{item.quanPrice},#{item.rest},#{item.used},#{item.expired},#{item.refundReason},
+         	 	#{item.commentCount},#{item.avgRefundRate},#{item.sellerScore},#{item.ind},
+         	 	#{item.merchandisAvgScore},#{item.merchandisGap},#{item.serviceAvgScore},
+         	 	#{item.serviceGap},#{item.consignmentAvgScore},#{item.consignmentGap},
+         	 	#{item.campId},#{item.keeperId},#{item.realCommission},#{item.pcCoupon},#{item.mobileCoupon},#{item.require},#{item.shortTitle},#{item.orig},#{item.pictUrl2},#{item.pictUrl3},#{item.pictUrl4},#{item.pictUrl5},#{item.wxContent},#{item.tkl},#{item.newUrl},#{item.tbName})
+     		   ]]>
+		</foreach>
+	</insert>
+
+	<select id="searchCloudProductForRefresh" resultMap="CloudProductMap2"
+		parameterType="CloudProduct">
+		select item_id,mobileCoupon
+		from cloud_product where 1=1
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+	<select id="searchCloudProductPlanForRefresh" resultMap="CloudProductMapPlan"
+		parameterType="CloudProduct">
+		select item_id,mobileCoupon
+		from cloud_product where 1=1
+		and product_type='3'
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+
+</mapper>

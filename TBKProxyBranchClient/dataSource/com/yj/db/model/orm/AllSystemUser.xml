@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+   <resultMap type="AllSystemUser" id="AllSystemUserMap">
+     <result property="databaseID"  column="database_id"/>
+     <result property="userName"  column="user_name"/>
+     <result property="phone"  column="phone"/>
+     <result property="email"  column="email"/>
+     <result property="zfb"  column="zfb"/>
+     <result property="ip" column="ip"/>
+     <result property="platformName"  column="platform_name"/>
+   </resultMap>
+   
+   <!-- 分页查询 -->
+    <select id="searchCountUser"  resultType="java.lang.Long">
+     select count(*) from all_system_user 
+   </select> 
+   
+   <select id="searchUser"  parameterType="AllSystemUser" resultMap="AllSystemUserMap">
+    select * from  all_system_user limit
+		#{beginPage},#{perPage}
+   </select>
+   
+   <!-- 批量增加 -->
+   <insert id="addAllUserBatch"  parameterType="java.util.List">
+    insert into all_system_user(user_name,phone,email,zfb,ip,platform_name)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+        <![CDATA[ 
+           (#{item.userName},#{item.phone},#{item.email},#{item.zfb},#{item.ip},#{item.platformName})  
+        	 ]]>
+    </foreach>
+   
+   </insert>
+   
+   <!-- 批量删除 -->
+   <delete id="deleteAllUserBatch" parameterType="java.util.List">
+		delete from all_system_user where user_name in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.userName}
+		</foreach>
+	</delete>
+  
+  <!-- 手机号校验 -->
+  <select id="searchUserByPhone"  parameterType="AllSystemUser"  resultMap="AllSystemUserMap">
+   select * from  all_system_user where phone =#{phone}  
+  </select>
+  
+  <!-- 微信号验证 -->
+  <select id="searchUserByEmail" parameterType="AllSystemUser"  resultMap="AllSystemUserMap">
+   select * from  all_system_user where email =#{email}
+  </select>
+  
+  <!-- 支付宝验证 -->
+  <select id="searchUserByZfb"  parameterType="AllSystemUser"  resultMap="AllSystemUserMap">
+     select * from all_system_user where zfb=#{zfb}
+  </select>
+
+</mapper>

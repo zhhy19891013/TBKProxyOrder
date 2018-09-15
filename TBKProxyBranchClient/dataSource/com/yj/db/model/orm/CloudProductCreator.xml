@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="CloudProductCreatorMap" type="CloudProductCreator">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="itemId" column="item_id" />
+		<result property="dataCreator" column="data_creator" />
+	</resultMap>
+
+
+
+	<delete id="deleteCloudProductDelete" parameterType="java.util.List">
+		delete from
+		cloud_product_creator 
+	</delete>
+
+	<insert id="addCloudProductDelete" parameterType="java.util.List">
+		insert into cloud_product_creator
+		(item_id,data_creator)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+         	 (#{item.itemId},#{item.dataCreator})
+     		   ]]>
+		</foreach>
+	</insert>
+
+</mapper>

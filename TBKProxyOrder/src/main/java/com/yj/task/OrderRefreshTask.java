@@ -55,7 +55,7 @@ public class OrderRefreshTask {
 	/**
 	 * 执行方法
 	 */
-	@Scheduled(cron = "0 0/1 * * * ?")
+	@Scheduled(cron = "0 0/5 * * * ?")
 	public void execute() {
 		logger.info("全部订单开始:" + DateUtil.lastXDaysSFM(0));
 		if (!getQzLock()) {
@@ -63,21 +63,41 @@ public class OrderRefreshTask {
 			return;
 		}
 		changeQzLock("1");
-		// 淘宝同步订单和计算积分
-		tbOrderGrapServiceImpl.grap();
-		tbCreateIntegralServiceImpl.calIntegral();
+		// 淘宝同步订单和计算积分'
+		try {
+			tbOrderGrapServiceImpl.grap();
+			tbCreateIntegralServiceImpl.calIntegral();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// 拼多多同步和计算积分
-		pddOrderGrapServiceImpl.grap();
-		pddOrderCreateIntegralServiceImpl.calIntegral();
+		try {
+			pddOrderGrapServiceImpl.grap();
+			pddOrderCreateIntegralServiceImpl.calIntegral();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// 京东同步和计算积分
-		jdOrderGrapServiceImpl.grap();
-		JdOrderCreateIntegralServiceImpl.calIntegral();
+		try {
+			jdOrderGrapServiceImpl.grap();
+			JdOrderCreateIntegralServiceImpl.calIntegral();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// 蘑菇街同步和计算积分
-		mgjOrderGrapServiceImpl.grap();
-		mgjOrderCreateIntegralServiceImpl.calIntegral();
+		try {
+			mgjOrderGrapServiceImpl.grap();
+			mgjOrderCreateIntegralServiceImpl.calIntegral();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// 苏宁同步和计算积分
-		snOrderGrapServiceImpl.grap();
-		snOrderCreateIntegralServiceImpl.calIntegral();
+		try {
+			snOrderGrapServiceImpl.grap();
+			snOrderCreateIntegralServiceImpl.calIntegral();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// 自营商城同步和计算积分
 		logger.info("全部订单结束:" + DateUtil.lastXDaysSFM(0));
 		changeQzLock("0");

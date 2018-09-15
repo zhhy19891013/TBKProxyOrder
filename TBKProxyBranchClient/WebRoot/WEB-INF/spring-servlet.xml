@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/aop 
+			http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+			http://www.springframework.org/schema/mvc 
+			http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-4.0.xsd
+			http://www.springframework.org/schema/websocket 
+			http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd"
+			>
+    <!--
+        使Spring支持自动检测组件，如注解的Controller
+    -->
+    <context:component-scan base-package="com.yj.controller"/>
+       <!--  <mvc:resources location="../images/" mapping="../images/**"/>        
+        <mvc:resources location="/js/" mapping="/js/**"/>        
+        <mvc:resources location="/css/" mapping="/css/**"/>   -->
+   <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+   <!--  <mvc:interceptors>
+   <bean class="com.yjsy.hospital.interceptor.MyInterceptor"></bean>
+   </mvc:interceptors>
+   -->
+   <!--  <mvc:default-servlet-handler/>-->
+     <!--  <bean
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/"
+          p:suffix=".html" />-->
+           
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 配置视图层 使用jstl标签 -->
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<!-- 定义视图前缀格式 -->
+		<property name="prefix" value="" />
+		<!-- 定义视图后缀格式 -->
+		<property name="suffix" value=".jsp" />
+		<!-- 解析器的优先级别 -->
+		<property name="order" value="1" />
+		<property name="contentType" value="text/html;charset=UTF-8"></property>
+	</bean>
+
+           
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:defaultEncoding="utf-8">
+	 <property name="maxUploadSize" value="1000000000" />
+	</bean>  														  
+    <!-- 对静态资源文件的访问  方案二 （二选一）-->  
+    <!--  <mvc:resources mapping="/images/**" location="/images/" cache-period="31556926"/>  
+    <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>  
+    <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>
+    -->  
+</beans>

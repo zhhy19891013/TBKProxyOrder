@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="ProxyShareRateMap" type="ProxyShareRate">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="shareRate" column="share_rate" />
+	</resultMap>
+
+
+	<update id="updateShareRate" parameterType="ProxyShareRate">
+		update
+		proxy_share_rate set share_rate =#{shareRate}
+	</update>
+
+	<select id="searchShareRate" resultMap="ProxyShareRateMap">
+		select * from
+		proxy_share_rate limit 1
+	</select>
+
+
+</mapper>

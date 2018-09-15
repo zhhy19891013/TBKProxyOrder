@@ -1,0 +1,34 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap type="SystemUpdateInfo" id="SystemUpdateInfoMap">
+		<result property="databaseID" column="database_id" />
+		<result property="version" column="last_version" />
+		<result property="cgi" column="cgi" />
+		<result property="fileName" column="fileName" />
+		<result property="createTime" column="create_time" />
+			<result property="note" column="note" />
+	</resultMap>
+	<!-- 新增版本信息 -->
+	<insert id="addSystemUpdateInfo" parameterType="SystemUpdateInfo">
+		insert into system_update_info(last_version,cgi,fileName,create_time,note)
+		values(#{version},#{cgi},#{fileName},#{createTime},#{note})
+	</insert>
+	<!-- 查询版本信息 -->
+	<select id="searchSystemUpdateInfoCount" resultType="java.lang.Long">
+		select count(*) from system_update_info
+	</select>
+	<select id="searchSystemUpdateInfo" resultMap="SystemUpdateInfoMap">
+		select * from system_update_info order by last_version desc
+	</select>
+	<!-- 删除版本信息 -->
+	<delete id="deleteSystemUpdateInfo" parameterType="SystemUpdateInfo">
+		delete from system_update_info where last_version =#{version}
+	</delete>
+	<!-- 根据版本号查询 -->
+	<select id="searchSystemUpdateInfoByVersion" resultMap="SystemUpdateInfoMap" parameterType="SystemUpdateInfo">
+		select * from system_update_info where last_version =#{version} order by last_version desc
+	</select>
+	
+	
+</mapper>

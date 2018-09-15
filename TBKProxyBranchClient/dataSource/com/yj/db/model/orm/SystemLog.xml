@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+   <resultMap type="SystemLog" id="SystemLogMap">
+     <result property="databaseID"  column="database_id"/>
+     <result property="dateTime"  column="date_time"/>
+     <result property="operator" column="operator"/>
+     <result property="model"  column="model"/>
+     <result property="type"  column="type"/>
+     <result property="ip"  column="ip"/>
+   </resultMap>
+   
+   <!--分页查询 -->
+   <select id="searchSystemLogCount" parameterType="SystemLog"  resultType="java.lang.Long">
+      select count(*) from system_log where 1=1 
+      <if test="operator!=null">
+      and operator =#{operator} 
+      </if>
+      <if test="model!=null">
+       and model=#{model}
+      </if>
+      <if test="type!=null">
+       and type=#{type}
+      </if>
+      <if test="createTime1!=null">
+			and  <![CDATA[date_time >=#{createTime1} ]]>
+	  </if>
+
+	  <if test="createTime2!=null">
+			and  <![CDATA[date_time <=#{createTime2} ]]>
+	  </if>
+   </select>
+   
+   <select id="searchSystemLog" parameterType="SystemLog"  resultMap="SystemLogMap">
+    select * from  system_log where 1=1
+     <if test="operator!=null">
+      and operator =#{operator} 
+      </if>
+      <if test="model!=null">
+       and model=#{model}
+      </if>
+      <if test="type!=null">
+       and type=#{type}
+      </if>
+      <if test="createTime1!=null">
+			and  <![CDATA[date_time >=#{createTime1} ]]>
+	  </if>
+
+	  <if test="createTime2!=null">
+			and  <![CDATA[date_time <=#{createTime2} ]]>
+	  </if>
+	  order by date_time desc
+	  limit #{beginPage},#{perPage} 
+   </select>
+   
+   <!-- 添加 -->
+   <insert id="addSystemLog"  parameterType="SystemLog" >
+    insert into system_log(date_time,operator,model,type,ip)
+    values(#{dateTime},#{operator},#{model},#{type},#{ip}) 
+   </insert>
+
+</mapper>

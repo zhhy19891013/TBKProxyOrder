@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="wxBotMap" type="wxBot">
+	
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="remart" column="remart" />
+	 
+	</resultMap>
+
+ 
+ 	<insert id="insertBot" parameterType="wxBot">
+ 		insert into wx_bot_list(remart ) values (#{remart}) 
+ 	</insert>
+ 	
+ 	<select id="searchLastBot" parameterType="wxBot" resultType="java.lang.Long">
+ 			 select max(database_id) from wx_bot_list 
+ 	</select>
+ 	
+ 	<select id="searchMinBot" parameterType="wxBot" resultType="java.lang.Long">
+ 			 select min(database_id) from wx_bot_list 
+ 	</select>
+ 	
+ 	<select id="searchAllBot" parameterType="wxBot" resultMap="wxBotMap">
+ 		select * from wx_bot_list 
+ 	</select>
+ 	
+ 	<select id="searchAllBotCount" parameterType="wxBot" resultType="java.lang.Long">
+ 		select count(*) from wx_bot_list 
+ 	</select>
+	<delete id="deleteBotById" parameterType="wxBot">
+	
+		delete from  wx_bot_list where  database_id = #{databaseID}
+	</delete>
+
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemAuthCodeMap" type="SystemAuthCode">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="authorizationCode" column="authorization_code" />
+		<result property="createTime" column="create_time" />
+		<result property="mac" column="mac" />
+		<result property="webSite" column="web_site" />
+		<result property="codeStatus" column="code_status" />
+	</resultMap>
+
+
+	<select id="searchMySystemAuthCode" parameterType="SystemAuthCode"
+		resultMap="SystemAuthCodeMap">
+		select * from system_auth_code
+		where mac =#{mac}
+	</select>
+
+	<insert id="addSystemAuthCode" parameterType="SystemAuthCode">
+		insert into
+		system_auth_code(authorization_code,create_time,mac,web_site,code_status)
+		valus(#{authorizationCode},#{createTime},#{mac},#{webSite},#{codeStatus})
+	</insert>
+
+</mapper>

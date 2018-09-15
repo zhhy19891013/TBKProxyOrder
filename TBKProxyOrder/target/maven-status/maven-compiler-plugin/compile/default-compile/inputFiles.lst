@@ -1,89 +1,88 @@
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\Test.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\config\OrderConfig.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\PaymentRecord.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeTimeHistoryDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\SuNingOrder.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\util\MgjApi.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\util\redis\RedisClient.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbkScOrderGetDetail.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderDataOrder.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\JdOrderCreateIntegralServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\CpsAccountJd.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\tb\SystemTbPidBean.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeOrderDetailsDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbkScOrderGetDto.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbOrderDto.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\SuNingOrderDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\task\OrderRefreshTask.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\PddOrderCreateIntegralService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\PddOrderGrapService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\SnOrderCreateIntegralService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\CpsAccountJdDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\MgjOrderCreateIntegralService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeTimeHistory.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeReturnIntegral.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\SnOrderGrapService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\SystemUserDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\base\BasicModel.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\SystemUserIntegral.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\base\BaseCpsOrderServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeProductsHistoryDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\MgjOrderGrapService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\TbSessionKey.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\util\JDapi.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbkScOrderGetResult.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\SystemCommonConfigDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\CpsAccountTb.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\TbOrderCreateIntegralService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\PaymentRecordDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\SnOrderGrapServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\CpsAccountTbDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\JDOrderDetails.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\SystemUser.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderData.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbkScOrderGetResponseDto.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeReturnIntegralDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\SystemUserIntegralDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\TbOrderGrapService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\order\Order.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\PddOrderCreateIntegralServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\CpsOrderConfig.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderDataOrderDetail.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\TbOrderCreateIntegralServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\CpsAccountSnDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\util\SnApi.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeProductsHistory.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\CloudOrderPddDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\MogujieOrderDetails.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\TbSessionKeyDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\JdOrderGrapService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\MgjOrderCreateIntegralServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\SystemCommonConfig.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\TbOrderGrapServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\common\constants\RedisConstans.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\util\TbApi.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderResult.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\CloudOrderPdd.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\CpsAccountMgj.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\base\BaseIntegralServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeOrderDetailsTemporaryDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\exception\CommonExceptionHandler.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\JDOrderDetailsDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\MogujieOrderDetailsDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\SystemOrderGrapStatusDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\StartUpApplication.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderBean.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\JdOrderGrapServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\PddOrderGrapServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeOrderDetailsTemporary.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\JdOrderCreateIntegralService.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\CpsOrderConfigDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\SnOrderCreateIntegralServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\service\impl\MgjOrderGrapServiceImpl.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeOrderDetails.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\mq\OrderProducer.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\util\JDFreeApi.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dto\tb\SNCloudOrderParam.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\SystemOrderGrapStatus.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\dao\CpsAccountMgjDao.java
-C:\Users\Administrator\Workspaces\MyEclipse 2017 CI\TBKProxyOrder\src\main\java\com\yj\domain\CpsAccountSn.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\CpsAccountSnDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\tb\SystemTbPidBean.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\CpsAccountTbDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\base\BaseIntegralServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\StartUpApplication.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\SuNingOrderDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderData.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\CpsOrderConfigDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\base\BaseCpsOrderServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\CpsAccountMgj.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\TbOrderGrapServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\PddOrderGrapService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\CloudOrderPddDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbkScOrderGetDetail.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeReturnIntegral.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeOrderDetails.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\CloudOrderPdd.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\task\OrderRefreshTask.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeOrderDetailsTemporary.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\SnOrderCreateIntegralServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\TbOrderGrapService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbOrderDto.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\TbOrderCreateIntegralServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\PddOrderCreateIntegralServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\SnOrderCreateIntegralService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\SuNingOrder.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeOrderDetailsTemporaryDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\SystemUser.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\TbSessionKey.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderDataOrderDetail.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\SystemUserIntegralDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\TbSessionKeyDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\CpsAccountJdDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\common\constants\RedisConstans.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\MgjOrderGrapServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\SystemCommonConfig.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\SnOrderGrapServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbkScOrderGetResponseDto.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\config\OrderConfig.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\CpsAccountTb.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\MogujieOrderDetails.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\PddOrderGrapServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\util\redis\RedisClient.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeTimeHistory.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\PaymentRecordDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbkScOrderGetDto.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\SnOrderGrapService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\PddOrderCreateIntegralService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\JDFreeProductsHistory.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\JdOrderGrapService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\MogujieOrderDetailsDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\util\MgjApi.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\JDOrderDetails.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\tb\SNCloudOrderParam.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\MgjOrderGrapService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderBean.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\base\BasicModel.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\SystemOrderGrapStatus.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderResult.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\SystemOrderGrapStatusDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\CpsOrderConfig.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeReturnIntegralDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\MgjOrderCreateIntegralService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\JDOrderDetailsDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\SystemCommonConfigDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\exception\CommonExceptionHandler.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\mq\OrderProducer.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\CpsAccountJd.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\JdOrderCreateIntegralService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\util\SnApi.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\JdOrderGrapServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeProductsHistoryDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\mgj\MgjOrderDataOrder.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\SystemUserDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeTimeHistoryDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\CpsAccountMgjDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dao\JDFreeOrderDetailsDao.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\SystemUserIntegral.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\util\TbApi.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\TbOrderCreateIntegralService.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\CpsAccountSn.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\domain\PaymentRecord.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\order\Order.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\dto\tb\TbkScOrderGetResult.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\util\JDFreeApi.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\MgjOrderCreateIntegralServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\service\impl\JdOrderCreateIntegralServiceImpl.java
+E:\git\TBKProxyOrder\src\main\java\com\yj\util\JDapi.java

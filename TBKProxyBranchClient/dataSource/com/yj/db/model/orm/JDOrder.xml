@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap type="JDOrder" id="JDOrderMap">
+		<result property="databaseID" column="database_id" />
+		<result property="commision" column="commision" />
+		<result property="costs" column="costs" />
+		<result property="orderfrom" column="orderfrom" />
+		<result property="orderid" column="orderid" />
+		<result property="ordertime" column="ordertime" />
+		<result property="storeostatus" column="storeostatus" />
+		<result property="subunionid" column="subunionid" />
+		<result property="username" column="username" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="totmoney" column="totmoney" />
+		
+	</resultMap>
+	<!-- 查询没有计算的京东订单 -->
+	<select id="searchAllNotCalJdOrder" resultMap="JDOrderMap"
+		parameterType="JDOrder">
+		select * from jd_order where subunionid is not null and username is
+		null and <![CDATA[ordertime >=#{ordertime} ]]>
+		and storeostatus !='X' 
+	</select>
+
+	<!-- 更新京东订单退款的用户积分 -->
+	<update id="updateSystemUserIntegralJdExpireIntegral"
+		flushCache="true">
+		update system_user_integral set
+		integral_status='订单退款',integral_note='订单退款',real_integral=0,integral=0
+		where order_number in
+		(select
+		orderid from jd_order
+		where storeostatus
+		='X');
+	</update>
+	<!-- 更新京东订单有效积分 -->
+	<update id="updateSystemUserIntegralJdRealIntegral" flushCache="true">
+		update system_user_integral set real_integral=integral
+		where order_number in
+		(select
+		orderid from jd_order
+		where storeostatus
+		='S');
+	</update>
+
+	<!-- 上传订单 -->
+	<insert id="addJDOrder" parameterType="java.util.List">
+		insert into jd_order
+		(commision,costs,orderfrom,orderid,ordertime,storeostatus,subunionid,username,create_time,update_time,totmoney)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+       <![CDATA[ 
+         (#{item.commision},#{item.costs},#{item.orderfrom},#{item.orderid},#{item.ordertime},#{item.storeostatus},#{item.subunionid},#{item.username},
+          #{item.createTime},#{item.updateTime},#{item.totmoney})
+         ]]>
+		</foreach>
+	</insert>
+
+	<!-- 根据订单号查询 -->
+	<select id="searchJDOrderByOrderid" parameterType="JDOrder"
+		resultMap="JDOrderMap">
+		select * from jd_order where orderid=#{orderid}
+	</select>
+
+	<!-- 根据订单号删除 -->
+	<delete id="deleteJDOrderByOrderid" parameterType="JDOrder">
+		delete from
+		jd_order where orderid=#{orderid}
+	</delete>
+
+	<delete id="deleteJdOrderByOrderIds" parameterType="java.util.List">
+		delete from jd_order where
+		orderid in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.orderid}
+		</foreach>
+	</delete>
+
+	<update id="updateJdOrderUserName" parameterType="java.util.List">
+		update jd_order p,system_user_integral pp set
+		p.username
+		=pp.integral_prividor where p.orderid =
+		pp.order_number
+		and
+		pp.order_number in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.orderid}
+		</foreach>
+	</update>
+
+</mapper>

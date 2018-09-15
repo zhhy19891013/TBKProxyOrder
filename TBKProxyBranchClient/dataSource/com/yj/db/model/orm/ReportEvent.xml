@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="ReportEventMap" type="ReportEvent">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="thedate" column="thedate" />
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+		<result property="reportId" column="reportId" />
+		<result property="mixPv" column="mixPv" />
+		<result property="mixCtr" column="mixCtr" />
+		<result property="mixEcpm" column="mixEcpm" />
+		<result property="alipayAmt" column="alipayAmt" />
+		<result property="mixRphc" column="mixRphc" />
+		<result property="clickConversion" column="clickConversion" />
+		<result property="clickWorth" column="clickWorth" />
+		<result property="pct" column="pct" />
+		<result property="tbName" column="tbName" />
+		<result property="tbkName" column="tbkName" />
+
+		<result property="eventId" column="eventId" />
+		<result property="pubId" column="pubId" />
+		<result property="eventTitle" column="eventTitle" />
+		<result property="adzoneId" column="adzoneId" />
+		<result property="adzoneTitle" column="adzoneTitle" />
+		<result property="settleNum" column="settleNum" />
+		<result property="settleRec" column="settleRec" />
+
+	</resultMap>
+
+	<resultMap id="ReportEventMap2" type="ReportEvent">
+		<result property="thedate" column="thedate" />
+	</resultMap>
+
+	<resultMap id="ReportEventMap3" type="ReportEvent">
+		<result property="eventTitle" column="eventTitle" />
+	</resultMap>
+
+	<resultMap id="ReportEventMap4" type="ReportEvent">
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+		<result property="mixPv" column="mixPv" />
+	</resultMap>
+
+	<resultMap id="ReportEventMap5" type="ReportEvent">
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+		<result property="thedate" column="thedate" />
+		<result property="mixPv" column="mixPv" />
+	</resultMap>
+
+	<select id="searchReportEventSumup" parameterType="ReportEvent"
+		resultMap="ReportEventMap4">
+		select sum(alipayNum) as alipayNum,sum(mixClick) as
+		mixClick,sum(alipayRec) as alipayRec,sum(rec) as rec ,sum(mixPv) as
+		mixPv
+		from report_event
+		where tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="eventTitle!=null">
+			and eventTitle=#{eventTitle}
+		</if>
+	</select>
+
+	<select id="searchReportEventSumupGroupbyThedate" parameterType="ReportEvent"
+		resultMap="ReportEventMap5">
+		select sum(alipayNum) as alipayNum,sum(mixClick) as
+		mixClick,sum(alipayRec) as alipayRec,sum(rec) as
+		rec,thedate,sum(mixPv) as mixPv from
+		report_event
+		where tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="eventTitle!=null">
+			and eventTitle=#{eventTitle}
+		</if>
+		group by thedate
+		order by thedate
+	</select>
+
+
+
+	<select id="searchReportEventCount" parameterType="ReportEvent"
+		resultType="java.lang.Long">
+		select count(*) from report_event
+		where 1=1 and tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="eventTitle!=null">
+			and eventTitle=#{eventTitle}
+		</if>
+	</select>
+
+	<select id="searchReportEvent" parameterType="ReportEvent"
+		resultMap="ReportEventMap">
+		select * from report_event
+		where 1=1 and tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="eventTitle!=null">
+			and eventTitle=#{eventTitle}
+		</if>
+		order by thedate limit #{beginPage},#{perPage}
+	</select>
+
+
+	<select id="searchAllEventType" parameterType="ReportEvent"
+		resultMap="ReportEventMap3">
+		select eventTitle from report_event where
+		tbName=#{tbName}
+	</select>
+
+
+
+	<select id="searchMaxReportEventTime" parameterType="java.lang.String"
+		resultMap="ReportEventMap2">
+		select
+		max(thedate) as thedate
+		from report_event
+		where
+		tbName=#{tbName}
+	</select>
+
+
+	<delete id="deleteOldReportEvent" parameterType="java.util.List">
+		delete from report_event where
+		reportId in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.reportId}
+		</foreach>
+	</delete>
+
+
+	<insert id="addReportEvent" parameterType="java.util.List">
+		insert into report_event
+		(thedate,alipayNum,mixClick,alipayRec ,rec
+		,reportId
+		,mixPv,mixCtr,mixEcpm,
+		alipayAmt,mixRphc,clickConversion,clickWorth,pct,tbName,tbkName,
+		eventId,pubId,eventTitle,adzoneId,adzoneTitle,settleNum,settleRec)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+        <![CDATA[  
+        (#{item.thedate},#{item.alipayNum},#{item.mixClick},#{item.alipayRec},#{item.rec},#{item.reportId},#{item.mixPv},
+          #{item.mixCtr},#{item.mixEcpm},#{item.alipayAmt},#{item.mixRphc},#{item.clickConversion},
+          #{item.clickWorth},#{item.pct},#{item.tbName},#{item.tbkName},#{item.eventId},#{item.pubId},#{item.eventTitle},#{item.adzoneId},#{item.adzoneTitle},
+          #{item.settleNum},#{item.settleRec})
+        ]]>
+		</foreach>
+	</insert>
+
+
+</mapper>

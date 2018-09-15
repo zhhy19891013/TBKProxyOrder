@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="BackReportMap" type="BackReport">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="timeRange" column="time_range" />
+		<result property="name" column="name" />
+		<result property="totalProxy" column="total_proxy" />
+		<result property="totalOrderNum" column="total_order_num" />
+		<result property="totalSaleNum" column="total_sale_num" />
+		<result property="totalIn" column="total_in" />
+		<result property="totalOut" column="total_out" />
+		<result property="realIncome" column="real_in_come" />
+		<result property="perDayIn" column="per_day_in" />
+		<result property="perPrice" column="per_price" />
+		<result property="proxyPrice" column="proxy_price" />
+		<result property="proxyIn" column="proxy_in" />
+		<result property="commisonRate" column="commison_rate" />
+		<result property="monthIn" column="month_in" />
+		<result property="monthRealIn" column="month_real_in" />
+		<result property="perProxy" column="per_proxy" />
+		<result property="totalJS" column="total_js" />
+	</resultMap>
+
+	<resultMap id="BackReportMap2" type="BackReport">
+		<result property="totalOrderNum" column="total_order_num" />
+		<result property="totalSaleNum" column="total_sale_num" />
+		<result property="totalIn" column="total_in" />
+	</resultMap>
+
+	<!-- 总代理数目 -->
+	<select id="searchCountProxyNum" resultType="java.lang.Long">
+		select count(*)
+		from
+		system_user where group_name !='admin'
+	</select>
+	<!-- 订单信息 -->
+	<select id="searchCountPaymentRecord" parameterType="PayementRecord"
+		resultMap="BackReportMap2">
+		select count(*) as total_order_num,sum(total_alipay_fee_string) as
+		total_sale_num,sum(fee_string) as total_in from payment_record
+		where
+		payStatus !='13'
+		<if test="createTime1!=null">
+			and  <![CDATA[create_time >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_time <#{createTime2} ]]>
+		</if>
+	</select>
+
+	<select id="searchSumEarningPaymentRecord" parameterType="PayementRecord"
+		resultType="java.lang.Double">
+		select sum(fee_string) as total_in from payment_record
+		where
+		earning_time is not null and payStatus !='13'
+		<if test="createTime1!=null">
+			and  <![CDATA[earning_time >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[earning_time <#{createTime2} ]]>
+		</if>
+	</select>
+
+	<!--积分信息 -->
+	<select id="searchCountSystemUserIntegral" parameterType="PayementRecord"
+		resultType="java.lang.Double">
+		select sum(integral) from
+		system_user_integral
+		where  <![CDATA[create_date >=#{createTime1} ]]>
+		and <![CDATA[create_date <=#{createTime2} ]]>
+		and order_number !='exchange' and
+		integral_status='订单有效'
+	</select>
+
+	<select id="searchAllBackReportCount" resultType="java.lang.Long">
+		select count(*)
+		from back_report
+	</select>
+
+	<select id="searchAllBackReport" parameterType="BackReport"
+		resultMap="BackReportMap">
+		select * from back_report
+		<if test="sidx!=null">
+			order by ${sidx}
+			<if test="sord!=null">
+				${sord}
+			</if>
+		</if>
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+	<delete id="deleteAllBackReport" parameterType="java.util.List">
+		delete from back_report where name in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.name}
+		</foreach>
+	</delete>
+
+	<insert id="addAllBackReport" parameterType="java.util.List">
+		insert into back_report
+		(time_range,name,total_proxy,total_order_num
+		,total_sale_num ,total_in
+		,total_out,real_in_come,per_day_in,
+		per_price,proxy_price,proxy_in,commison_rate,month_in,month_real_in,per_proxy,total_js)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		<![CDATA[  
+             (#{item.timeRange},#{item.name},#{item.totalProxy},#{item.totalOrderNum},#{item.totalSaleNum},#{item.totalIn},#{item.totalOut},
+          #{item.realIncome},#{item.perDayIn},#{item.perPrice},#{item.proxyPrice},#{item.proxyIn},
+          #{item.commisonRate},#{item.monthIn},#{item.monthRealIn},#{item.perProxy},#{item.totalJS})
+       	 ]]>
+		</foreach>
+	</insert>
+
+</mapper>

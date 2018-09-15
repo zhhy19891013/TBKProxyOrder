@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemConfig2Map" type="SystemConfig2">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="configName" column="config_name" />
+		<result property="configValue" column="config_value" />
+	</resultMap>
+
+	<update id="updateSystemConfig2" parameterType="SystemConfig2">
+		update
+		system_config2 set config_value =#{configValue} where config_name
+		=#{configName}
+	</update>
+
+	<select id="searchSystemConfig2ByName" parameterType="java.lang.String"
+		resultMap="SystemConfig2Map">
+		select * from system_config2 where config_name
+		=#{configName}
+	</select>
+
+
+</mapper>

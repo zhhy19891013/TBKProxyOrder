@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap type="SystemUserIntegralCodeMerge" id="SystemUserIntegralCodeMergeMap">
+		<result property="databaseID"  column="database_id" />
+		<result property="newExchangeCode"  column="new_exchange_code" />
+		<result property="mergeTime"  column="merge_time" />
+		<result property="userName"  column="user_name" />
+		<result property="codeStatus"  column="code_status" />
+		<result property="exchangeNum"  column="exchange_num" />
+		<result property="realName"  column="real_name" />
+		<result property="zfb"  column="zfb" />
+	</resultMap>
+	
+	
+	<!-- 合并兑换码 -->
+	<insert id="addNewCodeMerge" parameterType="SystemUserIntegralCodeMerge">
+		insert into system_user_integral_code_merge(new_exchange_code,merge_time,user_name,code_status,exchange_num,real_name,zfb)
+		values (#{newExchangeCode},#{mergeTime},#{userName},#{codeStatus},#{exchangeNum},#{realName},#{zfb})
+	</insert>
+	<update id="updateOldCode" parameterType="SystemUserIntegralCode" >
+		update system_user_integral_code set merge_status = '已合并',merge_id = #{mergeId} where exchange_code =#{exchangeCode}
+	</update>
+	<select id="searchCodeMerge" parameterType="SystemUserIntegralCodeMerge" resultMap="SystemUserIntegralCodeMergeMap">
+		select * from system_user_integral_code_merge where 1=1
+		<if test="newExchangeCode!=null">
+		 and new_exchange_code = #{newExchangeCode}
+		</if>
+	</select>
+	<select id="searchOldCode" parameterType="java.util.List" resultMap="SystemUserIntegralCodeMap">
+		select * from system_user_integral_code where exchange_code in
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item.exchangeCode}
+		</foreach>
+	</select>
+	
+	
+	<!-- 新兑换码页面'查询' -->
+	<select id="searchNewMergeCodeCount" parameterType="SystemUserIntegralCodeMerge" resultType="java.lang.Long">
+		select count(*) from system_user_integral_code_merge where 1=1 
+		<if test="newExchangeCode!=null">
+			and new_exchange_code = #{newExchangeCode} 
+		</if>
+		<if test="userName!=null">
+			and user_name = #{userName}
+		</if>
+		<if test="codeStatus!=null">
+			and code_status = #{codeStatus}
+		</if>
+	</select>
+	<select id="searchNewMergeCode" parameterType="SystemUserIntegralCodeMerge" resultMap="SystemUserIntegralCodeMergeMap">
+		select * from system_user_integral_code_merge where 1=1 
+		<if test="newExchangeCode!=null">
+			and new_exchange_code = #{newExchangeCode} 
+		</if>
+		<if test="userName!=null">
+			and user_name = #{userName}
+		</if>
+		<if test="codeStatus!=null">
+			and code_status = #{codeStatus}
+		</if>
+		order by merge_time desc
+		limit #{beginPage},#{perPage}
+	</select>
+	
+	<!-- 新兑换码页面'使用' -->
+	<update id="updateNewCodeStatus" parameterType="SystemUserIntegralCodeMerge">
+		update system_user_integral_code_merge set code_status = '已使用' where new_exchange_code =#{newExchangeCode}
+	</update>
+	<update id="updateOldCodeStatus" parameterType="SystemUserIntegralCode">
+		update system_user_integral_code set code_status = '已使用' where merge_id = #{mergeId}
+	</update>
+	
+	<!-- 新兑换码页面'删除' -->
+	<delete id="deleteNewMergeCode" parameterType="java.util.List">
+		delete from system_user_integral_code_merge where new_exchange_code in 
+		<foreach collection="list" item="item" open="(" separator="," close=")">
+			#{item.newExchangeCode}
+		</foreach>
+	</delete>
+	
+	
+</mapper>
+
+

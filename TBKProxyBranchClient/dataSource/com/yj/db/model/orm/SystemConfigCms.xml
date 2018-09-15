@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemConfigCmsMap" type="SystemConfigCms">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="configValue" column="config_value" />
+	</resultMap>
+
+	<update id="updateSystemConfigCms" parameterType="SystemConfigCms">
+		update
+		system_config_cms set
+		config_value =#{configValue}
+	</update>
+
+	<select id="searchSystemConfigCms" resultMap="SystemConfigCmsMap">
+		select * from
+		system_config_cms
+		limit 1
+	</select>
+
+	<insert id="addSystemConfigCms" parameterType="SystemConfigCms">
+		insert into
+		system_config_cms config_value=#{configValue}
+	</insert>
+
+
+</mapper>

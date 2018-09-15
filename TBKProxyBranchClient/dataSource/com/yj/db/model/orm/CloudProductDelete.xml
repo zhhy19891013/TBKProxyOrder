@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="CloudProductDeleteMap" type="CloudProductDelete">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="itemId" column="item_id" />
+	</resultMap>
+
+	<select id="searchCloudProductDeleteCount" resultType="java.lang.Long">
+		select
+		count(*) from cloud_product_delete where 1=1
+	</select>
+
+	<select id="searchCloudProductDelete" resultMap="CloudProductDeleteMap"
+		parameterType="CloudProductDelete">
+		select *
+		from
+		cloud_product_delete where 1=1
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+
+	<delete id="deleteCloudProductDelete" parameterType="java.util.List">
+		delete from cloud_product_delete where item_id in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.itemId}
+		</foreach>
+	</delete>
+
+	<insert id="addCloudProductDelete" parameterType="java.util.List">
+		insert into cloud_product_delete
+		(item_id)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+         	 (#{item.itemId})
+     		   ]]>
+		</foreach>
+	</insert>
+
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<select id="searchSystemUserByOpenId" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user where open_id =#{openId}
+	</select>
+
+	<update id="updateSystemUserOpenId" parameterType="SystemUser">
+		update
+		system_user set
+		open_id=#{openId}
+		where
+		user_name
+		=#{userName}
+	</update>
+
+	<select id="searchSystemUserByOpenIdAndPassword" parameterType="SystemUser"
+		resultMap="SystemUserMap">
+		select * from system_user where open_id =#{openId} and
+		password =#{password}
+	</select>
+	
+		<update id="updateSystemUserPwdByOpenId" parameterType="SystemUser">
+		update
+		system_user set
+		password=#{password}
+		where
+		open_id
+		=#{openId}
+	</update>
+	
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="TKLAppMap" type="TKLApp">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="appkey" column="appkey" />
+		<result property="appsecret" column="appsecret" />
+	</resultMap>
+
+	<select id="searchTklApp" resultMap="TKLAppMap">
+		select * from tkl_app
+	</select>
+
+	<select id="searchTklAppCount" resultType="java.lang.Long">
+		select count(*) from tkl_app
+	</select>
+
+	<update id="updateTklApp" parameterType="TKLApp">
+		update tkl_app set
+		appkey=#{appkey},appsecret=#{appsecret} where DATABASE_ID
+		=#{databaseID}
+	</update>
+
+	<delete id="deleteTklApp" parameterType="TKLApp">
+		delete from tkl_app
+		where DATABASE_ID
+		=#{databaseID}
+	</delete>
+
+	<insert id="addTklApp" parameterType="TKLApp">
+		insert into
+		tkl_app(appkey,appsecret) values(#{appkey},#{appsecret})
+	</insert>
+
+
+</mapper>

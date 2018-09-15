@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemPlatFormMap" type="SystemPlatForm">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="userName" column="user_name" />
+		<result property="website" column="web_site" />
+		<result property="openId" column="open_id" />
+	</resultMap>
+
+	<insert id="addSystemPlatForm" parameterType="java.util.List">
+		insert into system_platform
+		(user_name,web_site,open_id)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+         	 (#{item.userName},#{item.website},#{item.openId})
+     		   ]]>
+		</foreach>
+	</insert>
+
+	<update id="updateSystemPlatForm" parameterType="SystemPlatForm">
+		update
+		system_platform set open_id =#{openId}  where web_site=#{website} and
+		user_name =#{userName}
+	</update>
+
+	<select id="searchSystemPlatFormByOpenId" parameterType="SystemPlatForm"
+		resultMap="SystemPlatFormMap">
+		select * from system_platform where open_id =#{openId}
+	</select>
+
+	<select id="searchSystemPlatFormByUserName" parameterType="SystemPlatForm"
+		resultMap="SystemPlatFormMap">
+		select * from system_platform where user_name =#{userName}
+	</select>
+
+	<select id="searchSystemPlatFormByUserNameAndWebsite"
+		parameterType="SystemPlatForm" resultMap="SystemPlatFormMap">
+		select * from system_platform
+		where user_name =#{userName} and
+		web_site=#{website}
+	</select>
+
+
+	<select id="searchSystemPlatFormByDatabaseId" parameterType="SystemPlatForm" resultMap="SystemPlatFormMap">
+			select * from system_platform where DATABASE_ID =#{databaseID} limit 1
+	</select>
+
+</mapper>

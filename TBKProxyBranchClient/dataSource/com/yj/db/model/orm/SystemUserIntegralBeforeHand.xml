@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserIntegralMap" type="SystemUserIntegral">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="order_number" column="order_number" />
+		<result property="integral" column="integral" />
+		<result property="create_time" column="create_time" />
+		<result property="user_name" column="user_name" />
+		<result property="realIntegral" column="real_integral" />
+		<result property="orderDate" column="order_date" />
+		<result property="orderStatus" column="integral_status" />
+		<result property="integralOrign" column="integral_orign" />
+		<result property="integralPrividor" column="integral_prividor" />
+	</resultMap>
+
+	<resultMap id="SystemUserIntegralMap2" type="SystemUserIntegral">
+		<result property="integral" column="integral" />
+		<result property="realIntegral" column="real_integral" />
+	</resultMap>
+
+	<resultMap id="SystemUserIntegralMap3" type="SystemUserIntegral">
+		<result property="integral" column="integral" />
+	</resultMap>
+
+
+	<select id="searchMySystemUserIntegralExchange" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap3">
+		select sum(integral) as integral from system_user_integral
+		where
+		user_name
+		=#{user_name}
+		and order_number='exchange'
+	</select>
+
+
+	<select id="searchSystemUserIntegralByOrderNumber" resultMap="SystemUserIntegralMap"
+		parameterType="SystemUserIntegral">
+		select * from system_user_integral where order_number
+		=#{order_number}
+	</select>
+
+
+	<insert id="addSystemUserIntegral" parameterType="SystemUserIntegral">
+		insert into
+		system_user_integral(order_number,integral,create_time,user_name,real_integral,order_date,integral_status,integral_orign,integral_prividor)
+		values(#{order_number},#{integral},#{create_time},#{user_name},#{realIntegral},#{orderDate},#{orderStatus},#{integralOrign},#{integralPrividor})
+	</insert>
+
+	<select id="searchMySystemUserIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap2">
+		select sum(integral) as integral,sum(real_integral) as
+		real_integral from system_user_integral where
+		user_name
+		=#{user_name}
+		and integral_status='订单有效'
+	</select>
+
+	<select id="searchSystemUserIntegralCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long">
+		select count(*) from system_user_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+	</select>
+
+	<select id="searchSystemUserIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap">
+		select * from system_user_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<select id="searchExchangeSystemUserIntegralCount"
+		parameterType="SystemUserIntegral" resultType="java.lang.Long">
+		select count(*) from system_user_integral where
+		order_number='exchange'
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+	</select>
+
+	<select id="searchExchangeSystemUserIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap">
+		select * from system_user_integral where order_number='exchange'
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		limit #{beginPage},#{perPage}
+	</select>
+
+
+
+	<update id="updateSystemUserIntegralExpireIntegral">
+		update system_user_integral set
+		integral_status='订单退款' where order_number in
+		(select
+		taobao_trade_parent_id from payment_record where payStatus
+		!=3);
+	</update>
+
+	<update id="updateSystemUserIntegralRealIntegral">
+		update system_user_integral set
+		real_integral=integral where
+		DATEDIFF(now(),order_date)>15
+	</update>
+
+</mapper>

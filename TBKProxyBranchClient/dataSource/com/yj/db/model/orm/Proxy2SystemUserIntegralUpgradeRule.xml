@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="Proxy2SystemUserIntegralUpgradeRuleMap" type="Proxy2SystemUserIntegralUpgradeRule">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="integralRate" column="integral_rate" />
+		<result property="proxyNum" column="proxy_num" />
+		<result property="orderTotal" column="order_total" />
+		<result property="perDay" column="per_day" />
+		<result property="ruleName" column="rule_name" />
+		<result property="ruleOr" column="rule_or" />
+	</resultMap>
+
+	<insert id="addProxy2IntegralUpgradeRule" parameterType="Proxy2SystemUserIntegralUpgradeRule">
+		insert
+		into
+		proxy2_system_user_integral_upgrade_rule(integral_rate,proxy_num,order_total,per_day,rule_name,rule_or)
+		values(#{integralRate},#{proxyNum},#{orderTotal},#{perDay},#{ruleName},#{ruleOr})
+	</insert>
+
+	<select id="searchAllProxy2IntegralUpgraderRule" resultMap="Proxy2SystemUserIntegralUpgradeRuleMap">
+		select * from proxy2_system_user_integral_upgrade_rule order by
+		integral_rate desc
+	</select>
+
+	<select id="searchProxy2IntegralUpgradeRuleCount" resultType="java.lang.Long">
+		select count(*)
+		from proxy2_system_user_integral_upgrade_rule
+	</select>
+
+	<select id="searchProxy2IntegralUpgradeRule" resultMap="Proxy2SystemUserIntegralUpgradeRuleMap"
+		parameterType="Proxy2SystemUserIntegralUpgradeRule">
+		select *
+		from proxy2_system_user_integral_upgrade_rule
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<delete id="deleteProxy2IntegralUpgradeRule" parameterType="java.util.List">
+		delete from proxy2_system_user_integral_upgrade_rule
+		where DATABASE_ID
+		in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.databaseID}
+		</foreach>
+	</delete>
+
+	<update id="updateProxy2IntegralUpgradRule" parameterType="Proxy2SystemUserIntegralUpgradeRule">
+		update proxy2_system_user_integral_upgrade_rule set
+		integral_rate=#{integralRate},proxy_num=#{proxyNum},order_total=#{orderTotal},per_day=#{perDay},rule_or=#{ruleOr}
+		where DATABASE_ID =#{databaseID}
+	</update>
+
+
+</mapper>

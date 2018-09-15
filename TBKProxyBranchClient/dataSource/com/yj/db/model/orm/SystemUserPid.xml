@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserPidMap" type="SystemUserPid">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="userName" column="user_name" />
+		<result property="pid" column="pid" />
+	</resultMap>
+
+	<select id="searchSystemUserPidNotUse" resultMap="SystemUserPidMap">
+		select * from
+		system_user_pid limit 1
+	</select>
+
+	<delete id="deleteSystemUserPidByPid" parameterType="SystemUserPid">
+		delete from
+		system_user_pid where pid =#{pid}
+	</delete>
+
+	<insert id="addSystemUserPid" parameterType="SystemUserPid">
+		insert into
+		system_user_pid(user_name,pid) values(#{userName},#{pid})
+	</insert>
+
+	<select id="searchSystemUserPidCount" resultType="java.lang.Long">
+		select count(*)
+		from system_user_pid
+	</select>
+
+	<select id="searchSytsemUserPid" resultMap="SystemUserPidMap">
+		select * from system_user_pid
+		limit #{beginPage},#{perPage}
+	</select>
+
+</mapper>

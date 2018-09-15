@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	<!-- default-autowire="byName" default-lazy-init="false"此两个值可以不配置 -->
+	<!-- ①配置调度的任务对应bean的id和自定义class -->
+
+
+
+	<bean id="branchOrderRefresh" class="com.yj.service.quartz.BranchOrderRefreshJob">
+
+	</bean>
+
+	<bean id="branchOrderRefreshDetail"
+		class="frameworkx.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="branchOrderRefresh" />
+		<property name="targetMethod" value="execute" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+
+
+	<bean id="branchOrderTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="branchOrderRefreshDetail" />
+		<property name="cronExpression">
+			<!-- 0 0/30 * * * ? 0 0 */1 * * ? -->
+			<value>0 0/20 * * * ?</value>
+		</property>
+	</bean>
+
+
+
+	<!-- ④Quartz的调度工厂，调度工厂只能有一个，多个调度任务在list中添加 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- 所有的调度列表 -->
+				<ref bean="branchOrderTrigger" />
+			</list>
+		</property>
+		<property name="jobFactory">
+			<bean class="com.yj.util.MyJobFactory" />
+		</property>
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.jobStore.txIsolationLevelReadCommitted">true</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

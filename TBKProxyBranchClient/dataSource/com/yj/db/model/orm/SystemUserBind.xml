@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserBindMap" type="SystemUserBind">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="tbkName" column="tbk_name" />
+		<result property="tbName" column="tb_name" />
+		<result property="pid" column="pid" />
+	</resultMap>
+
+
+	<insert id="addSystemUserBind" parameterType="SystemUserBind">
+		insert into
+		system_user_bind(tbk_name,tb_name,pid)
+		values(#{tbkName},#{tbName},#{pid})
+	</insert>
+
+	<delete id="deleteSystemUserBind" parameterType="SystemUserBind">
+		delete from
+		system_user_bind  
+	</delete>
+
+	<select id="searchAllSystemUserBind" resultMap="SystemUserBindMap"
+		parameterType="SystemUserBind">
+		select * from
+		system_user_bind
+	</select>
+
+
+	<select id="searchSystemUserBind" resultMap="SystemUserBindMap"
+		parameterType="SystemUserBind">
+		select * from
+		system_user_bind where tbk_name=#{tbkName}
+	</select>
+
+	<select id="searchSystemUserBindByTbName" resultMap="SystemUserBindMap"
+		parameterType="SystemUserBind">
+		select * from
+		system_user_bind where tb_name=#{tbName}
+	</select>
+
+	<select id="searchSystemUserBindCount" resultType="java.lang.Long"
+		parameterType="SystemUserBind">
+		select
+		count(DATABASE_ID) from system_user_bind where
+		tbk_name=#{tbkName}
+	</select>
+
+
+
+</mapper>

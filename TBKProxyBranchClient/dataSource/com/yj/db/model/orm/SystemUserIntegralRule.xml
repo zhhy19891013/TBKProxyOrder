@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserIntegralRuleMap" type="SystemUserIntegralRule">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="rule_name" column="rule_name" />
+		<result property="rule_content" column="rule_content" />
+		<result property="ruleUse" column="rule_use" />
+	</resultMap>
+
+	<insert id="addSystemUserIntegralRule" parameterType="SystemUserIntegralRule">
+		insert into
+		system_user_integral_rule(rule_name,rule_content,rule_use)
+		values(#{rule_name},#{rule_content},#{ruleUse})
+	</insert>
+
+	<select id="searchUseIntegralRuleUse" resultMap="SystemUserIntegralRuleMap">
+		select * from
+		system_user_integral_rule where rule_use='使用'
+		limit 1
+	</select>
+
+	<delete id="deleteSystemUseIntegral" parameterType="java.util.List">
+		delete from system_user_integral_rule where rule_name in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.rule_name}
+		</foreach>
+	</delete>
+
+
+	<select id="searchSystemUserIntegralRuleCount" parameterType="SystemUserIntegralRule"
+		resultType="java.lang.Long">
+		select count(*) from system_user_integral_rule where 1=1
+		<if test="rule_name!=null">
+			and rule_name
+			LIKE '%${rule_name}%'
+		</if>
+
+	</select>
+
+	<select id="searchSystemUserIntegralRule" parameterType="SystemUserIntegralRule"
+		resultMap="SystemUserIntegralRuleMap">
+		select * from system_user_integral_rule where 1=1
+		<if test="rule_name!=null">
+			and rule_name
+			LIKE '%${rule_name}%'
+		</if>
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<update id="updateSystemUseIntegralNotUse">
+		update system_user_integral_rule set rule_use='未使用'
+	</update>
+
+	<update id="updateSystemUseIntegralUse">
+		update system_user_integral_rule set rule_use='使用'
+		where rule_name =#{rule_name}
+	</update>
+
+</mapper>

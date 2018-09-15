@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap type="QAHelper" id="QAHelperMap">
+		<result property="databaseId" column="database_id"/>
+		<result property="question" column="question"/>
+		<result property="answer" column="answer"/>
+	</resultMap>
+	
+	<select id="searchAllQAHelper" parameterType="QAHelper" resultMap="QAHelperMap">
+		select * from qa_helper where 1=1
+		<if test="question!=null">
+		and question =#{question}
+		</if>
+	
+	</select>
+	<insert id="addNewQA" parameterType="QAHelper">
+		insert into qa_helper(question,answer) values(#{question},#{answer})
+	</insert>
+	<update id="updateQA" parameterType="QAHelper">
+		update qa_helper set question = #{question},answer=#{answer} where database_id = #{databaseId}
+	</update>
+	
+	<select id="searchQaHelperCount" resultType="java.lang.Long">
+		select count(*) from qa_helper 
+	</select>
+	<select id="searchQaHelper" resultMap="QAHelperMap">
+		select * from qa_helper 
+	</select>
+	<delete id="deleteQAByQ" parameterType="java.util.List">
+		  delete from
+	           	qa_helper where question in
+		        <foreach collection="list" item="item" open="(" separator=","
+			    close=")">
+		      	#{item.question}
+		        </foreach>
+	</delete>
+	
+</mapper>

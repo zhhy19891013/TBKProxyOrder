@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="CloudProductTjMap" type="CloudProductTj">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="productType" column="product_type" />
+		<result property="cat" column="cat" />
+		<result property="isMall" column="isMall" />
+		<result property="itemTitle" column="item_title" />
+		<result property="shortTitle" column="short_title" />
+		<result property="score" column="score" />
+		<result property="discountPrice" column="discountPrice" />
+		<result property="soldQuantity" column="soldQuantity" />
+		<result property="realCommissionRate" column="real_commission_rate" />
+		<result property="content" column="content" />
+		<result property="updateTime" column="update_time" />
+		<result property="indexFlag" column="index_flag" />
+		<result property="auditFlag" column="audit_flag" />
+		<result property="pictUrl" column="pictUrl" />
+		<result property="pictUrl2" column="pictUrl2" />
+		<result property="pictUrl3" column="pictUrl3" />
+		<result property="pictUrl4" column="pictUrl4" />
+		<result property="pictUrl5" column="pictUrl5" />
+		<result property="itemId" column="item_id" />
+		<result property="eventId" column="event_id" />
+		<result property="wxContent" column="wx_content" />
+		<result property="tkl" column="tkl" />
+		<result property="yhqTkl" column="yhq_tkl" />
+		<result property="newUrl" column="new_url" />
+
+		<result property="realCommission" column="realCommission" />
+		<result property="quanPrice" column="quan_price" />
+		<result property="rest" column="rest" />
+		<result property="used" column="used" />
+		<result property="expired" column="expired" />
+		<result property="require" column="require" />
+		<result property="refundReason" column="refundReason" />
+		<result property="commentCount" column="commentCount" />
+		<result property="avgRefundRate" column="avgRefundRate" />
+		<result property="sellerScore" column="sellerScore" />
+		<result property="ind" column="ind" />
+		<result property="merchandisAvgScore" column="MerchandisAvgScore" />
+		<result property="merchandisGap" column="MerchandisGap" />
+		<result property="serviceAvgScore" column="ServiceAvgScore" />
+		<result property="serviceGap" column="ServiceGap" />
+		<result property="consignmentAvgScore" column="ConsignmentAvgScore" />
+		<result property="consignmentGap" column="ConsignmentGap" />
+		<result property="campId" column="campId" />
+		<result property="keeperId" column="keeperId" />
+		<result property="pcCoupon" column="pcCoupon" />
+		<result property="mobileCoupon" column="mobileCoupon" />
+		<result property="require" column="c_require" />
+		<result property="orig" column="orig" />
+		
+			<result property="tbName" column="tb_name" />
+	</resultMap>
+
+
+	<select id="searchAllNotIndexCloudProductTj" resultMap="CloudProductTjMap"
+		parameterType="CloudProductTj">
+		select * from
+		cloud_product_tj
+		where index_flag='new'
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+
+	<delete id="deleteAllExpireCloudProductTj" parameterType="CloudProductTj">
+		delete from cloud_product_tj
+		where <![CDATA[update_time <#{updateTime} ]]>
+	</delete>
+
+	<delete id="deleteAllQuanExpireCloudProductTj" parameterType="CloudProductTj">
+		delete from cloud_product_tj
+		where <![CDATA[expired <#{expired} ]]>
+	</delete>
+
+
+	<delete id="deleteColudProductTjByItemIds" parameterType="java.util.List">
+		delete from cloud_product_tj where item_id in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.itemId}
+		</foreach>
+	</delete>
+
+	<update id="updateCloudProductTjToOld" parameterType="java.util.List">
+		update cloud_product_tj set index_flag='old' where
+		DATABASE_ID in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.databaseID}
+		</foreach>
+	</update>
+
+	<insert id="addColudProductTjBatch" parameterType="java.util.List">
+		insert into cloud_product_tj
+		(product_type,cat,isMall,item_title,score,discountPrice,soldQuantity,real_commission_rate,content,pictUrl,update_time,index_flag,
+		audit_flag,item_id,event_id,
+		quan_price,rest,used,expired,refundReason,commentCount,avgRefundRate,sellerScore,ind,MerchandisAvgScore,MerchandisGap,ServiceAvgScore,ServiceGap,ConsignmentAvgScore,
+		ConsignmentGap,campId,keeperId,realCommission,pcCoupon,mobileCoupon,c_require,short_title,orig,pictUrl2,pictUrl3,pictUrl4,pictUrl5,wx_content,tkl,new_url,tb_name)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+         	 (#{item.productType},#{item.cat},#{item.isMall},#{item.itemTitle},#{item.score},#{item.discountPrice},
+         	 	#{item.soldQuantity},#{item.realCommissionRate},#{item.content},#{item.pictUrl},#{item.updateTime},#{item.indexFlag},
+         	 	#{item.auditFlag},#{item.itemId},#{item.eventId},
+         	 	#{item.quanPrice},#{item.rest},#{item.used},#{item.expired},#{item.refundReason},
+         	 	#{item.commentCount},#{item.avgRefundRate},#{item.sellerScore},#{item.ind},
+         	 	#{item.merchandisAvgScore},#{item.merchandisGap},#{item.serviceAvgScore},
+         	 	#{item.serviceGap},#{item.consignmentAvgScore},#{item.consignmentGap},
+         	 	#{item.campId},#{item.keeperId},#{item.realCommission},#{item.pcCoupon},#{item.mobileCoupon},#{item.require},#{item.shortTitle},#{item.orig},#{item.pictUrl2},#{item.pictUrl3},#{item.pictUrl4},#{item.pictUrl5},#{item.wxContent},#{item.tkl},#{item.newUrl},#{item.tbName})
+     		   ]]>
+		</foreach>
+	</insert>
+
+</mapper>

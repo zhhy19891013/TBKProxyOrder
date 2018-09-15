@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap type="JDCloudProduct" id="JDCloudProductMap">
+		<result property="databaseID" column="database_id" />
+		<result property="skuid" column="skuid" />
+		<result property="cateId" column="cate_id" />
+		<result property="commisionrate" column="commisionrate" />
+		<result property="commision" column="commision" />
+		<result property="couponmoney" column="couponmoney" />
+		<result property="endtime" column="endtime" />
+		<result property="couponlink" column="couponlink" />
+		<result property="freepost" column="freepost" />
+		<result property="oprice" column="oprice" />
+		<result property="pictrue" column="pictrue" />
+		<result property="price" column="price" />
+		<result property="link" column="link" />
+		<result property="prodname" column="prodname" />
+		<result property="starttime" column="starttime" />
+		<result property="indexFlag" column="index_flag" />
+		<result property="updateTime" column="update_time" />
+		<result property="cat" column="cat" />
+		<result property="pfullname" column="pfullname" />
+		<result property="ordernum" column="ordernum" />
+		<result property="guidearticle" column="guidearticle" />
+		<result property="sortsid" column="sortsid" />
+		<result property="sendFlag" column="send_flag" />
+		<result property="jdself" column="jdself" />
+		<result property="promotionpic" column="promotionpic" />
+
+	</resultMap>
+
+
+	<!-- 根据id查询商品 -->
+
+	<!-- 上传京东产品 -->
+	<insert id="uploadJDProductBatch" parameterType="java.util.List">
+		insert into jd_cloud_product
+		(sortsid,guidearticle,ordernum,pfullname,skuid,cate_id,commisionrate,commision,couponmoney,endtime,couponlink,freepost,oprice,pictrue,price,link,prodname,starttime,index_flag,update_time,cat,jdself,promotionpic)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+           <![CDATA[ 
+           (#{item.sortsid},#{item.guidearticle},#{item.ordernum},#{item.pfullname},#{item.skuid},#{item.cateId},#{item.commisionrate},#{item.commision},#{item.couponmoney} ,#{item.endtime},#{item.couponlink},#{item.freepost},#{item.oprice},#{item.pictrue},#{item.price},
+           #{item.link},#{item.prodname},#{item.starttime},#{item.indexFlag},#{item.updateTime},#{item.cat},#{item.jdself},#{item.promotionpic})
+             ]]>
+		</foreach>
+	</insert>
+
+	<!-- 根据id查询商品 -->
+	<select id="searchJDProductBySkuid" parameterType="JDCloudProduct"
+		resultMap="JDCloudProductMap">
+		select * from jd_cloud_product where skuid=#{skuid} limit 1
+	</select>
+
+
+	<delete id="deleteJDProductBySkuids" parameterType="java.util.List">
+		delete from jd_cloud_product where skuid in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.skuid}
+		</foreach>
+	</delete>
+	
+	<delete id="deleteJDProductByItemIds" parameterType="java.util.List">
+		delete from jd_cloud_product where skuid in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.itemId}
+		</foreach>
+	</delete>
+
+
+	<select id="searchNeedSendJdCloudProduct" parameterType="JDCloudProduct"
+		resultMap="JDCloudProductMap">
+		select * from jd_cloud_product where sortsid>=#{sortsid}
+		<if test="databaseID!=null">
+			and 	 <![CDATA[DATABASE_ID >#{databaseID} ]]>
+		</if>
+		limit 1
+	</select>
+
+	
+
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="clientSleepConfigMap" type="clientSleepConfig">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="sleepSwitch" column="sleep_switch" />
+		<result property="sleepTime" column="sleep_time" />
+		<result property="wakeUpTime" column="wake_up_time" />
+	</resultMap>
+	
+	
+	<select id="searchSleepConfig" resultMap="clientSleepConfigMap" >
+		select * from client_sleep_config limit 1
+	</select>
+	<update id="updateSleepTime" parameterType="clientSleepConfig">
+		update client_sleep_config set wake_up_time = #{wakeUpTime}
+	</update>
+
+
+
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemCommonConfigMap" type="SystemCommonConfig">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="configName" column="config_name" />
+		<result property="configValue" column="config_value" />
+		<result property="configNote" column="config_note" />
+	</resultMap>
+
+	<update id="updateSystemCommonConfig" parameterType="SystemCommonConfig">
+		update
+		system_common_conifg set config_value =#{configValue}
+		where config_name
+		=#{configName}
+	</update>
+
+	<select id="searchSystemCommonConfigByName" parameterType="SystemCommonConfig"
+		resultMap="SystemCommonConfigMap">
+		select * from system_common_conifg where config_name
+		=#{configName} limit 1
+	</select>
+
+	<select id="searchAllSystemCommonConfig" resultMap="SystemCommonConfigMap">
+		select * from
+		system_common_conifg
+	</select>
+	<select id="searchConfigByConfigName" parameterType="SystemCommonConfig" resultMap="SystemCommonConfigMap">
+		select * from system_common_conifg where 1=1
+		<if test="configName!=null">
+			and config_name =#{configName}
+			
+		</if>
+		limit 1
+	</select>
+
+</mapper>

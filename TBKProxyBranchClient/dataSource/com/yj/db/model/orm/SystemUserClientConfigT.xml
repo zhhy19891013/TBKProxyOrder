@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserClientConfigTMap" type="SystemUserClientConfigT">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="wName" column="w_name" />
+		<result property="pid" column="pid" />
+		<result property="userName" column="user_name" />
+		<result property="proxyName" column="proxy_name" />
+
+	</resultMap>
+
+	<insert id="addSystemUserClientConfigT" parameterType="SystemUserClientConfigT">
+		insert
+		into
+		system_user_client_config_t(name,value,user_name)
+		values(#{name},#{value},#{userName})
+	</insert>
+
+
+	<select id="searchSystemUserClientConfigTByUserName"
+		parameterType="SystemUserClientConfigT" resultMap="SystemUserClientConfigTMap">
+		select * from
+		system_user_client_config_t where user_name
+		=#{userName}
+	</select>
+
+
+	<delete id="deleteSystemUserClinetTConfig" parameterType="SystemUserClientConfigT">
+		delete
+		from system_user_client_config_t where user_name=#{userName} and
+		name=#{name}
+	</delete>
+
+
+</mapper>

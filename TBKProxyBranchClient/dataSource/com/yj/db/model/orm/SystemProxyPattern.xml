@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemProxyPatternMap" type="SystemProxyPattern">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="patternName" column="pattern_name" />
+	</resultMap>
+
+
+	<update id="updateCurrentProxyPattern" parameterType="SystemProxyPattern">
+		update
+		system_proxy_pattern set pattern_name =#{patternName}
+	</update>
+
+	<select id="searchCurrentPattern" resultMap="SystemProxyPatternMap">
+		select * from
+		system_proxy_pattern limit 1
+	</select>
+
+
+</mapper>

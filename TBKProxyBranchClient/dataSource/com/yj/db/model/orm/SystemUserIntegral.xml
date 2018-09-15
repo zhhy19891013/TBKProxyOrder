@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserIntegralMap" type="SystemUserIntegral">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="order_number" column="order_number" />
+		<result property="integral" column="integral" />
+		<result property="create_time" column="create_time" />
+		<result property="user_name" column="user_name" />
+		<result property="realIntegral" column="real_integral" />
+		<result property="orderDate" column="order_date" />
+		<result property="orderStatus" column="integral_status" />
+		<result property="integralOrign" column="integral_orign" />
+		<result property="integralPrividor" column="integral_prividor" />
+		<result property="integralNote" column="integral_note" />
+		<result property="create_date" column="create_date" />
+		<result property="totalAlipayFeeString" column="total_alipay_fee_string" />
+		<result property="integralRate" column="integral_rate" />
+		<result property="groupName" column="group_name" />
+		<result property="realPay" column="real_pay" />
+		<result property="auctionId" column="auction_id" />
+		<result property="auctionTitle" column="auction_title" />
+		<result property="auctionUrl" column="auction_url" />
+		<result property="tbName" column="tb_name" />
+		<result property="aliIntegral" column="ali_integral" />
+	</resultMap>
+	<resultMap id="SystemUserIntegralMap2" type="SystemUserIntegral">
+		<result property="integral" column="integral" />
+		<result property="realIntegral" column="real_integral" />
+	</resultMap>
+	<resultMap id="SystemUserIntegralMap3" type="SystemUserIntegral">
+		<result property="integral" column="integral" />
+	</resultMap>
+
+	<resultMap id="SystemUserIntegralMapInfo" type="SystemUserIntegral">
+		<result property="integral" column="integral" />
+		<result property="realIntegral" column="real_integral" />
+		<result property="user_name" column="user_name" />
+	</resultMap>
+
+	<resultMap id="SystemUserIntegralMapInfo2" type="SystemUserIntegral">
+		<result property="integral" column="integral" />
+		<result property="realIntegral" column="real_integral" />
+		<result property="user_name" column="user_name" />
+		<result property="aliIntegral" column="ali_integral" />
+	</resultMap>
+
+	<resultMap id="SystemUserIntegralMapFee" type="SystemUserIntegral">
+		<result property="totalAlipayFeeString" column="total_alipay_fee_string" />
+	</resultMap>
+
+	<resultMap id="ProxyReportMap" type="ProxyReport">
+		<result property="tbName" column="tb_name" />
+		<result property="userName" column="user_name" />
+		<result property="orderCount" column="orderCount" />
+		<result property="todayIntegral" column="todayIntegral" />
+		<result property="thisMonth" column="thisMonth" />
+		<result property="lastMonth" column="lastMonth" />
+	</resultMap>
+
+	<select id="searchIntegralByNote" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap" useCache="true">
+		select * from system_user_integral where integral_note
+		=#{integralNote} limit 1
+	</select>
+
+	<update id="updateUserName" parameterType="systemUser">
+		update
+		system_user_integral set user_name=#{userName} where user_name =
+		#{fatherName}
+	</update>
+
+	<update id="updateAliIntegral" flushCache="true">
+		 <![CDATA[  
+		 update system_user_integral
+		 set ali_integral = real_integral 
+		 where integral_status = '订单有效' 
+		 and ali_integral is NULL
+		 and order_date < DATE_ADD(curdate(),interval -day(curdate())+1 day)  
+		 ]]>
+	</update>
+
+
+
+	<select id="searchProxyReportCount" resultType="java.lang.Long" >
+		select count(*)
+		from system_user ;
+	</select>
+
+	<select id="searchProxyNum" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long">
+		select count(*) from (
+		select a.* from system_user_integral
+		a ,(select * from system_user where father_name = #{user_name}) b
+		where a.user_name = b.user_name
+		group by a.user_name
+		) c
+
+	</select>
+
+
+	<select id="searchProxyReport" parameterType="ProxyReport"
+		resultMap="ProxyReportMap" useCache="true">
+		select
+		m.user_name,m.orderCount,m.todayIntegral,n.thisMonth,j.lastMonth from
+		(select a.user_name,SUM(b.real_integral) todayIntegral
+		,count(b.user_name) orderCount
+		from system_user a
+		left join
+		system_user_integral b
+		on a.user_name = b.user_name and
+		create_date=DATE_FORMAT(NOW(),'%Y-%m-%d') and  <![CDATA[ b.tb_name <> #{tbName} ]]>
+		group by user_name )
+		m ,
+		(select
+		a.user_name,SUM(b.real_integral)
+		thisMonth
+		from system_user a
+		left join
+		system_user_integral b
+		on
+		a.user_name = b.user_name and    <![CDATA[ b.tb_name <> #{tbName} ]]>
+		and create_date
+		between
+		DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d') ,interval
+		-day(DATE_FORMAT(NOW(),'%Y-%m-%d') )+1 day) and
+		DATE_FORMAT(NOW(),'%Y-%m-%d') group by
+		user_name ) n ,
+		(select
+		a.user_name,SUM(b.real_integral) lastMonth
+		from
+		system_user a
+		left join
+		system_user_integral b
+		on a.user_name =
+		b.user_name and   <![CDATA[ b.tb_name <> #{tbName} ]]>
+		and create_date BETWEEN
+		date_sub(date_sub(date_format(DATE_FORMAT(NOW(),'%Y-%m-%d')
+		,'%y-%m-%d'),interval extract( day
+		from DATE_FORMAT(NOW(),'%Y-%m-%d')
+		)-1 day),interval 1 month) and
+		date_sub(date_sub(date_format(DATE_FORMAT(NOW(),'%Y-%m-%d')
+		,'%y-%m-%d'),interval extract(day
+		from DATE_FORMAT(NOW(),'%Y-%m-%d') )
+		day),interval 0 month)
+		group by user_name ) j
+		where m.user_name =
+		n.user_name and n.user_name = j.user_name
+		ORDER BY ${sidx} ${sord}
+		limit ${beginPage},${perPage}
+
+	</select>
+	<select id="searchProxyReportXB" parameterType="ProxyReport"
+		resultMap="ProxyReportMap" useCache="true">
+		select
+		m.user_name,m.orderCount,m.todayIntegral,n.thisMonth,j.lastMonth from
+		(select a.user_name,SUM(b.real_integral) todayIntegral
+		,count(b.user_name) orderCount
+		from system_user a
+		left join
+		system_user_integral b
+		on a.user_name = b.user_name and
+		create_date=DATE_FORMAT(NOW(),'%Y-%m-%d') and  <![CDATA[ b.tb_name = #{tbName} ]]>
+		group by user_name )
+		m ,
+		(select
+		a.user_name,SUM(b.real_integral)
+		thisMonth
+		from system_user a
+		left join
+		system_user_integral b
+		on
+		a.user_name = b.user_name and     <![CDATA[ b.tb_name= #{tbName} ]]>
+		and create_date
+		between
+		DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d') ,interval
+		-day(DATE_FORMAT(NOW(),'%Y-%m-%d') )+1 day) and
+		DATE_FORMAT(NOW(),'%Y-%m-%d') group by
+		user_name ) n ,
+		(select
+		a.user_name,SUM(b.real_integral) lastMonth
+		from
+		system_user a
+		left join
+		system_user_integral b
+		on a.user_name =
+		b.user_name and   <![CDATA[ b.tb_name = #{tbName} ]]>
+		and create_date BETWEEN
+		date_sub(date_sub(date_format(DATE_FORMAT(NOW(),'%Y-%m-%d')
+		,'%y-%m-%d'),interval extract( day
+		from DATE_FORMAT(NOW(),'%Y-%m-%d')
+		)-1 day),interval 1 month) and
+		date_sub(date_sub(date_format(DATE_FORMAT(NOW(),'%Y-%m-%d')
+		,'%y-%m-%d'),interval extract(day
+		from DATE_FORMAT(NOW(),'%Y-%m-%d') )
+		day),interval 0 month)
+		group by user_name ) j
+		where m.user_name =
+		n.user_name and n.user_name = j.user_name
+		ORDER BY ${sidx} ${sord}
+		limit ${beginPage},${perPage}
+
+	</select>
+
+
+
+	<select id="searchNotCommitIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap" >
+		select * from system_user_integral
+		where integral_status
+		!='订单提交'
+		and order_number =#{order_number}
+	</select>
+
+	<select id="searchSumFee" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMapFee" useCache="true">
+		select sum(total_alipay_fee_string) as total_alipay_fee_string from
+		system_user_integral
+		where user_name =#{user_name} and <![CDATA[create_date >=#{createTime1} ]]>
+		and <![CDATA[create_date <=#{createTime2} ]]>
+		and order_number !='exchange' and real_integral is not null and
+		integral_status='订单有效'
+	</select>
+
+
+	<!-- 一级代理查询所属二级代理积分 -->
+	<select id="searchMyProxy2IntegralCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long" useCache="true">
+		select count(*) from
+		system_user_integral where user_name
+		!=integral_prividor and
+		user_name
+		=#{user_name}
+	</select>
+	<!-- 一级代理查询所属二级代理积分 -->
+	<select id="searchMyProxy2Integral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap" useCache="true">
+		select * from
+		system_user_integral where user_name
+		!=integral_prividor and
+		user_name
+		=#{user_name}
+		ORDER BY
+		integral_prividor,create_time desc
+		limit
+		#{beginPage},#{perPage}
+	</select>
+	
+	<!-- 代理查询积分排名 -->
+	<select id="searchAllSystemUserIntegralGroup2" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMapInfo" useCache="true">
+		select sum(integral) as integral,sum(real_integral) as
+		real_integral,user_name
+		from system_user_integral where
+		1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		and integral_status='订单有效'
+		group by user_name
+		<if test="sidx!=null">
+			order by ${sidx}
+			<if test="sord!=null">
+				${sord}
+			</if>
+		</if>
+	</select>
+
+	<!-- 代理查询积分排名 -->
+	<select id="searchAllSystemUserIntegralGroupByProxy"
+		parameterType="java.util.List" resultMap="SystemUserIntegralMapInfo"
+		useCache="true">
+		select sum(integral) as integral,sum(real_integral) as
+		real_integral,user_name
+		from system_user_integral where
+		1=1 and
+		user_name in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.userName}
+		</foreach>
+		and integral_status='订单有效'
+		group by user_name
+		order by sum(integral)
+		desc
+	</select>
+
+	
+	<!-- 代理查询我的兑换记录 -->
+	<select id="searchMySystemUserIntegralExchange" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap3" useCache="true">
+		select sum(integral) as
+		integral from system_user_integral
+		where
+		user_name
+		=#{user_name}
+		and
+		order_number='exchange'
+	</select>
+	<!-- 订单号查询积分记录 -->
+	<select id="searchSystemUserIntegralByOrderNumber" resultMap="SystemUserIntegralMap"
+		parameterType="SystemUserIntegral" useCache="true">
+		select * from
+		system_user_integral where order_number
+		=#{order_number}
+	</select>
+
+
+	<!-- 代理查询自己的阿里模式积分汇总 -->
+	<select id="searchMyUserAliIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap2" useCache="true">
+		select sum(integral) as
+		integral,sum(ali_integral) as
+		real_integral from system_user_integral
+		where
+		user_name
+		=#{user_name}
+		and integral_status='订单有效'
+	</select>
+
+
+	<!-- 代理查询自己的积分汇总 -->
+	<select id="searchMySystemUserIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap2" useCache="true">
+		select sum(integral) as
+		integral,sum(real_integral) as
+		real_integral from system_user_integral
+		where
+		user_name
+		=#{user_name}
+		and integral_status='订单有效'
+	</select>
+	<!-- 代理查询自己的订单数目 -->
+	<select id="searchSystemUserIntegralCountByProxy" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long" useCache="true">
+		select count(*) from system_user_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		and integral_status='订单有效'
+	</select>
+
+	<!-- 管理员查询用户积分 -->
+	<select id="searchSystemUserIntegralCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long" useCache="true">
+		select count(*) from system_user_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="orderStatus!=null">
+			and integral_status =#{orderStatus}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[order_date>=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+
+	</select>
+	<!-- 管理员查询用户积分 -->
+	<select id="searchSystemUserIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap" useCache="true">
+		select * from system_user_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="order_number!=null">
+			and order_number =#{order_number}
+		</if>
+		<if test="orderStatus!=null">
+			and integral_status =#{orderStatus}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+		<if test="auctionId!=null">
+			and auction_id=#{auctionId}
+		</if>
+		<if test="auctionTitle!=null">
+			and	<![CDATA[locate (#{auctionTitle} , auction_title) > 0 ]]>
+		</if>
+		order by order_date desc
+		limit #{beginPage},#{perPage}
+	</select>
+	<!-- 导出用户积分 -->
+	<select id="searchSystemUserIntegral2" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap" useCache="true">
+		select * from system_user_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		order by user_name,integral_status desc
+	</select>
+	<!-- 查询兑换积分记录 -->
+	<select id="searchExchangeSystemUserIntegralCount"
+		parameterType="SystemUserIntegral" resultType="java.lang.Long" useCache="true">
+		select count(*) from system_user_integral where
+		order_number='exchange'
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+	</select>
+	<!-- 查询兑换积分记录 -->
+	<select id="searchExchangeSystemUserIntegral" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMap" useCache="true">
+		select * from system_user_integral where order_number='exchange'
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		limit #{beginPage},#{perPage}
+	</select>
+	<!-- 查询所有提交的订单 -->
+	<select id="searchAllCommitSystemUserIntegral" resultMap="SystemUserIntegralMap">
+		select
+		* from system_user_integral where integral_status='订单提交'
+	</select>
+	<!-- 新增记录 -->
+	<insert id="addSystemUserIntegral" parameterType="SystemUserIntegral"  flushCache="true">
+		insert into
+		system_user_integral(order_number,integral,create_time,user_name,real_integral,order_date,integral_status,integral_orign,integral_prividor,integral_note,create_date,integral_rate,total_alipay_fee_string,group_name,auction_id,auction_title,auction_url,ali_integral)
+		values(#{order_number},#{integral},#{create_time},#{user_name},#{realIntegral},#{orderDate},#{orderStatus},#{integralOrign},#{integralPrividor},#{integralNote},#{create_date},#{integralRate},#{totalAlipayFeeString},#{groupName},#{auctionId},#{auctionTitle},#{auctionUrl},#{realIntegral})
+	</insert>
+	<insert id="addSystemUserIntegralBatch" parameterType="java.util.List"
+		flushCache="true">
+		insert
+		into
+		system_user_integral(order_number,integral,create_time,user_name,real_integral,order_date,integral_status,integral_orign,integral_prividor,integral_note,create_date,integral_rate,total_alipay_fee_string,group_name,auction_id,auction_title,auction_url,real_pay,tb_name)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+		        <![CDATA[  
+         (#{item.order_number},#{item.integral},#{item.create_time},#{item.user_name},#{item.realIntegral},#{item.orderDate},#{item.orderStatus},#{item.integralOrign},#{item.integralPrividor},#{item.integralNote},#{item.create_date},#{item.integralRate},#{item.totalAlipayFeeString},#{item.groupName},#{item.auctionId},#{item.auctionTitle},#{item.auctionUrl},#{item.realPay},#{item.tbName} )
+     		   ]]>
+		</foreach>
+	</insert>
+
+	<!-- 删除用户积分 -->
+	<delete id="deleteSystemUserIntegral" parameterType="SystemUserIntegral"
+		flushCache="true">
+		delete from
+		system_user_integral where order_number
+		=#{order_number}
+	</delete>
+
+	<delete id="deleteSystemUserIntegralByIds" parameterType="java.util.List"
+		flushCache="true">
+		delete from system_user_integral where DATABASE_ID in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.databaseID}
+		</foreach>
+	</delete>
+
+	<delete id="deleteBackOrder" parameterType="SystemUserIntegral"
+		flushCache="true">
+		delete from system_user_integral where integral_status='订单退款' and
+		<![CDATA[order_date <=#{orderDate} ]]>
+	</delete>
+
+	<delete id="deleteSystemUserIntegralByOrderNumbers"
+		parameterType="java.util.List" flushCache="true">
+		delete from system_user_integral where order_number in
+		<!--conjunction="OR"也可以表示为conjunction="," -->
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.order_number}
+		</foreach>
+		and integral_status='订单提交'
+	</delete>
+
+
+	<!-- 超过15天预估积分转换为有效积分 京东的积分不按这个规则 -->
+	<update id="updateSystemUserIntegralRealIntegral" flushCache="true">
+		update system_user_integral set real_integral=integral where
+		DATEDIFF(now(),order_date)> (select attribute_value from
+		system_attribute where attribute_key ='cal_day') and tb_name !='京东订单'
+	</update>
+	<!-- 延迟入账 -->
+
+	<!-- 退款的转换为订单退款 -->
+	<update id="updateSystemUserIntegralExpireIntegral" flushCache="true">
+		update system_user_integral set
+		integral_status='订单退款',integral_note='订单退款',real_integral=0,integral=0
+		where order_number in
+		(select
+		taobao_trade_parent_id from payment_record
+		where payStatus
+		=13);
+	</update>
+	<!-- 订单提交了超过7天没查到任何订单 -->
+	<update id="updateSystemUserExpire" flushCache="true">
+		update
+		system_user_integral set
+		integral_status='无效订单',integral_note='无效订单，订单不存在' where
+		DATEDIFF(now(),order_date)>7 and integral_status='订单提交'
+	</update>
+	<!-- 佣金率小于积分比或者小于20%那么就是无效订单 -->
+	<update id="updateSystemUserIntegarlNote" parameterType="SystemUserIntegral">
+		update
+		system_user_integral set
+		integral_status='无效订单',integral_note='无效订单,订单异常'
+		where order_number
+		=#{order_number}
+	</update>
+	<!-- 管理员更新下积分数量 -->
+	<update id="updateSystemUserIntegarlNum" parameterType="SystemUserIntegral">
+		update
+		system_user_integral set integral
+		=#{integral},real_integral=#{realIntegral}
+		where DATABASE_ID
+		=#{databaseID}
+	</update>
+	<!-- 管理员退回兑换 -->
+	<update id="updateSystemUserIntegralStatus" parameterType="SystemUserIntegral"
+		flushCache="true">
+		update system_user_integral set
+		integral_status='订单退回',integral_note
+		=#{integralNote} where DATABASE_ID
+		= #{databaseID}
+	</update>
+
+	<!-- 查代理积分汇总进行排名 -->
+	<select id="searchSystemUserIntegralForRank" resultMap="SystemUserIntegralMapInfo"
+		useCache="true">
+		select user_name,sum(integral) as integral,sum(real_integral)
+		as real_integral
+		from system_user_integral
+		WHERE integral_status='订单有效'
+		and group_name != 'qudao'
+		GROUP BY user_name
+		ORDER BY real_integral DESC
+		limit 10
+
+	</select>
+	<select id="searchSystemUserIntegralForRankCount" resultType="java.lang.Long"
+		useCache="true">
+		SELECT count(DISTINCT user_name)
+		from system_user_integral
+		where integral_status ='订单有效' and group_name != 'qudao'
+	</select>
+
+	<select id="searchChildrenIntegralRank" parameterType="SystemUserIntegral"
+		resultMap="SystemUserIntegralMapInfo" useCache="true">
+		select
+		user_name,sum(integral) as integral,sum(real_integral) as
+		real_integral
+		from system_user_integral
+		WHERE user_name IN (SELECT
+		user_name from system_user where father_name =
+		#{user_name})
+		AND
+		integral_status='订单有效' and group_name != 'qudao'
+		GROUP BY user_name
+		ORDER BY real_integral DESC
+		limit 10
+
+	</select>
+
+	<select id="searchChildrenIntegralRankCount" parameterType="SystemUserIntegral"
+		resultType="java.lang.Long" useCache="true">
+		SELECT count(DISTINCT user_name)
+		from system_user_integral
+		where user_name IN (SELECT user_name from
+		system_user where father_name =
+		#{user_name})
+		AND integral_status
+		='订单有效' and group_name != 'qudao'
+	</select>
+	
+
+	<select id="searchAllOrdersNum" parameterType="SystemUserIntegral" resultType="java.lang.Long" useCache="true">
+		select count(order_number) from system_user_integral where 1=1
+		<if test="user_name!=null">
+			and user_name =#{user_name}
+		</if>
+		<if test="createTime1!=null">
+			and <![CDATA[order_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and <![CDATA[order_date <=#{createTime2} ]]>
+		</if>
+	</select>
+
+</mapper>

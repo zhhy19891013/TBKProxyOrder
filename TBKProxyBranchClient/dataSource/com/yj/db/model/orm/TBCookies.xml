@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="TBCookiesMap" type="TBCookies">
+		<result property="databaseID" column="DATABASE_ID" />
+
+		<result property="tbkName" column="tbk_name" />
+		<result property="cookies" column="cookies" />
+		<result property="loginTime" column="login_time" />
+		<result property="tbName" column="tb_name" />
+	</resultMap>
+
+	<insert id="addCookies" parameterType="TBCookies">
+		insert into
+		tb_cookies(tbk_name,cookies,login_time,tb_name)
+		values(#{tbkName},#{cookies},#{loginTime},#{tbName})
+	</insert>
+
+	<delete id="deleteCookiesByName" parameterType="TBCookies">
+		delete from
+		tb_cookies where tb_name =#{tbName}
+	</delete>
+
+	<select id="searchCookiesByName" parameterType="TBCookies"
+		resultMap="TBCookiesMap">
+		select * from tb_cookies where tb_name =#{tbName} limit 1
+	</select>
+	<select id="searchCookiesByTBkName" parameterType="TBCookies"
+		resultMap="TBCookiesMap">
+		select * from tb_cookies where tbk_name =#{tbkName}
+	</select>
+
+	<select id="searchAllCookies" resultMap="TBCookiesMap">
+		select * from tb_cookies
+	</select>
+
+	<select id="searchAllCookies2" resultMap="TBCookiesMap">
+		select * from
+		tb_cookies order by login_time desc
+	</select>
+
+
+	<select id="searchCookiesByTBkNameAndTBName" parameterType="TBCookies"
+		resultMap="TBCookiesMap">
+		select * from tb_cookies where tbk_name =#{tbkName} and
+		tb_name =#{tbName}
+	</select>
+
+
+
+</mapper>

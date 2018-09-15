@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="CmsProductFilterMap" type="CmsProductFilter">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="projectName" column="project_name" />
+		<result property="conditions" column="conditions" />
+		<result property="tbkName" column="tbk_Name" />
+	</resultMap>
+
+
+	<select id="searchCmsProductFilterByTbkName" resultMap="CmsProductFilterMap">
+		select *
+		from cms_product_filter limit 1
+	</select>
+
+	<select id="searchCmsProductFilterByFilterName" parameterType="CmsProductFilter"
+		resultMap="CmsProductFilterMap">
+		select * from cms_product_filter
+		where project_name
+		=#{projectName}
+	</select>
+
+	<insert id="addCmsProductFilter" parameterType="CmsProductFilter">
+		insert into
+		cms_product_filter(project_name,conditions,tbk_Name)
+		values(#{projectName},#{conditions},#{tbkName})
+	</insert>
+
+	<update id="updateCmsProductFilter" parameterType="CmsProductFilter">
+		update cms_product_filter set conditions=#{conditions}
+	</update>
+
+	<delete id="deleteCmsProductFileter" parameterType="CmsProductFilter">
+		delete from
+		cms_product_filter where tbk_name=#{tbkName} and project_name
+		=#{projectName}
+	</delete>
+
+
+	<select id="searchCmsProductFilterCount" parameterType="CmsProductFilter"
+		resultType="java.lang.Long">
+		select
+		count(DATABASE_ID) from cms_product_filter where 1=1
+		<if test="projectName!=null">
+			and project_name
+			=#{projectName}
+		</if>
+		and tbk_name =#{tbkName}
+	</select>
+
+
+	<select id="searchCmsProductFilter" resultMap="CmsProductFilterMap"
+		parameterType="CmsProductFilter" fetchSize="-2147483648">
+		select * from cms_product_filter where 1=1
+		<if test="projectName!=null">
+			and project_name
+			=#{projectName}
+		</if>
+		and tbk_name =#{tbkName}
+		limit #{beginPage},#{perPage}
+	</select>
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="Proxy2SystemUserIntegralUpgradeLogMap" type="Proxy2SystemUserIntegralUpgradeLog">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="userName" column="user_name" />
+		<result property="info" column="info" />
+		<result property="beginTime" column="begin_time" />
+		<result property="endTime" column="end_time" />
+		<result property="orderTotal" column="order_total" />
+		<result property="integralRate" column="integral_rate" />
+		<result property="createTime" column="create_time" />
+				<result property="proxyNum" column="proxyNum" />
+	</resultMap>
+
+	<insert id="addPrxy2SystemUserIntegralUpgradeLog" parameterType="Proxy2SystemUserIntegralUpgradeLog">
+		insert
+		into
+		proxy2_system_user_intgral_upgrade_log(user_name,info,begin_time,end_time,order_total,integral_rate,create_time,proxyNum)
+		values(#{userName},#{info},#{beginTime},#{endTime},#{orderTotal},#{integralRate},#{createTime},#{proxyNum})
+	</insert>
+
+
+	<select id="searchProxy2IntegralUpgradeLogCount" resultType="java.lang.Long">
+		select count(*)
+		from proxy2_system_user_intgral_upgrade_log
+	</select>
+
+	<select id="searchProxy2IntegralUpgradeLog" resultMap="Proxy2SystemUserIntegralUpgradeLogMap"
+		parameterType="Proxy2SystemUserIntegralUpgradeLog">
+		select *
+		from proxy2_system_user_intgral_upgrade_log
+		limit #{beginPage},#{perPage}
+	</select>
+
+
+
+</mapper>

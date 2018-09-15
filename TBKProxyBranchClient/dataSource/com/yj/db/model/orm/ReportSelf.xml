@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="ReportSelfMap" type="ReportSelf">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="thedate" column="thedate" />
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+		<result property="reportId" column="reportId" />
+		<result property="mixPv" column="mixPv" />
+		<result property="mixCtr" column="mixCtr" />
+		<result property="mixEcpm" column="mixEcpm" />
+		<result property="alipayAmt" column="alipayAmt" />
+		<result property="mixRphc" column="mixRphc" />
+		<result property="clickConversion" column="clickConversion" />
+		<result property="clickWorth" column="clickWorth" />
+		<result property="pct" column="pct" />
+		<result property="tbName" column="tbName" />
+		<result property="tbkName" column="tbkName" />
+
+		<result property="productType" column="productType" />
+		<result property="adzoneId" column="adzoneId" />
+		<result property="adzoneName" column="adzoneName" />
+		<result property="productName" column="productName" />
+	</resultMap>
+
+	<resultMap id="ReportSelfMap2" type="ReportSelf">
+		<result property="thedate" column="thedate" />
+	</resultMap>
+
+	<resultMap id="ReportSelfMap3" type="ReportSelf">
+		<result property="adzoneName" column="adzoneName" />
+	</resultMap>
+
+	<resultMap id="ReportSelfMap4" type="ReportSelf">
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+	</resultMap>
+
+	<resultMap id="ReportSelfMap5" type="ReportSelf">
+		<result property="alipayNum" column="alipayNum" />
+		<result property="mixClick" column="mixClick" />
+		<result property="alipayRec" column="alipayRec" />
+		<result property="rec" column="rec" />
+		<result property="thedate" column="thedate" />
+	</resultMap>
+
+	<select id="searchReportSelfSumup" parameterType="ReportSelf"
+		resultMap="ReportSelfMap4">
+		select sum(alipayNum) as alipayNum,sum(mixClick) as
+		mixClick,sum(alipayRec) as alipayRec,sum(rec) as rec from report_self
+		where tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="adzoneName!=null">
+			and adzoneName=#{adzoneName}
+		</if>
+	</select>
+
+	<select id="searchReportSelfSumupGroupbyThedate" parameterType="ReportSelf"
+		resultMap="ReportSelfMap5">
+		select sum(alipayNum) as alipayNum,sum(mixClick) as
+		mixClick,sum(alipayRec) as alipayRec,sum(rec) as rec,thedate from
+		report_self
+		where tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="adzoneName!=null">
+			and adzoneName=#{adzoneName}
+		</if>
+		group by thedate
+		order by thedate
+	</select>
+
+
+
+	<select id="searchReportSelfCount" parameterType="ReportSelf"
+		resultType="java.lang.Long">
+		select count(*) from report_self
+		where 1=1 and tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="adzoneName!=null">
+			and adzoneName=#{adzoneName}
+		</if>
+	</select>
+
+	<select id="searchReportSelf" parameterType="ReportSelf"
+		resultMap="ReportSelfMap">
+		select * from report_self
+		where 1=1 and tbName=#{tbName}
+		<if test="thedate1!=null">
+			and  <![CDATA[thedate >=#{thedate1} ]]>
+		</if>
+		<if test="thedate2!=null">
+			and  <![CDATA[thedate <=#{thedate2} ]]>
+		</if>
+		<if test="adzoneName!=null">
+			and adzoneName=#{adzoneName}
+		</if>
+		order by thedate limit #{beginPage},#{perPage}
+	</select>
+
+
+	<select id="searchAllSelftMediaType" parameterType="ReportSelf"
+		resultMap="ReportSelfMap3">
+		select adzoneName from report_self where
+		tbName=#{tbName}
+	</select>
+
+
+
+	<select id="searchMaxReportSelfTime" parameterType="java.lang.String"
+		resultMap="ReportSelfMap2">
+		select
+		max(thedate) as thedate
+		from report_self
+		where
+		tbName=#{tbName}
+	</select>
+
+
+	<delete id="deleteOldReportSelf" parameterType="java.util.List">
+		delete from report_self where
+		reportId in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.reportId}
+		</foreach>
+	</delete>
+
+
+	<insert id="addReportSelf" parameterType="java.util.List">
+		insert into report_self
+		(thedate,alipayNum,mixClick,alipayRec ,rec
+		,reportId
+		,mixPv,mixCtr,mixEcpm,
+		alipayAmt,mixRphc,clickConversion,clickWorth,pct,tbName,tbkName,
+		productType,adzoneId,adzoneName,productName)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+             <![CDATA[  
+          (#{item.thedate},#{item.alipayNum},#{item.mixClick},#{item.alipayRec},#{item.rec},#{item.reportId},#{item.mixPv},
+          #{item.mixCtr},#{item.mixEcpm},#{item.alipayAmt},#{item.mixRphc},#{item.clickConversion},
+          #{item.clickWorth},#{item.pct},#{item.tbName},#{item.tbkName},#{item.productType},#{item.adzoneId},#{item.adzoneName},#{item.productName})
+        ]]>
+		</foreach>
+
+	</insert>
+
+
+</mapper>

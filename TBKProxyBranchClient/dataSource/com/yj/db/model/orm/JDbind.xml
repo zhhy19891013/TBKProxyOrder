@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+
+	<resultMap id="JDBindMap" type="JDBind">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="jdName" column="jd_name" />
+		<result property="unionID" column="union_id" />
+	</resultMap>
+ 
+
+
+
+		<update id="updateBindMsg" parameterType="JDBind">
+		
+		insert into jd_bind (jd_name,union_id ) 
+		values (#{jdName},#{unionID})
+		</update>
+		
+		<select id="searchBindByCondition" resultMap="JDBindMap">
+		select * from jd_bind
+		</select>
+		
+		<select id="searchBindByConditionCount" resultType="java.lang.Long">
+		
+			select count(*) from jd_bind
+		
+		</select>
+		<delete id="deleteById" parameterType="JDBind">
+		
+			delete from jd_bind where database_id = #{databaseID}
+		
+		</delete>
+		
+</mapper>

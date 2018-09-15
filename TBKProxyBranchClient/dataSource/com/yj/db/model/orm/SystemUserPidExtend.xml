@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserPidExtendMap" type="SystemUserPidExtend">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="pidInfo" column="pid_info" />
+	</resultMap>
+
+	<select id="searchExtendPidNotUse" resultMap="SystemUserPidExtendMap">
+		select * from
+		system_user_pid_extend limit 1
+	</select>
+
+	<delete id="deleteExtendPidByDatabaseId" parameterType="SystemUserPidExtend">
+		delete
+		from
+		system_user_pid_extend where DATABASE_ID =#{databaseID}
+	</delete>
+
+	<insert id="addExtendPid" parameterType="SystemUserPidExtend">
+		insert into
+		system_user_pid_extend(pid_info) values(#{pidInfo})
+	</insert>
+
+	<select id="searchExtendPidCount" resultType="java.lang.Long">
+		select count(*)
+		from system_user_pid_extend
+	</select>
+
+
+
+</mapper>

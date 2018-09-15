@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemConfigMap" type="SystemConfig">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="title" column="title" />
+		<result property="webSite" column="web_site" />
+	</resultMap>
+
+
+	<update id="updateTitle" parameterType="SystemConfig">
+		update
+		system_config set
+		title =#{title}
+	</update>
+
+	<select id="searchConfig" resultMap="SystemConfigMap">
+		select * from
+		system_config
+		limit 1
+	</select>
+
+	<update id="updateWebSite" parameterType="SystemConfig">
+		update system_config
+		set
+		web_site =#{webSite}
+	</update>
+
+
+</mapper>

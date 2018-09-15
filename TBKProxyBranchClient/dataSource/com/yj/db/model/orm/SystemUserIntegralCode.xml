@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserIntegralCodeMap" type="SystemUserIntegralCode">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="exchangeCode" column="exchange_code" />
+		<result property="exchangeTime" column="exchange_time" />
+		<result property="userName" column="user_name" />
+		<result property="codeStatus" column="code_status" />
+		<result property="exchangeNum" column="exchange_num" />
+		<result property="realName" column="real_name" />
+		<result property="zfb" column="zfb" />
+		<result property="integralId" column="integral_id" />
+		
+		<result property="mergeStatus" column="merge_status" />
+		<result property="mergeId" column="merge_id" />
+		
+		
+	</resultMap>
+
+	<insert id="addSystemUserIntegralCode" parameterType="SystemUserIntegralCode">
+		insert into
+		system_user_integral_code(exchange_code,exchange_time,user_name,code_status,exchange_num,real_name,zfb,integral_id)
+		values(#{exchangeCode},#{exchangeTime},#{userName},#{codeStatus},#{exchangeNum},#{realName},#{zfb},#{integralId})
+	</insert>
+
+<update id="updateCodeUserName">
+
+	update system_user_integral_code 
+	set user_name = #{userName} 
+	where user_name= #{fatherName}
+
+</update>
+
+	<select id="searchSystemUserIntegralCodeCount" parameterType="SystemUserIntegralCode"
+		resultType="java.lang.Long">
+		select count(*) from system_user_integral_code where 1=1
+		
+		<if test="userName!=null">
+			and user_name
+			=#{userName}
+		</if>
+		<if test="codeStatus!=null">
+			and code_status
+			=#{codeStatus}
+		</if>
+		<if test="exchangeCode!=null">
+			and exchange_code
+			=#{exchangeCode}
+		</if>
+
+	</select>
+
+	<select id="searchSystemUserIntegralCode" parameterType="SystemUserIntegralCode"
+		resultMap="SystemUserIntegralCodeMap">
+		select * from system_user_integral_code
+		where 1=1
+		<if test="userName!=null">
+			and user_name
+			=#{userName}
+		</if>
+		<if test="codeStatus!=null">
+			and code_status
+			=#{codeStatus}
+		</if>
+		<if test="exchangeCode!=null">
+			and exchange_code
+			=#{exchangeCode}
+		</if>
+		order by exchange_time desc
+		
+		limit #{beginPage},#{perPage}
+	</select>
+
+	<select id="searchSystemUserIntegralCodeForExport"
+		parameterType="SystemUserIntegralCode" resultMap="SystemUserIntegralCodeMap">
+		select * from system_user_integral_code
+		where 1=1
+		<if test="codeStatus!=null">
+			and code_status
+			=#{codeStatus}
+		</if>
+		<if test="firstTime!=null">
+			and <![CDATA[exchange_time >=#{firstTime} ]]>
+		</if>
+		<if test="lastTime!=null">
+			and <![CDATA[exchange_time <=#{lastTime} ]]>
+		</if>
+	</select>
+
+
+	<update id="updateSystemUserIntegralCode" parameterType="SystemUserIntegralCode">
+		update
+		system_user_integral_code set code_status ='已使用'
+		where exchange_code
+		=#{exchangeCode}
+	</update>
+
+	<delete id="deleteSystemUserIntegralCode" parameterType="SystemUserIntegralCode">
+		delete
+		from system_user_integral_code where exchange_code
+		=#{exchangeCode}
+	</delete>
+	<update id="updateSystemUserIntegralCodeStatus" parameterType="java.util.List">
+		update system_user_integral_code set code_status = '无效' where exchange_code in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.exchangeCode}
+		</foreach>
+	</update>
+	
+	<select id="searchSystemUserIntegralCodeByexchangeCode" parameterType="SystemUserIntegralCode" resultMap="SystemUserIntegralCodeMap">
+		select * from system_user_integral_code where exchange_code = #{exchangeCode}
+	</select>
+
+</mapper>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="PaymentRecordBack" type="PayementRecord">
+		<result property="total" column="total" />
+		<result property="userName" column="user_name" />
+	</resultMap>
+
+	<select id="searchBackPaymentRecordsGroupBy" parameterType="PayementRecord"
+		resultMap="PaymentRecordBack">
+		select count(*) as total,user_name from payment_record
+		where 1=1 and
+		payStatus ='13'
+		<if test="createTime1!=null">
+			and  <![CDATA[create_time >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_time <=#{createTime2} ]]>
+		</if>
+		<if test="userName!=null">
+			and user_name =#{userName}
+		</if>
+		and user_name is not null
+		group by user_name
+		order by total desc
+		limit 10
+	</select>
+
+	<!-- 管理员退单统计页面报表 -->
+	<!-- 查看一段时间内的订单数目 -->
+	<select id="searchPayBackTotalOrderByCreateTime" parameterType="PayementRecord"
+		resultType="java.lang.Long">
+		select count(*) from payment_record
+		where 1=1 and payStatus ='13'
+		<if test="createTime1!=null">
+			and  <![CDATA[create_time >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_time <=#{createTime2} ]]>
+		</if>
+		<if test="userName!=null">
+			and user_name =#{userName}
+		</if>
+		and user_name is not null
+	</select>
+
+
+	<select id="searchBackPaymentRecords" parameterType="PayementRecord"
+		resultMap="PayementRecordMap">
+		select * from payment_record
+		where 1=1
+		<if test="createTime1!=null">
+			and  <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		and payStatus='13'
+		<if test="userName!=null">
+			and user_name =#{userName}
+		</if>
+		and user_name is not null
+		order by create_time desc
+		limit
+		#{beginPage},#{perPage}
+	</select>
+
+	<select id="searchBackPaymentRecordsCount" parameterType="PayementRecord"
+		resultType="java.lang.Long">
+		select count(*) from payment_record
+		where 1=1
+		<if test="createTime1!=null">
+			and  <![CDATA[create_date >=#{createTime1} ]]>
+		</if>
+		<if test="createTime2!=null">
+			and 	 <![CDATA[create_date <=#{createTime2} ]]>
+		</if>
+		and payStatus='13'
+		<if test="userName!=null">
+			and user_name =#{userName}
+		</if>
+		and user_name is not null
+	</select>
+
+
+</mapper>

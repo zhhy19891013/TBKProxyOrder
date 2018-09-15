@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BasicDao">
+	<resultMap id="SystemUserClientConfigMap" type="SystemUserClientConfig">
+		<result property="databaseID" column="DATABASE_ID" />
+		<result property="wName" column="w_name" />
+		<result property="pid" column="pid" />
+		<result property="userName" column="user_name" />
+		<result property="proxyName" column="proxy_name" />
+		<result property="uid" column="uid" />
+	</resultMap>
+	<!-- 查詢 -->
+	<sql id="selectSystemUserClientConfig">
+		select
+		DATABASE_ID,w_name,user_name,proxy_name,uid
+		from
+		system_user_client_config
+	</sql>
+	<!-- 根据用户名和代理名称查询配置 -->
+	<select id="searchSystemUserClientConfigForProxyName"
+		parameterType="SystemUserClientConfig" resultMap="SystemUserClientConfigMap">
+		<include refid="selectSystemUserClientConfig"></include>
+		where proxy_name is not null
+		<if test="proxyName!=null">
+			and proxy_name
+			LIKE '%${proxyName}%'
+		</if>
+		<if test="userName!=null">
+			and user_name
+			=#{userName}
+		</if>
+		order by database_id desc
+	</select>
+	<!-- 查询所有的群发配置 -->
+	<select id="searchAllSystemUserClientConfig" resultMap="SystemUserClientConfigMap">
+		<include refid="selectSystemUserClientConfig"></include>
+	</select>
+	<!-- 新增群发配置 -->
+	<insert id="addSystemUserClientConfig" parameterType="SystemUserClientConfig">
+		insert into
+		system_user_client_config(w_name,pid,user_name,proxy_name,uid)
+		values(#{wName},#{pid},#{userName},#{proxyName},#{uid})
+	</insert>
+	<!-- 根据用户名查询群发配置 -->
+	<select id="searchSystemUserClientConfigByUserName"
+		parameterType="SystemUserClientConfig" resultMap="SystemUserClientConfigMap">
+		<include refid="selectSystemUserClientConfig"></include>
+		where user_name
+		=#{userName}
+	</select>
+	<!-- 根据用户名和代理名称查询群发配置 -->
+	<select id="searchSystemUserClientConfigByUserNameAndProxyName"
+		parameterType="SystemUserClientConfig" resultMap="SystemUserClientConfigMap">
+		<include refid="selectSystemUserClientConfig"></include>
+		where user_name
+		=#{userName} and proxy_name
+		=#{proxyName}
+	</select>
+	<!-- 根据用户名和代理名称查询群发配置数目 -->
+	<select id="searchSystemUserClientConfigByUserNameAndProxyNameCount"
+		parameterType="SystemUserClientConfig" resultType="java.lang.Long">
+		select count(*) from
+		system_user_client_config
+		where user_name
+		=#{userName} and proxy_name
+		=#{proxyName}
+	</select>
+
+
+	<update id="updateUserClientConfigUserName" parameterType="systemUser">
+		update system_user_client_config
+		set proxy_name =#{userName} where
+		proxy_name = #{fatherName}
+	</update>
+
+
+
+
+	<select id="searchSystemUserClientHasWName" parameterType="SystemUserClientConfig"
+		resultType="java.lang.Long">
+		select count(*) from system_user_client_config where w_name
+		= #{wName}
+	</select>
+
+
+	<delete id="deleteSystemUserClinetConfig" parameterType="SystemUserClientConfig">
+		delete
+		from system_user_client_config where DATABASE_ID =#{databaseID}
+	</delete>
+
+	<update id="updateSystemUserClientConfig" parameterType="SystemUserClientConfig">
+		update
+		system_user_client_config set pid=#{pid} , uid =#{uid}
+		where proxy_name
+		=#{proxyName}
+	</update>
+
+	<delete id="deleteSystemUserClinetConfigs" parameterType="java.util.List">
+		delete from system_user_client_config where DATABASE_ID in
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.databaseID}
+		</foreach>
+	</delete>
+
+
+
+</mapper>
